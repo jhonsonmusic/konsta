@@ -1,0 +1,7 @@
+dist/
+node_modules/
+.astro/
+.DS_Store
+
+# Config local con credenciales — no subir
+.mcp.json

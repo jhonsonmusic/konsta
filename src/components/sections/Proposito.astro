@@ -1,0 +1,76 @@
+---
+import Media from '../Media.astro';
+---
+
+<section id="proyecto" class="proposito two-col">
+  <div>
+    <span class="eyebrow proposito__eyebrow" data-reveal style="--reveal-y:20px;--reveal-dur:.8s">
+      05 — Propósito
+    </span>
+    <h2 class="display proposito__title" data-reveal style="--reveal-delay:.06s">
+      MÁS ALLÁ DE MI ONDULACIÓN: IMPULSANDO EL FUTURO DE LA MONOALETA EN COLOMBIA
+    </h2>
+    <div data-parallax="0.04">
+      <Media
+        id="konsta-proyecto"
+        caption="Entrenamiento / comunidad"
+        aspect="4 / 3"
+        clipDelay=".1s"
+        clipDuration="1.2s"
+      />
+    </div>
+  </div>
+
+  <div class="proposito__col">
+    <p class="body-copy" data-reveal style="--reveal-delay:.04s">
+      El talento en Colombia es inmenso, pero el deporte de élite es una carrera de resistencia
+      financiera tanto como física. Al crecer en esta modalidad, he entendido que la excelencia no
+      puede ser un camino solitario.
+    </p>
+    <p class="body-copy" data-reveal style="--reveal-delay:.1s">
+      Mi propósito no es solo llegar al podio; es abrir la puerta para que otros también lo hagan.
+      Estamos creando un movimiento para apoyar a compañeros con alto potencial, porque la monoaleta
+      es un deporte donde el éxito de uno eleva el nivel de todos.
+    </p>
+    <p class="body-copy" data-reveal style="--reveal-delay:.16s">
+      Las grandes marcas tienen el poder de transformar el deporte. Buscamos aliados visionarios que
+      elijan apostar por el talento, respaldar el esfuerzo y convertirse en parte activa del
+      desarrollo de la próxima generación de campeones mundiales colombianos.
+    </p>
+    <p class="display proposito__closer" data-reveal style="--reveal-delay:.22s">
+      NO ES SOLO PATROCINIO;<br />ES CONSTRUIR LEGADOS JUNTOS.
+    </p>
+  </div>
+</section>
+
+<style>
+  .proposito {
+    align-items: start;
+    padding: clamp(70px, 12vh, 150px) var(--gutter) clamp(60px, 10vh, 130px);
+  }
+
+  .proposito__eyebrow {
+    margin-bottom: 18px;
+  }
+
+  .proposito__title {
+    font-size: clamp(38px, 4.7vw, 82px);
+    line-height: 0.92;
+    margin: 0 0 28px;
+    text-wrap: balance;
+  }
+
+  .proposito__col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: clamp(0px, 4vw, 68px);
+  }
+
+  .proposito__closer {
+    font-size: clamp(30px, 3.3vw, 56px);
+    line-height: 1;
+    letter-spacing: 0.015em;
+    margin: clamp(8px, 2vh, 20px) 0 0;
+  }
+</style>

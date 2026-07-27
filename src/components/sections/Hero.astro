@@ -1,0 +1,152 @@
+---
+import Media from '../Media.astro';
+---
+
+<section id="hero" class="hero">
+  <div>
+    <div class="hero__eyebrow" data-reveal style="--reveal-y:24px;--reveal-dur:.9s">
+      <span class="hero__rule"></span>
+      <span>Monoaleta · Colombia</span>
+    </div>
+    <h1 class="display hero__title" data-reveal style="--reveal-y:30px;--reveal-dur:1s;--reveal-delay:.08s">
+      KONSTA: LA EXCELENCIA<br />NO ES UN DON,<br />ES UN <span class="hero__ritual">ritual</span>.
+    </h1>
+    <p class="hero__lead" data-reveal style="--reveal-y:30px;--reveal-dur:1s;--reveal-delay:.16s">
+      Más allá de la velocidad. Más allá de la medalla. Un proyecto de vida construido con
+      disciplina implacable y el respaldo de un equipo que rompe límites.
+    </p>
+    <div class="hero__ctas" data-reveal style="--reveal-y:30px;--reveal-dur:1s;--reveal-delay:.24s">
+      <a href="#tiburon" class="pill">Conoce la historia</a>
+      <a href="#aliados" class="link-underline">Alianzas de marca</a>
+    </div>
+  </div>
+
+  <div class="hero__figure" data-parallax="-0.05">
+    <Media
+      id="konsta-hero"
+      caption="Atleta en piscina — vertical, B&N"
+      aspect="3 / 4.15"
+      radius="200px 200px 28px 28px"
+      clipDelay=".1s"
+      clipDuration="1.3s"
+    />
+    <div class="hero__badge">
+      <span class="hero__badge-dot"></span>Modo tiburón activo
+    </div>
+  </div>
+</section>
+
+<div class="tagline">
+  <span class="tagline__rule"></span>
+  <span>Disciplina</span><span>·</span><span>Familia</span><span>·</span><span>Legado</span>
+  <span class="tagline__rule"></span>
+</div>
+
+<style>
+  .hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+    gap: clamp(24px, 5vw, 80px);
+    align-items: center;
+    padding: clamp(56px, 9vh, 120px) var(--gutter) clamp(60px, 10vh, 130px);
+  }
+
+  .hero__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: clamp(20px, 4vh, 40px);
+    font-size: 10.5px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .hero__rule {
+    width: 46px;
+    height: 1px;
+    background: var(--color-blue);
+    opacity: 0.8;
+  }
+
+  .hero__title {
+    font-size: clamp(52px, 7.4vw, 128px);
+    line-height: 0.87;
+    letter-spacing: 0.005em;
+    margin: 0 0 clamp(22px, 3.4vh, 38px);
+    text-wrap: balance;
+  }
+
+  .hero__ritual {
+    font-family: var(--font-text);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 0.58em;
+    letter-spacing: -0.01em;
+  }
+
+  .hero__lead {
+    max-width: 46ch;
+    font-size: clamp(14.5px, 1.15vw, 17px);
+    line-height: 1.72;
+    font-weight: 300;
+    color: var(--color-body);
+    margin: 0 0 clamp(28px, 4vh, 44px);
+    text-wrap: pretty;
+  }
+
+  .hero__ctas {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    flex-wrap: wrap;
+  }
+
+  .hero__figure {
+    position: relative;
+  }
+
+  .hero__badge {
+    position: absolute;
+    left: -18px;
+    bottom: 34px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 16px;
+    border-radius: var(--radius-pill);
+    background: var(--color-white);
+    border: 1px solid var(--hairline);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .hero__badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-blue);
+    animation: km-drip 2.4s ease-in-out infinite;
+  }
+
+  .tagline {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 3vw, 40px);
+    padding: 0 var(--gutter) clamp(60px, 9vh, 110px);
+    font-size: 10.5px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--color-muted);
+  }
+
+  .tagline__rule {
+    flex: 1;
+    height: 1px;
+    background: var(--hairline-strong);
+  }
+</style>

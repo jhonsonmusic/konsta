@@ -1,0 +1,87 @@
+---
+import Media from '../Media.astro';
+---
+
+<section id="origen" class="origen two-col">
+  <div>
+    <span class="eyebrow origen__eyebrow" data-reveal style="--reveal-y:20px;--reveal-dur:.8s">
+      03 — El origen
+    </span>
+    <h2 class="display origen__title" data-reveal style="--reveal-delay:.06s">
+      UN CAMINO FORJADO EN LA UNIÓN Y LA RESILIENCIA
+    </h2>
+    <p class="body-copy" data-reveal style="--reveal-delay:.14s">
+      Detrás de cada marca en el cronómetro, de cada salto y de cada medalla, hay una historia que no
+      se ve en las piscinas. El camino de Konsta no ha sido una línea recta; se ha construido
+      adaptándose a nuevos entornos, viviendo el deporte con una mentalidad global y entendiendo que
+      el éxito real es el resultado de un esfuerzo compartido.
+    </p>
+  </div>
+
+  <div class="origen__collage">
+    <div class="origen__tall" data-parallax="-0.07">
+      <Media id="konsta-origen-1" caption="Foto actual del atleta" aspect="4 / 5.4" clipDuration="1.2s" />
+    </div>
+    <div class="origen__circle" data-parallax="0.06">
+      <Media
+        id="konsta-origen-2"
+        caption="Infancia"
+        aspect="1 / 1"
+        radius="999px"
+        clipDelay=".12s"
+        clipDuration="1.2s"
+      />
+    </div>
+    <div class="origen__wide" data-parallax="0.1">
+      <Media
+        id="konsta-origen-3"
+        caption="Entrenamiento"
+        aspect="4 / 3.2"
+        radius="22px"
+        clipDelay=".22s"
+        clipDuration="1.2s"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .origen {
+    align-items: center;
+    padding: clamp(40px, 7vh, 90px) var(--gutter) clamp(70px, 11vh, 140px);
+  }
+
+  .origen__eyebrow {
+    margin-bottom: 18px;
+  }
+
+  .origen__title {
+    font-size: clamp(38px, 4.6vw, 78px);
+    line-height: 0.93;
+    margin: 0 0 26px;
+  }
+
+  .origen__collage {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    gap: clamp(14px, 1.8vw, 26px);
+  }
+
+  .origen__tall {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    align-self: center;
+  }
+
+  .origen__circle {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    margin-top: clamp(0px, 4vw, 54px);
+  }
+
+  .origen__wide {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+</style>

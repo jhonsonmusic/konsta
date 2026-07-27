@@ -1,0 +1,75 @@
+---
+import Media from '../Media.astro';
+import PlayBadge from '../PlayBadge.astro';
+---
+
+<section id="manifiesto" class="manifiesto section section--rule">
+  <div class="manifiesto__inner">
+    <span class="eyebrow manifiesto__eyebrow" data-reveal style="--reveal-y:20px;--reveal-dur:.8s">
+      06 — Manifiesto de compromiso
+    </span>
+    <blockquote class="display manifiesto__quote" data-reveal style="--reveal-y:28px;--reveal-dur:1s;--reveal-delay:.06s">
+      “HE VISTO A GRANDES TALENTOS DEJAR EL AGUA PORQUE LOS COSTOS DE LOS EQUIPOS LOS SUPERARON. ESO
+      NO ES FALTA DE CAPACIDAD, <span class="manifiesto__accent">ES FALTA DE OPORTUNIDADES.</span> MI
+      VISIÓN ES DEMOSTRAR QUE EL ALTO RENDIMIENTO ES POSIBLE CUANDO UNIMOS FUERZAS.
+      <span class="manifiesto__accent">COMO EQUIPO, SOMOS IMBATIBLES.</span>”
+    </blockquote>
+    <span class="manifiesto__attr" data-reveal style="--reveal-y:20px;--reveal-dur:.8s;--reveal-delay:.14s">
+      — Konsta
+    </span>
+    <div class="manifiesto__video" data-parallax="0.03">
+      <Media
+        id="konsta-manifiesto-video"
+        caption="Video del manifiesto — poster"
+        aspect="16 / 9"
+        radius="28px"
+      >
+        <PlayBadge size={74} padding={24} />
+      </Media>
+    </div>
+  </div>
+</section>
+
+<style>
+  .manifiesto {
+    padding-block: clamp(70px, 12vh, 150px);
+  }
+
+  .manifiesto__inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .manifiesto__eyebrow {
+    margin-bottom: clamp(24px, 4vh, 44px);
+  }
+
+  .manifiesto__quote {
+    font-size: clamp(30px, 3.9vw, 66px);
+    line-height: 1.04;
+    letter-spacing: 0.015em;
+    margin: 0 auto clamp(30px, 5vh, 54px);
+    max-width: 22ch;
+    text-wrap: balance;
+  }
+
+  .manifiesto__accent {
+    color: var(--color-blue);
+  }
+
+  .manifiesto__attr {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-muted);
+    margin-bottom: clamp(34px, 6vh, 64px);
+  }
+
+  .manifiesto__video {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+</style>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>KONSTA — La excelencia es un ritual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script src="./image-slot.js"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #FFFFFF; color: #111111; -webkit-font-smoothing: antialiased; }
+  a { color: #111111; text-decoration: none; }
+  a:hover { color: #6E7378; }
+  ::selection { background: #111111; color: #FFFFFF; }
+  @keyframes km-marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+  @keyframes km-drip { 0%,100% { transform: translateY(0); opacity: .35 } 50% { transform: translateY(10px); opacity: 1 } }
+</style>
+</helmet>
+
+<div style="font-family: Montserrat, sans-serif; overflow-x: hidden; background: #FFFFFF;">
+
+  <header style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 18px clamp(20px, 4vw, 56px); background: rgba(255,255,255,.86); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(17,17,17,.09);">
+    <a href="#hero" style="display: flex; align-items: center;"><img src="./assets/konsta-logo.png" alt="Konsta" style="height: 30px; width: auto; display: block;" /></a>
+    <nav style="display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: clamp(12px, 2vw, 28px); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 500;">
+      <a href="#tiburon">Modo Tiburón</a>
+      <a href="#origen">Historia</a>
+      <a href="#legado">Colección Legado</a>
+      <a href="#vision">Visión 2029</a>
+      <div style="display: flex; align-items: center; gap: 14px; color: #111111;">
+      <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" style="display: flex; color: inherit;"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"></circle></svg></a>
+      <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok" style="display: flex; color: inherit;"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M14 3h2.4c.3 2 1.6 3.4 3.6 3.6V9c-1.5 0-2.8-.5-3.8-1.3v6.6a5.3 5.3 0 1 1-5.3-5.3c.3 0 .6 0 .9.1v2.5a2.8 2.8 0 1 0 1.9 2.7V3z"></path></svg></a>
+      <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube" style="display: flex; color: inherit;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="5.5" width="19" height="13" rx="4"></rect><path d="M10.5 9.5l5 2.5-5 2.5z" fill="currentColor" stroke="none"></path></svg></a>
+    </div>
+      <a href="#aliados" style="padding: 10px 18px; border-radius: 999px; background: #004B87; color: #FFFFFF;">Ser aliado</a>
+    </nav>
+  </header>
+
+  <section id="hero" data-screen-label="01 Hero" style="position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: clamp(24px, 5vw, 80px); align-items: center; padding: clamp(56px, 9vh, 120px) clamp(20px, 4vw, 56px) clamp(60px, 10vh, 130px);">
+    <div>
+      <div data-reveal style="display: flex; align-items: center; gap: 12px; margin-bottom: clamp(20px, 4vh, 40px); opacity: 0; transform: translateY(24px); transition: opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1);">
+        <span style="width: 46px; height: 1px; background: #004B87; opacity: .8;"></span>
+        <span style="font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; font-weight: 600;">Monoaleta · Colombia</span>
+      </div>
+      <h1 data-reveal style="font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(52px, 7.4vw, 128px); line-height: .87; letter-spacing: .005em; margin: 0 0 clamp(22px, 3.4vh, 38px); text-wrap: balance; opacity: 0; transform: translateY(30px); transition: opacity 1s cubic-bezier(.22,1,.36,1) .08s, transform 1s cubic-bezier(.22,1,.36,1) .08s;">
+        KONSTA: LA EXCELENCIA<br />NO ES UN DON,<br />ES UN <span style="font-style: italic; font-family: Montserrat, sans-serif; font-weight: 300; font-size: .58em; letter-spacing: -.01em;">ritual</span>.
+      </h1>
+      <p data-reveal style="max-width: 46ch; font-size: clamp(14.5px, 1.15vw, 17px); line-height: 1.72; font-weight: 300; color: #454545; margin: 0 0 clamp(28px, 4vh, 44px); text-wrap: pretty; opacity: 0; transform: translateY(30px); transition: opacity 1s cubic-bezier(.22,1,.36,1) .16s, transform 1s cubic-bezier(.22,1,.36,1) .16s;">
+        Más allá de la velocidad. Más allá de la medalla. Un proyecto de vida construido con disciplina implacable y el respaldo de un equipo que rompe límites.
+      </p>
+      <div data-reveal style="display: flex; align-items: center; gap: 26px; flex-wrap: wrap; opacity: 0; transform: translateY(30px); transition: opacity 1s cubic-bezier(.22,1,.36,1) .24s, transform 1s cubic-bezier(.22,1,.36,1) .24s;">
+        <a href="#tiburon" style="display: inline-flex; align-items: center; gap: 12px; padding: 16px 26px; border-radius: 999px; background: #004B87; color: #FFFFFF; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600;">Conoce la historia</a>
+        <a href="#aliados" style="font-size: 11px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; border-bottom: 1px solid rgba(17,17,17,.35); padding-bottom: 4px;">Alianzas de marca</a>
+      </div>
+    </div>
+    <div data-parallax="-0.05" style="position: relative;">
+      <div data-reveal-clip data-keep-shape style="position: relative; aspect-ratio: 3 / 4.15; border-radius: 200px 200px 28px 28px; overflow: hidden; clip-path: inset(0 0 100% 0); transition: clip-path 1.3s cubic-bezier(.65,0,.35,1) .1s;">
+        <image-slot data-img id="konsta-hero" shape="rect" placeholder="Atleta en piscina — vertical, B&N"></image-slot>
+      </div>
+      <div style="position: absolute; left: -18px; bottom: 34px; display: flex; align-items: center; gap: 10px; padding: 11px 16px; border-radius: 999px; background: #FFFFFF; border: 1px solid rgba(17,17,17,.12); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600;">
+        <span style="width: 6px; height: 6px; border-radius: 50%; background: #004B87; animation: km-drip 2.4s ease-in-out infinite;"></span>Modo tiburón activo
+      </div>
+    </div>
+  </section>
+
+  <div style="display: flex; align-items: center; gap: clamp(16px, 3vw, 40px); padding: 0 clamp(20px, 4vw, 56px) clamp(60px, 9vh, 110px); font-size: 10.5px; letter-spacing: .24em; text-transform: uppercase; font-weight: 500; color: #6E7378;">
+    <span style="flex: 1; height: 1px; background: rgba(17,17,17,.14);"></span>
+    <span>Disciplina</span><span>·</span><span>Familia</span><span>·</span><span>Legado</span>
+    <span style="flex: 1; height: 1px; background: rgba(17,17,17,.14);"></span>
+  </div>
+
+  <div style="overflow: hidden; padding: clamp(6px, 1vh, 14px) 0 clamp(26px, 4vh, 46px); white-space: nowrap;">
+    <div style="display: inline-flex; gap: 40px; animation: km-marquee 26s linear infinite; font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 3.4vw, 54px); letter-spacing: .06em; color: transparent; -webkit-text-stroke: 1px rgba(0,75,135,.38);">
+      <span>MODO TIBURÓN · DISCIPLINA IMPLACABLE · MODO TIBURÓN · SIN ATAJOS ·</span>
+      <span>MODO TIBURÓN · DISCIPLINA IMPLACABLE · MODO TIBURÓN · SIN ATAJOS ·</span>
+    </div>
+  </div>
+
+  <section id="tiburon" data-screen-label="02 Modo tiburón" style="margin: 0 clamp(10px, 1.6vw, 22px); border-radius: clamp(28px, 3vw, 44px); background: #004B87; color: #FFFFFF; padding: clamp(56px, 10vh, 130px) clamp(24px, 4vw, 72px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1.4fr)); gap: clamp(28px, 4vw, 64px); align-items: end;">
+    <div>
+      <span data-reveal style="display: block; font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; font-weight: 600; color: rgba(255,255,255,.62); margin-bottom: clamp(22px, 4vh, 44px); opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s ease;">02 — Modo tiburón</span>
+      <p data-reveal style="font-family: 'Bebas Neue', sans-serif; font-size: clamp(34px, 4.3vw, 74px); line-height: 1.02; letter-spacing: .015em; margin: 0 0 clamp(20px, 3vh, 34px); color: rgba(255,255,255,.58); text-wrap: balance; opacity: 0; transform: translateY(28px); transition: opacity 1s cubic-bezier(.22,1,.36,1) .08s, transform 1s cubic-bezier(.22,1,.36,1) .08s;">
+        MUCHOS VEN EL SALTO. POCOS VEN LAS HORAS DE MADRUGONES, EL FRÍO, LA TÉCNICA Y LA CONVICCIÓN. <span style="color: #FFFFFF;">ESTO NO ES SUERTE.</span>
+      </p>
+      <p data-reveal style="font-family: 'Bebas Neue', sans-serif; font-size: clamp(54px, 8.6vw, 158px); line-height: .86; letter-spacing: .01em; margin: 0; opacity: 0; transform: translateY(34px); transition: opacity 1.1s cubic-bezier(.22,1,.36,1) .18s, transform 1.1s cubic-bezier(.22,1,.36,1) .18s;">
+        ESTO ES<br />MODO TIBURÓN.
+      </p>
+      <div data-reveal style="display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-top: clamp(28px, 4vh, 48px); opacity: 0; transform: translateY(26px); transition: opacity 1s ease .26s, transform 1s cubic-bezier(.22,1,.36,1) .26s;">
+        <a href="#aliados" style="display: inline-flex; align-items: center; gap: 12px; padding: 17px 28px; border-radius: 999px; background: #FFFFFF; color: #004B87; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600;">Únete al equipo (Patrocinios)</a>
+        <div style="display: flex; align-items: center; gap: 16px; color: #FFFFFF;">
+          <span style="font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; opacity: .72;">Síguenos en nuestras redes</span>
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" style="display: flex; color: inherit;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"></circle></svg></a>
+          <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok" style="display: flex; color: inherit;"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M14 3h2.4c.3 2 1.6 3.4 3.6 3.6V9c-1.5 0-2.8-.5-3.8-1.3v6.6a5.3 5.3 0 1 1-5.3-5.3c.3 0 .6 0 .9.1v2.5a2.8 2.8 0 1 0 1.9 2.7V3z"></path></svg></a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube" style="display: flex; color: inherit;"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="5.5" width="19" height="13" rx="4"></rect><path d="M10.5 9.5l5 2.5-5 2.5z" fill="currentColor" stroke="none"></path></svg></a>
+        </div>
+      </div>
+    </div>
+    <div data-parallax="-0.09">
+      <div data-reveal-clip data-keep-shape style="aspect-ratio: 3 / 4.4; border-radius: 22px 22px 180px 22px; overflow: hidden; clip-path: inset(100% 0 0 0); transition: clip-path 1.3s cubic-bezier(.65,0,.35,1) .1s;">
+        <image-slot data-img id="konsta-tiburon" shape="rect" placeholder="Entrenamiento — cruda, B&N"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <section id="origen" data-screen-label="03 El origen" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: clamp(28px, 5vw, 86px); align-items: center; padding: clamp(40px, 7vh, 90px) clamp(20px, 4vw, 56px) clamp(70px, 11vh, 140px);">
+    <div>
+      <span data-reveal style="display: block; font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; font-weight: 600; color: #6E7378; margin-bottom: 18px; opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s ease;">03 — El origen</span>
+      <h2 data-reveal style="font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(38px, 4.6vw, 78px); line-height: .93; letter-spacing: .01em; margin: 0 0 26px; opacity: 0; transform: translateY(26px); transition: opacity .9s cubic-bezier(.22,1,.36,1) .06s, transform .9s cubic-bezier(.22,1,.36,1) .06s;">
+        UN CAMINO FORJADO EN LA UNIÓN Y LA RESILIENCIA
+      </h2>
+      <p data-reveal style="max-width: 48ch; font-size: clamp(14.5px, 1.1vw, 16.5px); line-height: 1.78; font-weight: 300; color: #454545; margin: 0; text-wrap: pretty; opacity: 0; transform: translateY(26px); transition: opacity .9s cubic-bezier(.22,1,.36,1) .14s, transform .9s cubic-bezier(.22,1,.36,1) .14s;">
+        Detrás de cada marca en el cronómetro, de cada salto y de cada medalla, hay una historia que no se ve en las piscinas. El camino de Konsta no ha sido una línea recta; se ha construido adaptándose a nuevos entornos, viviendo el deporte con una mentalidad global y entendiendo que el éxito real es el resultado de un esfuerzo compartido.
+      </p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: auto auto; gap: clamp(14px, 1.8vw, 26px);">
+      <div data-parallax="-0.07" style="grid-column: 1 / 2; grid-row: 1 / 3; align-self: center;">
+        <div data-reveal-clip style="aspect-ratio: 4 / 5.4; border-radius: 26px; overflow: hidden; clip-path: inset(0 0 100% 0); transition: clip-path 1.2s cubic-bezier(.65,0,.35,1);">
+          <image-slot data-img id="konsta-origen-1" shape="rect" placeholder="Foto actual del atleta"></image-slot>
+        </div>
+      </div>
+      <div data-parallax="0.06" style="grid-column: 2 / 3; grid-row: 1 / 2; margin-top: clamp(0px, 4vw, 54px);">
+        <div data-reveal-clip data-keep-shape style="aspect-ratio: 1 / 1; border-radius: 999px; overflow: hidden; clip-path: inset(0 0 100% 0); transition: clip-path 1.2s cubic-bezier(.65,0,.35,1) .12s;">
+          <image-slot data-img id="konsta-origen-2" shape="rect" placeholder="Infancia"></image-slot>
+        </div>
+      </div>
+      <div data-parallax="0.1" style="grid-column: 2 / 3; grid-row: 2 / 3;">
+        <div data-reveal-clip style="aspect-ratio: 4 / 3.2; border-radius: 22px; overflow: hidden; clip-path: inset(0 0 100% 0); transition: clip-path 1.2s cubic-bezier(.65,0,.35,1) .22s;">
+          <image-slot data-img id="konsta-origen-3" shape="rect" placeholder="Entrenamiento"></image-slot>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="familia" data-screen-label="04 La familia" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: clamp(28px, 5vw, 86px); align-items: center; padding: clamp(40px, 7vh, 90px) clamp(20px, 4vw, 56px) clamp(70px, 11vh, 140px);">
+    <div data-parallax="-0.05" style="order: 1;">
+      <div data-reveal-clip data-keep-shape style="aspect-ratio: 5 / 4; border-radius: 28px 28px 28px 160px; overflow: hidden; clip-path: inset(0 100% 0 0); transition: clip-path 1.25s cubic-bezier(.65,0,.35,1);">
+        <image-slot data-img id="konsta-familia" shape="rect" placeholder="Imagen familiar — protagonista emocional"></image-slot>
+      </div>
+    </div>
+    <div style="order: 2;">
+      <span data-reveal style="display: block; font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; font-weight: 600; color: #6E7378; margin-bottom: 18px; opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s ease;">04 — La familia</span>
+      <h2 data-reveal style="font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(38px, 4.6vw, 76px); line-height: .93; letter-spacing: .01em; margin: 0 0 26px; opacity: 0; transform: translateY(26px); transition: opacity .9s cubic-bezier(.22,1,.36,1) .06s, transform .9s cubic-bezier(.22,1,.36,1) .06s;">
+        LA FAMILIA COMO EL MOTOR DEL ALTO RENDIMIENTO
+      </h2>
+      <p data-reveal style="max-width: 46ch; font-size: clamp(14.5px, 1.1vw, 16.5px); line-height: 1.78; font-weight: 300; color: #454545; margin: 0 0 20px; text-wrap: pretty; opacity: 0; transform: translateY(26px); transition: opacity .9s cubic-bezier(.22,1,.36,1) .14s, transform .9s cubic-bezier(.22,1,.36,1) .14s;">
+        En este proyecto no compite una sola persona. El verdadero núcleo de esta historia es un equipo incondicional: una familia que ha sabido estructurar los sueños de su hijo con disciplina, honestidad y un propósito humano inquebrantable.
+      </p>
+      <p data-reveal style="max-width: 46ch; font-size: clamp(14.5px, 1.1vw, 16.5px); line-height: 1.78; font-weight: 300; color: #454545; margin: 0; text-wrap: pretty; opacity: 0; transform: translateY(26px); transition: opacity .9s cubic-bezier(.22,1,.36,1) .2s, transform .9s cubic-bezier(.22,1,.36,1) .2s;">
+        Para las marcas y aliados estratégicos que buscan asociarse con valores reales, el Proyecto Konsta representa transparencia, confianza institucional y un compromiso genuino con la excelencia. Aquí no solo apoyas a un deportista; respaldas un proyecto de vida íntegro que transforma el talento en un legado.
+      </p>
+    </div>
+  </section>
+
+  <section id="proyecto" data-screen-label="05 Proyecto" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: clamp(28px, 5vw, 86px); align-items: start; padding: clamp(70px, 12vh, 150px) clamp(20px, 4vw, 56px) clamp(60px, 10vh, 130px);">
+    <div>
+      <span data-reveal style="display: block; font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; font-weight: 600; color: #6E7378; margin-bottom: 18px; opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s ease;">05 — Propósito</span>
+      <h2 data-reveal style="font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(38px, 4.7vw, 82px); line-height: .92; letter-spacing: .01em; margin: 0 0 28px; text-wrap: balance; opacity: 0; transform: translateY(26px); transition: opacity .9s cubic-bezier(.22,1,.36,1) .06s, transform .9s cubic-bezier(.22,1,.36,1) .06s;">
+        MÁS ALLÁ DE MI ONDULACIÓN: IMPULSANDO EL FUTURO DE LA MONOALETA EN COLOMBIA
+      </h2>
+      <div data-parallax="0.04">
+        <div data-reveal-clip style="aspect-ratio: 4 / 3; border-radius: 26px; overflow: hidden; clip-path: inset(0 0 100% 0); transition: clip-path 1.2s cubic-bezier(.65,0,.35,1) .1s;">
+          <image-slot data-img id="konsta-proyecto" shape="rect" placeholder="Entrenamiento / comunidad"></image-slot>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 20px; padding-top: clamp(0px, 4vw, 68px);">
+      <p data-reveal style="max-width: 48ch; font-size: clamp(14.5px, 1.1vw, 16.5px); line-height: 1.78; font-weight: 300; color: #454545; margin: 0; text-wrap: pretty; opacity: 0; transform: translateY(26px); transition: opacity .9s ease .04s, transform .9s cubic-bezier(.22,1,.36,1) .04s;">
+        El talento en Colombia es inmenso, pero el deporte de élite es una carrera de resistencia financiera tanto como física. Al crecer en esta modalidad, he entendido que la excelencia no puede ser un camino solitario.
+      </p>
+      <p data-reveal style="max-width: 48ch; font-size: clamp(14.5px, 1.1vw, 16.5px); line-height: 1.78; font-weight: 300; color: #454545; margin: 0; text-wrap: pretty; opacity: 0; transform: translateY(26px); transition: opacity .9s ease .1s, transform .9s cubic-bezier(.22,1,.36,1) .1s;">
+        Mi propósito no es solo llegar al podio; es abrir la puerta para que otros también lo hagan. Estamos creando un movimiento para apoyar a compañeros con alto potencial, porque la monoaleta es un deporte donde el éxito de uno eleva el nivel de todos.
+      </p>
+      <p data-reveal style="max-width: 48ch; font-size: clamp(14.5px, 1.1vw, 16.5px); line-height: 1.78; font-weight: 300; color: #454545; margin: 0; text-wrap: pretty; opacity: 0; transform: translateY(26px); transition: opacity .9s ease .16s, transform .9s cubic-bezier(.22,1,.36,1) .16s;">
+        Las grandes marcas tienen el poder de transformar el deporte. Buscamos aliados visionarios que elijan apostar por el talento, respaldar el esfuerzo y convertirse en parte activa del desarrollo de la próxima generación de campeones mundiales colombianos.
+      </p>
+      <p data-reveal style="font-family: 'Bebas Neue', sans-serif; font-size: clamp(30px, 3.3vw, 56px); line-height: 1; letter-spacing: .015em; margin: clamp(8px, 2vh, 20px) 0 0; opacity: 0; transform: translateY(26px); transition: opacity .9s ease .22s, transform .9s cubic-bezier(.22,1,.36,1) .22s;">
+        NO ES SOLO PATROCINIO;<br />ES CONSTRUIR LEGADOS JUNTOS.
+      </p>
+    </div>
+  </section>
+
+  <section id="manifiesto" data-screen-label="06 Manifiesto" style="padding: clamp(70px, 12vh, 150px) clamp(20px, 4vw, 56px); border-top: 1px solid rgba(17,17,17,.12);">
+    <div style="max-width: 1040px; margin: 0 auto; text-align: center;">
+      <span data-reveal style="display: block; font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; font-weight: 600; color: #6E7378; margin-bottom: clamp(24px, 4vh, 44px); opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s ease;">06 — Manifiesto de compromiso</span>
+      <blockquote data-reveal style="font-family: 'Bebas Neue', sans-serif; font-size: clamp(30px, 3.9vw, 66px); line-height: 1.04; letter-spacing: .015em; margin: 0 auto clamp(30px, 5vh, 54px); max-width: 22ch; text-wrap: balance; opacity: 0; transform: translateY(28px); transition: opacity 1s cubic-bezier(.22,1,.36,1) .06s, transform 1s cubic-bezier(.22,1,.36,1) .06s;">
+        “HE VISTO A GRANDES TALENTOS DEJAR EL AGUA PORQUE LOS COSTOS DE LOS EQUIPOS LOS SUPERARON. ESO NO ES FALTA DE CAPACIDAD, <span style="color: #004B87;">ES FALTA DE OPORTUNIDADES.</span> MI VISIÓN ES DEMOSTRAR QUE EL ALTO RENDIMIENTO ES POSIBLE CUANDO UNIMOS FUERZAS. <span style="color: #004B87;">COMO EQUIPO, SOMOS IMBATIBLES.</span>”
+      </blockquote>
+      <span data-reveal style="display: block; font-size: 11px; letter-spacing: .28em; text-transform: uppercase; font-weight: 600; color: #6E7378; margin-bottom: clamp(34px, 6vh, 64px); opacity: 0; transform: translateY(20px); transition: opacity .8s ease .14s, transform .8s ease .14s;">— Konsta</span>
+      <div data-parallax="0.03" style="max-width: 900px; margin: 0 auto;">
+        <div data-reveal-clip style="position: relative; aspect-ratio: 16 / 9; border-radius: 28px; overflow: hidden; clip-path: inset(0 0 100% 0); transition: clip-path 1.25s cubic-bezier(.65,0,.35,1);">
+          <image-slot data-img id="konsta-manifiesto-video" shape="rect" placeholder="Video del manifiesto — arrastra el poster"></image-slot>
+          <div style="position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: flex-end; padding: 24px; pointer-events: none;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 74px; height: 74px; border-radius: 50%; background: rgba(0,75,135,.9); color: #FFFFFF;">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5.2l11 6.8-11 6.8z"></path></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="legado" data-screen-label="07 Colección Legado" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: clamp(28px, 5vw, 86px); align-items: start; padding: clamp(60px, 10vh, 130px) clamp(20px, 4vw, 56px); border-top: 1px solid rgba(17,17,17,.12);">
+    <div>
+      <span data-reveal style="display: block; font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; font-weight: 600; color: #6E7378; margin-bottom: 18px; opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s ease;">07 — Colección Legado</span>
+      <h2 data-reveal style="font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(38px, 4.6vw, 78px); line-height: .93; letter-spacing: .01em; margin: 0 0 26px; text-wrap: balance; opacity: 0; transform: translateY(26px); transition: opacity .9s cubic-bezier(.22,1,.36,1) .06s, transform .9s cubic-bezier(.22,1,.36,1) .06s;">
+        COLECCIÓN LEGADO: EL VALOR DE IMPULSAR A OTROS
+      </h2>
+      <p data-reveal style="max-width: 48ch; font-size: clamp(14.5px, 1.1vw, 16.5px); line-height: 1.78; font-weight: 300; color: #454545; margin: 0 0 18px; text-wrap: pretty; opacity: 0; transform: translateY(26px); transition: opacity .9s ease .12s, transform .9s cubic-bezier(.22,1,.36,1) .12s;">
+        En el alto rendimiento, ningún campeón llega solo a la cima. Creemos firmemente que el verdadero liderazgo se mide por cuántos talentos logramos elevar junto a nosotros.
+      </p>
+      <p data-reveal style="max-width: 48ch; font-size: clamp(14.5px, 1.1vw, 16.5px); line-height: 1.78; font-weight: 300; color: #454545; margin: 0 0 clamp(26px, 4vh, 40px); text-wrap: pretty; opacity: 0; transform: translateY(26px); transition: opacity .9s ease .18s, transform .9s cubic-bezier(.22,1,.36,1) .18s;">
+        La Colección Legado no es solo una serie de piezas exclusivas de edición limitada; es un puente financiero hacia el sueño de atletas con un potencial inmenso y recursos limitados. Cada artículo de esta serie de autor está diseñado con los estándares estéticos y técnicos del “Modo Tiburón”.
+      </p>
+      <div data-parallax="0.04">
+        <div data-reveal-clip data-keep-shape style="aspect-ratio: 4 / 3; border-radius: 26px 26px 26px 150px; overflow: hidden; clip-path: inset(0 100% 0 0); transition: clip-path 1.25s cubic-bezier(.65,0,.35,1);">
+          <image-slot data-img id="konsta-legado" shape="rect" placeholder="Piezas de la Colección Legado"></image-slot>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: clamp(18px, 3vh, 28px); padding-top: clamp(0px, 3vw, 54px);">
+      <h3 data-reveal style="font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(26px, 2.4vw, 40px); line-height: 1; letter-spacing: .02em; margin: 0; color: #004B87; opacity: 0; transform: translateY(22px); transition: opacity .8s ease, transform .8s ease;">
+        ¿CÓMO TRANSFORMAMOS TU COMPRA EN IMPACTO?
+      </h3>
+      <div data-reveal style="padding: clamp(22px, 2.6vw, 32px); border: 1px solid rgba(17,17,17,.12); border-radius: 22px; opacity: 0; transform: translateY(24px); transition: opacity .9s ease .08s, transform .9s cubic-bezier(.22,1,.36,1) .08s;">
+        <span style="display: block; font-size: 10.5px; letter-spacing: .24em; text-transform: uppercase; font-weight: 600; color: #004B87; margin-bottom: 12px;">100% con propósito</span>
+        <p style="margin: 0; font-size: 15px; line-height: 1.75; font-weight: 300; color: #454545; text-wrap: pretty;">Los fondos recaudados a través de estas ediciones limitadas se destinan directamente a financiar inscripciones, traslados e implementos de competencia para compañeros de la disciplina que necesitan un impulso en su carrera deportiva.</p>
+      </div>
+      <div data-reveal style="padding: clamp(22px, 2.6vw, 32px); border: 1px solid rgba(17,17,17,.12); border-radius: 22px; opacity: 0; transform: translateY(24px); transition: opacity .9s ease .16s, transform .9s cubic-bezier(.22,1,.36,1) .16s;">
+        <span style="display: block; font-size: 10.5px; letter-spacing: .24em; text-transform: uppercase; font-weight: 600; color: #004B87; margin-bottom: 12px;">Diseño de autor</span>
+        <p style="margin: 0; font-size: 15px; line-height: 1.75; font-weight: 300; color: #454545; text-wrap: pretty;">Piezas numeradas y de tiraje exclusivo, creadas para coleccionistas, simpatizantes y marcas que entienden que el deporte es una herramienta de transformación social.</p>
+      </div>
+      <p data-reveal style="margin: 0; font-size: 15px; line-height: 1.75; font-weight: 300; color: #454545; max-width: 44ch; text-wrap: pretty; opacity: 0; transform: translateY(24px); transition: opacity .9s ease .22s, transform .9s cubic-bezier(.22,1,.36,1) .22s;">
+        Adquiere una pieza de esta colección exclusiva y sé parte activa del movimiento que está reescribiendo el futuro de la monoaleta en el país.
+      </p>
+      <a data-reveal href="#aliados" style="display: inline-flex; align-self: flex-start; align-items: center; gap: 12px; padding: 17px 28px; border-radius: 999px; background: #004B87; color: #FFFFFF; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; opacity: 0; transform: translateY(24px); transition: opacity .9s ease .28s, transform .9s cubic-bezier(.22,1,.36,1) .28s;">Ver colección exclusiva y apoyar</a>
+    </div>
+  </section>
+
+  <section id="vision" data-screen-label="08 Visión 2029" style="padding: clamp(60px, 10vh, 130px) clamp(20px, 4vw, 56px); border-top: 1px solid rgba(17,17,17,.12);">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: clamp(28px, 5vw, 86px); align-items: center;">
+      <div data-parallax="-0.05">
+        <div data-reveal-clip data-keep-shape style="aspect-ratio: 4 / 5; border-radius: 180px 26px 26px 26px; overflow: hidden; clip-path: inset(0 0 100% 0); transition: clip-path 1.25s cubic-bezier(.65,0,.35,1);">
+          <image-slot data-img id="konsta-vision" shape="rect" placeholder="Konsta de espaldas mirando el horizonte"></image-slot>
+        </div>
+      </div>
+      <div>
+        <span data-reveal style="display: block; font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; font-weight: 600; color: #6E7378; margin-bottom: 18px; opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s ease;">08 — El horizonte</span>
+        <h2 data-reveal style="font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(40px, 5.2vw, 92px); line-height: .9; letter-spacing: .01em; margin: 0 0 26px; text-wrap: balance; opacity: 0; transform: translateY(26px); transition: opacity .9s cubic-bezier(.22,1,.36,1) .06s, transform .9s cubic-bezier(.22,1,.36,1) .06s;">
+          EL HORIZONTE:<br /><span style="color: #004B87;">THE WORLD GAMES 2029</span>
+        </h2>
+        <p data-reveal style="max-width: 48ch; font-size: clamp(14.5px, 1.1vw, 16.5px); line-height: 1.78; font-weight: 300; color: #454545; margin: 0 0 18px; text-wrap: pretty; opacity: 0; transform: translateY(26px); transition: opacity .9s ease .12s, transform .9s cubic-bezier(.22,1,.36,1) .12s;">
+          El gran objetivo está marcado en el calendario: The World Games 2029, del 19 al 29 de julio de 2029 en Karlsruhe, Alemania. Pero mi visión va mucho más allá de competir; lo que más anhelo es llevar la tricolor a lo más alto, regalarle una alegría inmensa a mi Colombia y demostrarle al planeta entero el nivel y el talento extraordinario que hay en nuestro país.
+        </p>
+        <p data-reveal style="max-width: 48ch; font-size: clamp(14.5px, 1.1vw, 16.5px); line-height: 1.78; font-weight: 300; color: #454545; margin: 0 0 18px; text-wrap: pretty; opacity: 0; transform: translateY(26px); transition: opacity .9s ease .18s, transform .9s cubic-bezier(.22,1,.36,1) .18s;">
+          Para llegar con absoluta solidez a este escenario mundial, cada jornada se enfoca en superar mis propios límites, perfeccionar la técnica y ejecutar una estrategia milimétrica que parte desde la defensa del Ranking #1 departamental hasta la consolidación internacional. No espero que los resultados lleguen por casualidad; los construyo sesión tras sesión, elevando el estándar y rompiendo marcas.
+        </p>
+        <p data-reveal style="max-width: 48ch; font-size: clamp(14.5px, 1.1vw, 16.5px); line-height: 1.78; font-weight: 300; color: #454545; margin: 0; text-wrap: pretty; opacity: 0; transform: translateY(26px); transition: opacity .9s ease .24s, transform .9s cubic-bezier(.22,1,.36,1) .24s;">
+          El alto rendimiento es un compromiso absoluto con el legado. Estamos construyendo una cultura, una disciplina y un ejemplo imborrable de integridad deportiva a través del trabajo duro y la superación constante, listos para representar con orgullo a Colombia ante el mundo.
+        </p>
+      </div>
+    </div>
+    <div data-reveal style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: clamp(18px, 2.4vw, 34px); margin-top: clamp(46px, 8vh, 96px); padding-top: 30px; border-top: 1px solid rgba(17,17,17,.14); opacity: 0; transform: translateY(24px); transition: opacity 1s ease, transform 1s cubic-bezier(.22,1,.36,1);">
+      <div>
+        <span style="display: block; width: 9px; height: 9px; border-radius: 50%; background: #004B87; margin: -34px 0 20px;"></span>
+        <span style="display: block; font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: .04em; line-height: 1;">2026</span>
+        <span style="display: block; font-size: 13px; line-height: 1.6; font-weight: 300; color: #454545; margin-top: 8px;">Defensa del Ranking #1 departamental.</span>
+      </div>
+      <div>
+        <span style="display: block; width: 9px; height: 9px; border-radius: 50%; background: rgba(17,17,17,.25); margin: -34px 0 20px;"></span>
+        <span style="display: block; font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: .04em; line-height: 1;">2027</span>
+        <span style="display: block; font-size: 13px; line-height: 1.6; font-weight: 300; color: #454545; margin-top: 8px;">Consolidación nacional y récords de la modalidad.</span>
+      </div>
+      <div>
+        <span style="display: block; width: 9px; height: 9px; border-radius: 50%; background: rgba(17,17,17,.25); margin: -34px 0 20px;"></span>
+        <span style="display: block; font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: .04em; line-height: 1;">2028</span>
+        <span style="display: block; font-size: 13px; line-height: 1.6; font-weight: 300; color: #454545; margin-top: 8px;">Circuito internacional y clasificación.</span>
+      </div>
+      <div>
+        <span style="display: block; width: 9px; height: 9px; border-radius: 50%; background: #004B87; margin: -34px 0 20px;"></span>
+        <span style="display: block; font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: .04em; line-height: 1; color: #004B87;">2029</span>
+        <span style="display: block; font-size: 13px; line-height: 1.6; font-weight: 300; color: #454545; margin-top: 8px;">The World Games · Karlsruhe, Alemania · 19–29 de julio.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="aliados" data-screen-label="09 Aliados estratégicos" style="padding: clamp(50px, 8vh, 110px) clamp(20px, 4vw, 56px) clamp(30px, 5vh, 60px); border-top: 1px solid rgba(17,17,17,.12);">
+    <span data-reveal style="display: block; font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; font-weight: 600; color: #6E7378; margin-bottom: 20px; opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s ease;">09 — Aliados estratégicos</span>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: clamp(28px, 5vw, 80px); align-items: start;">
+      <div>
+        <h2 data-reveal style="font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(44px, 6vw, 108px); line-height: .88; letter-spacing: .01em; margin: 0 0 26px; text-wrap: balance; opacity: 0; transform: translateY(28px); transition: opacity 1s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1);">
+          SER PARTE DE KONSTA ES REDEFINIR LOS LÍMITES
+        </h2>
+        <div data-parallax="0.03">
+          <div data-reveal-clip style="position: relative; aspect-ratio: 16 / 10; border-radius: 26px; overflow: hidden; clip-path: inset(0 0 100% 0); transition: clip-path 1.25s cubic-bezier(.65,0,.35,1);">
+            <image-slot data-img id="konsta-brochure-video" shape="rect" placeholder="Video de presentación — poster"></image-slot>
+            <div style="position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: flex-end; padding: 22px; pointer-events: none;">
+              <span style="display: flex; align-items: center; justify-content: center; width: 66px; height: 66px; border-radius: 50%; background: rgba(0,75,135,.9); color: #FFFFFF;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5.2l11 6.8-11 6.8z"></path></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+        <span data-reveal style="display: block; font-family: 'Bebas Neue', sans-serif; font-size: clamp(22px, 2vw, 32px); letter-spacing: .04em; margin-top: 18px; opacity: 0; transform: translateY(20px); transition: opacity .9s ease .1s, transform .9s ease .1s;">DETERMINACIÓN IMPARABLE.</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 20px; padding-top: clamp(0px, 2vw, 30px);">
+        <p data-reveal style="font-size: clamp(14.5px, 1.1vw, 16.5px); line-height: 1.78; font-weight: 300; color: #454545; margin: 0; max-width: 46ch; text-wrap: pretty; opacity: 0; transform: translateY(24px); transition: opacity .9s ease .06s, transform .9s cubic-bezier(.22,1,.36,1) .06s;">
+          Al asociarte con este proyecto, tu marca no aparece únicamente en un uniforme de alta competición; entra a formar parte de un ecosistema donde el liderazgo, la gestión y el impacto social se unen. Konsta es el embajador de una disciplina en pleno crecimiento, un gestor que moviliza, inspira y lidera a la próxima generación de campeones mundiales colombianos.
+        </p>
+        <p data-reveal style="font-family: 'Bebas Neue', sans-serif; font-size: clamp(26px, 2.6vw, 44px); line-height: 1.04; letter-spacing: .015em; margin: clamp(4px, 1vh, 12px) 0; color: #004B87; max-width: 26ch; opacity: 0; transform: translateY(24px); transition: opacity .9s ease .12s, transform .9s cubic-bezier(.22,1,.36,1) .12s;">
+          ¿TIENES LA VISIÓN CORPORATIVA PARA CONSTRUIR UN LEGADO QUE TRASCIENDA EL PODIO?
+        </p>
+        <a data-reveal href="#" style="display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 22px 26px; border-radius: 20px; background: #111111; color: #FFFFFF; opacity: 0; transform: translateY(24px); transition: opacity .9s ease .18s, transform .9s cubic-bezier(.22,1,.36,1) .18s;">
+          <span style="display: flex; flex-direction: column; gap: 6px;">
+            <span style="font-size: 11px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600;">Descargar brochure técnico de patrocinio</span>
+            <span style="font-size: 12.5px; font-weight: 300; color: rgba(255,255,255,.62);">Dossier corporativo y ROI para marcas</span>
+          </span>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4v12m0 0l-5-5m5 5l5-5M4 20h16"></path></svg>
+        </a>
+        <a data-reveal href="mailto:hola@konstadeportista.com" style="display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 22px 26px; border-radius: 20px; background: #004B87; color: #FFFFFF; opacity: 0; transform: translateY(24px); transition: opacity .9s ease .24s, transform .9s cubic-bezier(.22,1,.36,1) .24s;">
+          <span style="display: flex; flex-direction: column; gap: 6px;">
+            <span style="font-size: 11px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600;">Contactar al equipo de gestión</span>
+            <span style="font-size: 12.5px; font-weight: 300; color: rgba(255,255,255,.7);">Canal directo gestionado por CONEX1ON PSH</span>
+          </span>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h13m0 0l-5-5m5 5l-5 5"></path></svg>
+        </a>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-top: clamp(48px, 8vh, 96px); padding-top: 22px; border-top: 1px solid rgba(17,17,17,.12); font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: #6E7378; font-weight: 500;">
+      <img src="./assets/konsta-logo.png" alt="Konsta" style="height: 24px; width: auto; display: block;" />
+      <span>www.konstadeportista.com · Monoaleta</span>
+      <div style="display: flex; align-items: center; gap: 16px; color: #111111;">
+      <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" style="display: flex; color: inherit;"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"></circle></svg></a>
+      <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok" style="display: flex; color: inherit;"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M14 3h2.4c.3 2 1.6 3.4 3.6 3.6V9c-1.5 0-2.8-.5-3.8-1.3v6.6a5.3 5.3 0 1 1-5.3-5.3c.3 0 .6 0 .9.1v2.5a2.8 2.8 0 1 0 1.9 2.7V3z"></path></svg></a>
+      <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube" style="display: flex; color: inherit;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="5.5" width="19" height="13" rx="4"></rect><path d="M10.5 9.5l5 2.5-5 2.5z" fill="currentColor" stroke="none"></path></svg></a>
+    </div>
+      <span>© 2026</span>
+    </div>
+  </section>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;imageRadius&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:26,&quot;min&quot;:0,&quot;max&quot;:200,&quot;step&quot;:2,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Imágenes&quot;},&quot;blackAndWhite&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Imágenes&quot;},&quot;scrollMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Movimiento&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    this.applyImageStyles();
+    this.setupReveal();
+    this.setupParallax();
+    this.rescan = setInterval(() => { this.applyImageStyles(); this.setupReveal(); this.setupParallax(); }, 700);
+    setTimeout(() => clearInterval(this.rescan), 6000);
+  }
+  componentDidUpdate() { this.applyImageStyles(); }
+  componentWillUnmount() {
+    clearInterval(this.rescan);
+    if (this.onScroll) window.removeEventListener('scroll', this.onScroll);
+    if (this.sweep) { window.removeEventListener('scroll', this.sweep); window.removeEventListener('resize', this.sweep); }
+  }
+  applyImageStyles() {
+    const r = this.props.imageRadius, bw = this.props.blackAndWhite !== false;
+    document.querySelectorAll('[data-img]').forEach(el => {
+      el.style.filter = bw ? 'grayscale(1) contrast(1.06)' : 'none';
+      if (typeof r === 'number') {
+        const w = el.parentElement;
+        if (w && !w.hasAttribute('data-keep-shape')) w.style.borderRadius = r + 'px';
+      }
+    });
+  }
+  setupReveal() {
+    // clip-path shrinks a node's intersection rect to zero, so IntersectionObserver never fires on it;
+    // rect math is immune to clipping — drive reveals off getBoundingClientRect on scroll instead.
+    const motion = this.props.scrollMotion !== false;
+    const show = el => {
+      el.dataset.shown = '1';
+      if (el.hasAttribute('data-reveal')) { el.style.opacity = '1'; el.style.transform = 'none'; }
+      else { el.style.clipPath = 'inset(0 0 0 0)'; }
+    };
+    const sweep = () => {
+      const vh = window.innerHeight;
+      document.querySelectorAll('[data-reveal]:not([data-shown]), [data-reveal-clip]:not([data-shown])').forEach(el => {
+        const b = el.getBoundingClientRect();
+        if (b.top < vh * 0.92) show(el);
+      });
+    };
+    if (!motion) { sweep(); return; }
+    if (!this.sweep) {
+      this.sweep = () => {
+        if (this.sweepRaf) return;
+        this.sweepRaf = requestAnimationFrame(() => { this.sweepRaf = null; sweep(); });
+      };
+      window.addEventListener('scroll', this.sweep, { passive: true });
+      window.addEventListener('resize', this.sweep, { passive: true });
+    }
+    this.sweep();
+  }
+  setupParallax() {
+    if (this.props.scrollMotion === false) return;
+    this.items = Array.from(document.querySelectorAll('[data-parallax]'));
+    if (this.onScroll) return;
+    let raf = null;
+    this.onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = null;
+        const vh = window.innerHeight;
+        (this.items || []).forEach(el => {
+          const b = el.getBoundingClientRect();
+          const p = (b.top + b.height / 2 - vh / 2) / vh;
+          el.style.transform = 'translate3d(0,' + (p * parseFloat(el.dataset.parallax) * 190).toFixed(2) + 'px,0)';
+        });
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+  }
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

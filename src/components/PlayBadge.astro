@@ -1,0 +1,39 @@
+---
+interface Props {
+  size?: number;
+  padding?: number;
+}
+
+const { size = 74, padding = 24 } = Astro.props;
+---
+
+<div class="play" style={`--size:${size}px;--pad:${padding}px`} aria-hidden="true">
+  <span class="play__badge">
+    <svg viewBox="0 0 24 24" width={Math.round(size * 0.3)} height={Math.round(size * 0.3)} fill="currentColor">
+      <path d="M8 5.2l11 6.8-11 6.8z"></path>
+    </svg>
+  </span>
+</div>
+
+<style>
+  .play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: var(--pad);
+    pointer-events: none;
+  }
+
+  .play__badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: var(--play-badge);
+    color: var(--color-white);
+  }
+</style>

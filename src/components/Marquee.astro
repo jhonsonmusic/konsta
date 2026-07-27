@@ -1,0 +1,29 @@
+---
+const text = 'MODO TIBURÓN · DISCIPLINA IMPLACABLE · MODO TIBURÓN · SIN ATAJOS ·';
+---
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>{text}</span>
+    <span>{text}</span>
+  </div>
+</div>
+
+<style>
+  .marquee {
+    overflow: hidden;
+    padding: clamp(6px, 1vh, 14px) 0 clamp(26px, 4vh, 46px);
+    white-space: nowrap;
+  }
+
+  .marquee__track {
+    display: inline-flex;
+    gap: 40px;
+    animation: km-marquee 26s linear infinite;
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.4vw, 54px);
+    letter-spacing: 0.06em;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--marquee-stroke);
+  }
+</style>

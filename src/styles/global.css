@@ -1,0 +1,282 @@
+/* ------------------------------------------------------------------
+   Konsta — design tokens + base styles
+   Palette from the brand manual: no colors beyond these three + tints.
+------------------------------------------------------------------ */
+:root {
+  --color-blue: #004b87;
+  --color-ink: #111111;
+  --color-white: #ffffff;
+  --color-body: #454545;
+  --color-muted: #6e7378;
+
+  --hairline: rgba(17, 17, 17, 0.12);
+  --hairline-soft: rgba(17, 17, 17, 0.09);
+  --hairline-strong: rgba(17, 17, 17, 0.14);
+  --rule: rgba(17, 17, 17, 0.35);
+  --dot-muted: rgba(17, 17, 17, 0.25);
+
+  --on-blue-58: rgba(255, 255, 255, 0.58);
+  --on-blue-62: rgba(255, 255, 255, 0.62);
+  --on-blue-70: rgba(255, 255, 255, 0.7);
+  --on-blue-72: rgba(255, 255, 255, 0.72);
+
+  --header-bg: rgba(255, 255, 255, 0.86);
+  --marquee-stroke: rgba(0, 75, 135, 0.38);
+  --play-badge: rgba(0, 75, 135, 0.9);
+  --blue-hover: #003a69;
+
+  --font-display: 'Bebas Neue', Impact, sans-serif;
+  --font-text: 'Montserrat', system-ui, sans-serif;
+
+  --gutter: clamp(20px, 4vw, 56px);
+  --section: clamp(60px, 10vh, 130px);
+  --col-gap: clamp(28px, 5vw, 86px);
+
+  --radius-pill: 999px;
+  --radius-card: 22px;
+  --radius-action: 20px;
+  --radius-image: 26px;
+  --radius-panel: clamp(28px, 3vw, 44px);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --filter-photo: grayscale(1) contrast(1.06);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-white);
+  color: var(--color-ink);
+  font-family: var(--font-text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--color-ink);
+  text-decoration: none;
+  transition: color 0.25s var(--ease-out);
+}
+
+a:hover {
+  color: var(--color-muted);
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-white);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --- shared type roles --------------------------------------------- */
+.eyebrow {
+  display: block;
+  font-size: 10.5px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-muted);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+.body-copy {
+  font-size: clamp(14.5px, 1.1vw, 16.5px);
+  line-height: 1.78;
+  font-weight: 300;
+  color: var(--color-body);
+  margin: 0;
+  max-width: 48ch;
+  text-wrap: pretty;
+}
+
+.label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* --- shared layout -------------------------------------------------- */
+.section {
+  padding-inline: var(--gutter);
+}
+
+.section--rule {
+  border-top: 1px solid var(--hairline);
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: var(--col-gap);
+}
+
+/* --- shared controls ------------------------------------------------ */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 26px;
+  border-radius: var(--radius-pill);
+  background: var(--color-blue);
+  color: var(--color-white);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition:
+    background 0.3s var(--ease-out),
+    transform 0.3s var(--ease-out);
+}
+
+.pill:hover {
+  background: var(--blue-hover);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.pill--lg {
+  padding: 17px 28px;
+}
+
+.pill--invert {
+  background: var(--color-white);
+  color: var(--color-blue);
+}
+
+.pill--invert:hover {
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--color-blue);
+}
+
+.link-underline {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 4px;
+}
+
+.card {
+  padding: clamp(22px, 2.6vw, 32px);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-card);
+  transition:
+    border-color 0.3s var(--ease-out),
+    transform 0.3s var(--ease-out);
+}
+
+.card:hover {
+  border-color: var(--rule);
+  transform: translateY(-2px);
+}
+
+.card__label {
+  display: block;
+  font-size: 10.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-blue);
+  margin-bottom: 12px;
+}
+
+.card__body {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.75;
+  font-weight: 300;
+  color: var(--color-body);
+  text-wrap: pretty;
+}
+
+/* --- motion --------------------------------------------------------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(var(--reveal-y, 26px));
+  transition:
+    opacity var(--reveal-dur, 0.9s) var(--ease-out) var(--reveal-delay, 0s),
+    transform var(--reveal-dur, 0.9s) var(--ease-out) var(--reveal-delay, 0s);
+}
+
+[data-reveal][data-shown] {
+  opacity: 1;
+  transform: none;
+}
+
+[data-reveal-clip] {
+  clip-path: var(--clip-from, inset(0 0 100% 0));
+  transition: clip-path var(--clip-dur, 1.25s) var(--ease-in-out) var(--clip-delay, 0s);
+}
+
+[data-reveal-clip][data-shown] {
+  clip-path: inset(0 0 0 0);
+}
+
+@keyframes km-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes km-drip {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  [data-reveal-clip] {
+    clip-path: inset(0 0 0 0);
+    transition: none;
+  }
+
+  [data-parallax] {
+    transform: none !important;
+  }
+
+  .marquee__track,
+  .hero__badge-dot {
+    animation: none;
+  }
+}

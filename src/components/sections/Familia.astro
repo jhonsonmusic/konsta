@@ -1,0 +1,60 @@
+---
+import Media from '../Media.astro';
+---
+
+<section id="familia" class="familia two-col">
+  <div data-parallax="-0.05">
+    <Media
+      id="konsta-familia"
+      caption="Imagen familiar — protagonista emocional"
+      aspect="5 / 4"
+      radius="28px 28px 28px 160px"
+      clipFrom="inset(0 100% 0 0)"
+    />
+  </div>
+
+  <div>
+    <span class="eyebrow familia__eyebrow" data-reveal style="--reveal-y:20px;--reveal-dur:.8s">
+      04 — La familia
+    </span>
+    <h2 class="display familia__title" data-reveal style="--reveal-delay:.06s">
+      LA FAMILIA COMO EL MOTOR DEL ALTO RENDIMIENTO
+    </h2>
+    <p class="body-copy familia__p" data-reveal style="--reveal-delay:.14s">
+      En este proyecto no compite una sola persona. El verdadero núcleo de esta historia es un equipo
+      incondicional: una familia que ha sabido estructurar los sueños de su hijo con disciplina,
+      honestidad y un propósito humano inquebrantable.
+    </p>
+    <p class="body-copy familia__p" data-reveal style="--reveal-delay:.2s">
+      Para las marcas y aliados estratégicos que buscan asociarse con valores reales, el Proyecto
+      Konsta representa transparencia, confianza institucional y un compromiso genuino con la
+      excelencia. Aquí no solo apoyas a un deportista; respaldas un proyecto de vida íntegro que
+      transforma el talento en un legado.
+    </p>
+  </div>
+</section>
+
+<style>
+  .familia {
+    align-items: center;
+    padding: clamp(40px, 7vh, 90px) var(--gutter) clamp(70px, 11vh, 140px);
+  }
+
+  .familia__eyebrow {
+    margin-bottom: 18px;
+  }
+
+  .familia__title {
+    font-size: clamp(38px, 4.6vw, 76px);
+    line-height: 0.93;
+    margin: 0 0 26px;
+  }
+
+  .familia__p {
+    max-width: 46ch;
+  }
+
+  .familia__p + .familia__p {
+    margin-top: 20px;
+  }
+</style>

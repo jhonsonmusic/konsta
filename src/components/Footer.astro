@@ -1,0 +1,39 @@
+---
+import SocialLinks from './SocialLinks.astro';
+import { site } from '../data/site';
+---
+
+<footer class="footer">
+  <img src="/assets/konsta-logo.png" alt="Konsta" width="96" height="24" />
+  <span>{site.domain} · Monoaleta</span>
+  <SocialLinks size={17} gap={16} class="footer__social" />
+  <span>© 2026</span>
+</footer>
+
+<style>
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: clamp(48px, 8vh, 96px);
+    padding-top: 22px;
+    border-top: 1px solid var(--hairline);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    font-weight: 500;
+  }
+
+  .footer img {
+    height: 24px;
+    width: auto;
+    display: block;
+  }
+
+  .footer :global(.footer__social) {
+    color: var(--color-ink);
+  }
+</style>

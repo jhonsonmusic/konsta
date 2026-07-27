@@ -1,0 +1,114 @@
+---
+/**
+ * Slot de medio (foto o video) con la forma esculpida del diseño.
+ *
+ * Mientras no lleguen las fotografías del cliente se renderiza un marcador
+ * con el pie de foto previsto; en cuanto exista `src` se pinta el <img>/<video>
+ * real. Sustituir por el componente de imagen del CMS si se conecta uno.
+ */
+interface Props {
+  id: string;
+  /** Ruta del archivo real. Sin ella se muestra el marcador. */
+  src?: string;
+  alt?: string;
+  /** Descripción de la toma prevista (visible en el marcador). */
+  caption: string;
+  /** `aspect-ratio` CSS, p. ej. "3 / 4.15". */
+  aspect: string;
+  /** `border-radius` CSS — las formas esculpidas son firma del diseño. */
+  radius?: string;
+  video?: boolean;
+  /** Poster del video cuando `video` es true. */
+  poster?: string;
+  clipFrom?: string;
+  clipDelay?: string;
+  clipDuration?: string;
+  class?: string;
+}
+
+const {
+  id,
+  src,
+  alt = '',
+  caption,
+  aspect,
+  radius = 'var(--radius-image)',
+  video = false,
+  poster,
+  clipFrom = 'inset(0 0 100% 0)',
+  clipDelay = '0s',
+  clipDuration = '1.25s',
+  class: className,
+} = Astro.props;
+---
+
+<div
+  class:list={['media', className]}
+  data-reveal-clip
+  style={`--aspect:${aspect};--radius:${radius};--clip-from:${clipFrom};--clip-delay:${clipDelay};--clip-dur:${clipDuration};`}
+>
+  {
+    src ? (
+      video ? (
+        <video
+          class="media__el"
+          id={id}
+          src={src}
+          poster={poster}
+          controls
+          playsinline
+          preload="none"
+        />
+      ) : (
+        <img class="media__el" id={id} src={src} alt={alt} loading="lazy" decoding="async" />
+      )
+    ) : (
+      <div class="media__placeholder" id={id} role="img" aria-label={caption}>
+        <span>{caption}</span>
+      </div>
+    )
+  }
+  <slot />
+</div>
+
+<style>
+  .media {
+    position: relative;
+    aspect-ratio: var(--aspect);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .media__el {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: var(--filter-photo);
+  }
+
+  .media__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    padding: clamp(16px, 2vw, 24px);
+    box-sizing: border-box;
+    background: repeating-linear-gradient(
+      -45deg,
+      rgba(17, 17, 17, 0.045) 0 12px,
+      rgba(17, 17, 17, 0.075) 12px 24px
+    );
+    border: 1px solid var(--hairline);
+    border-radius: inherit;
+  }
+
+  .media__placeholder span {
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-muted);
+    text-wrap: balance;
+  }
+</style>

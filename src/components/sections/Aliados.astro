@@ -1,0 +1,172 @@
+---
+import Media from '../Media.astro';
+import PlayBadge from '../PlayBadge.astro';
+import Footer from '../Footer.astro';
+import { links } from '../../data/site';
+---
+
+<section id="aliados" class="aliados section section--rule">
+  <span class="eyebrow aliados__eyebrow" data-reveal style="--reveal-y:20px;--reveal-dur:.8s">
+    09 — Aliados estratégicos
+  </span>
+
+  <div class="aliados__grid">
+    <div>
+      <h2 class="display aliados__title" data-reveal style="--reveal-y:28px;--reveal-dur:1s">
+        SER PARTE DE KONSTA ES REDEFINIR LOS LÍMITES
+      </h2>
+      <div data-parallax="0.03">
+        <Media
+          id="konsta-brochure-video"
+          caption="Video de presentación — poster"
+          aspect="16 / 10"
+          radius="26px"
+        >
+          <PlayBadge size={66} padding={22} />
+        </Media>
+      </div>
+      <span class="display aliados__signoff" data-reveal style="--reveal-y:20px;--reveal-dur:.9s;--reveal-delay:.1s">
+        DETERMINACIÓN IMPARABLE.
+      </span>
+    </div>
+
+    <div class="aliados__col">
+      <p class="body-copy aliados__lead" data-reveal style="--reveal-y:24px;--reveal-delay:.06s">
+        Al asociarte con este proyecto, tu marca no aparece únicamente en un uniforme de alta
+        competición; entra a formar parte de un ecosistema donde el liderazgo, la gestión y el
+        impacto social se unen. Konsta es el embajador de una disciplina en pleno crecimiento, un
+        gestor que moviliza, inspira y lidera a la próxima generación de campeones mundiales
+        colombianos.
+      </p>
+      <p class="display aliados__question" data-reveal style="--reveal-y:24px;--reveal-delay:.12s">
+        ¿TIENES LA VISIÓN CORPORATIVA PARA CONSTRUIR UN LEGADO QUE TRASCIENDA EL PODIO?
+      </p>
+
+      <a
+        href={links.brochure}
+        class="action action--ink"
+        data-reveal
+        style="--reveal-y:24px;--reveal-delay:.18s"
+      >
+        <span class="action__text">
+          <span class="label">Descargar brochure técnico de patrocinio</span>
+          <span class="action__sub">Dossier corporativo y ROI para marcas</span>
+        </span>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M12 4v12m0 0l-5-5m5 5l5-5M4 20h16"></path>
+        </svg>
+      </a>
+
+      <a
+        href={links.contacto}
+        class="action action--blue"
+        data-reveal
+        style="--reveal-y:24px;--reveal-delay:.24s"
+      >
+        <span class="action__text">
+          <span class="label">Contactar al equipo de gestión</span>
+          <span class="action__sub action__sub--blue">Canal directo gestionado por CONEX1ON PSH</span>
+        </span>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M5 12h13m0 0l-5-5m5 5l-5 5"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <Footer />
+</section>
+
+<style>
+  .aliados {
+    padding: clamp(50px, 8vh, 110px) var(--gutter) clamp(30px, 5vh, 60px);
+  }
+
+  .aliados__eyebrow {
+    margin-bottom: 20px;
+  }
+
+  .aliados__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+    gap: clamp(28px, 5vw, 80px);
+    align-items: start;
+  }
+
+  .aliados__title {
+    font-size: clamp(44px, 6vw, 108px);
+    line-height: 0.88;
+    margin: 0 0 26px;
+    text-wrap: balance;
+  }
+
+  .aliados__signoff {
+    display: block;
+    font-size: clamp(22px, 2vw, 32px);
+    letter-spacing: 0.04em;
+    margin-top: 18px;
+  }
+
+  .aliados__col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: clamp(0px, 2vw, 30px);
+  }
+
+  .aliados__lead {
+    max-width: 46ch;
+  }
+
+  .aliados__question {
+    font-size: clamp(26px, 2.6vw, 44px);
+    line-height: 1.04;
+    letter-spacing: 0.015em;
+    margin: clamp(4px, 1vh, 12px) 0;
+    color: var(--color-blue);
+    max-width: 26ch;
+  }
+
+  .action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 22px 26px;
+    border-radius: var(--radius-action);
+    color: var(--color-white);
+    transition:
+      transform 0.3s var(--ease-out),
+      filter 0.3s var(--ease-out);
+  }
+
+  .action:hover {
+    color: var(--color-white);
+    transform: translateY(-2px);
+    filter: brightness(1.12);
+  }
+
+  .action--ink {
+    background: var(--color-ink);
+  }
+
+  .action--blue {
+    background: var(--color-blue);
+  }
+
+  .action__text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .action__sub {
+    font-size: 12.5px;
+    font-weight: 300;
+    color: var(--on-blue-62);
+  }
+
+  .action__sub--blue {
+    color: var(--on-blue-70);
+  }
+</style>
