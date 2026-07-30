@@ -1,0 +1,81 @@
+---
+/** Botón flotante para volver al inicio. Aparece tras pasar la primera pantalla. */
+---
+
+<a href="#hero" class="to-top" aria-label="Volver arriba" data-to-top>
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+    <path d="M12 19V5m0 0l-6 6m6-6l6 6"></path>
+  </svg>
+</a>
+
+<style>
+  .to-top {
+    position: fixed;
+    right: clamp(16px, 3vw, 32px);
+    bottom: clamp(16px, 3vw, 32px);
+    /* Por debajo del overlay del menú móvil (z-index 60). */
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-blue);
+    color: var(--color-white);
+    box-shadow: 0 6px 20px rgba(0, 75, 135, 0.28);
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+    transition:
+      opacity 0.35s var(--ease-out),
+      transform 0.35s var(--ease-out),
+      background 0.3s var(--ease-out);
+  }
+
+  .to-top[data-visible] {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  .to-top:hover {
+    background: var(--blue-hover);
+    color: var(--color-white);
+    transform: translateY(-2px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .to-top {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const btn = document.querySelector<HTMLElement>('[data-to-top]');
+
+  if (btn) {
+    let raf: number | null = null;
+    const update = () => {
+      if (raf !== null) return;
+      raf = requestAnimationFrame(() => {
+        raf = null;
+        // El hero ocupa dos pantallas; el botón entra ya pasado ese bloque.
+        btn.toggleAttribute('data-visible', window.scrollY > window.innerHeight * 1.8);
+      });
+    };
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
+
+    // El href es el respaldo sin JS: navegar al hash no repite el scroll
+    // cuando la URL ya apunta a #hero, así que subimos a mano.
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
+    });
+  }
+</script>

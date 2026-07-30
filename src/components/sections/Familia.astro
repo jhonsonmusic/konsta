@@ -6,19 +6,20 @@ import Media from '../Media.astro';
   <div data-parallax="-0.05">
     <Media
       id="konsta-familia"
+      src="/assets/konsta-familia.jpg"
+      alt="Konsta de niño junto a sus padres, sonriendo al aire libre"
       caption="Imagen familiar — protagonista emocional"
       aspect="5 / 4"
       radius="28px 28px 28px 160px"
+      mono={false}
       clipFrom="inset(0 100% 0 0)"
     />
   </div>
 
   <div>
-    <span class="eyebrow familia__eyebrow" data-reveal style="--reveal-y:20px;--reveal-dur:.8s">
-      04 — La familia
-    </span>
     <h2 class="display familia__title" data-reveal style="--reveal-delay:.06s">
-      LA FAMILIA COMO EL MOTOR DEL ALTO RENDIMIENTO
+      LA <span class="familia__accent">FAMILIA</span> COMO EL
+      <span class="familia__accent">MOTOR</span><br />DEL ALTO RENDIMIENTO
     </h2>
     <p class="body-copy familia__p" data-reveal style="--reveal-delay:.14s">
       En este proyecto no compite una sola persona. El verdadero núcleo de esta historia es un equipo
@@ -40,14 +41,15 @@ import Media from '../Media.astro';
     padding: clamp(40px, 7vh, 90px) var(--gutter) clamp(70px, 11vh, 140px);
   }
 
-  .familia__eyebrow {
-    margin-bottom: 18px;
-  }
 
   .familia__title {
-    font-size: clamp(38px, 4.6vw, 76px);
+    font-size: clamp(40px, 4.8vw, 78px);
     line-height: 0.93;
     margin: 0 0 26px;
+  }
+
+  .familia__accent {
+    color: var(--color-blue);
   }
 
   .familia__p {

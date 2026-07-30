@@ -1,112 +1,236 @@
 ---
-import Media from '../Media.astro';
-
 /** TODO cliente: confirmar los hitos 2026–2028 (borrador según el brief). */
-const milestones = [
-  { year: '2026', text: 'Defensa del Ranking #1 departamental.', active: true },
-  { year: '2027', text: 'Consolidación nacional y récords de la modalidad.', active: false },
-  { year: '2028', text: 'Circuito internacional y clasificación.', active: false },
+const hitos = [
+  { year: '2026', text: 'Defensa del Ranking #1 departamental.', activo: true },
+  { year: '2027', text: 'Consolidación nacional y récords de la modalidad.', activo: false },
+  { year: '2028', text: 'Circuito internacional y clasificación.', activo: false },
   {
     year: '2029',
     text: 'The World Games · Karlsruhe, Alemania · 19–29 de julio.',
-    active: true,
-    highlight: true,
+    activo: true,
+    destacado: true,
   },
+];
+
+const carrusel = [
+  { src: '/assets/vision2029/1.jpg', alt: 'Konsta con el traje de competencia y la monoaleta al borde de la piscina' },
+  { src: '/assets/vision2029/2.jpg', alt: 'Konsta en competencia de monoaleta' },
+  { src: '/assets/vision2029/3.jpg', alt: 'Konsta durante una jornada de entrenamiento' },
+  { src: '/assets/vision2029/4.jpg', alt: 'Konsta preparándose antes de una prueba' },
+  { src: '/assets/vision2029/5.jpg', alt: 'Konsta en el agua con la monoaleta' },
 ];
 ---
 
-<section id="vision" class="vision section section--rule">
-  <div class="two-col vision__grid">
-    <div data-parallax="-0.05">
-      <Media
-        id="konsta-vision"
-        caption="Konsta de espaldas mirando el horizonte"
-        aspect="4 / 5"
-        radius="180px 26px 26px 26px"
-      />
+<section id="vision" class="vision">
+  <h1 class="display vision__titulo" data-reveal style="--reveal-y:28px;--reveal-dur:1s">
+    EL HORIZONTE: <span class="vision__acento">THE WORLD GAMES 2029</span>
+  </h1>
+
+  <div class="vision__copy">
+    <p data-reveal style="--reveal-y:26px;--reveal-delay:.1s">
+      El gran objetivo está marcado en el calendario: The World Games 2029, del 19 al 29 de julio de
+      2029 en Karlsruhe, Alemania. Pero mi visión va mucho más allá de competir; lo que más anhelo es
+      llevar la tricolor a lo más alto, regalarle una alegría inmensa a mi Colombia y demostrarle al
+      planeta entero el nivel y el talento extraordinario que hay en nuestro país.
+    </p>
+    <p data-reveal style="--reveal-y:26px;--reveal-delay:.16s">
+      Para llegar con absoluta solidez a este escenario mundial, cada jornada se enfoca en superar
+      mis propios límites, perfeccionar la técnica y ejecutar una estrategia milimétrica que parte
+      desde la defensa del Ranking #1 departamental hasta la consolidación internacional. No espero
+      que los resultados lleguen por casualidad; los construyo sesión tras sesión, elevando el
+      estándar y rompiendo marcas.
+    </p>
+  </div>
+
+  <div class="carrusel" data-carrusel>
+    <div class="carrusel__pista" data-pista>
+      {
+        carrusel.map((foto) => (
+          <figure class="carrusel__item">
+            <img src={foto.src} alt={foto.alt} width="900" height="1200" loading="lazy" />
+          </figure>
+        ))
+      }
     </div>
-    <div>
-      <span class="eyebrow vision__eyebrow" data-reveal style="--reveal-y:20px;--reveal-dur:.8s">
-        08 — El horizonte
-      </span>
-      <h2 class="display vision__title" data-reveal style="--reveal-delay:.06s">
-        EL HORIZONTE:<br /><span class="vision__accent">THE WORLD GAMES 2029</span>
-      </h2>
-      <p class="body-copy vision__p" data-reveal style="--reveal-delay:.12s">
-        El gran objetivo está marcado en el calendario: The World Games 2029, del 19 al 29 de julio
-        de 2029 en Karlsruhe, Alemania. Pero mi visión va mucho más allá de competir; lo que más
-        anhelo es llevar la tricolor a lo más alto, regalarle una alegría inmensa a mi Colombia y
-        demostrarle al planeta entero el nivel y el talento extraordinario que hay en nuestro país.
-      </p>
-      <p class="body-copy vision__p" data-reveal style="--reveal-delay:.18s">
-        Para llegar con absoluta solidez a este escenario mundial, cada jornada se enfoca en superar
-        mis propios límites, perfeccionar la técnica y ejecutar una estrategia milimétrica que parte
-        desde la defensa del Ranking #1 departamental hasta la consolidación internacional. No espero
-        que los resultados lleguen por casualidad; los construyo sesión tras sesión, elevando el
-        estándar y rompiendo marcas.
-      </p>
-      <p class="body-copy" data-reveal style="--reveal-delay:.24s">
-        El alto rendimiento es un compromiso absoluto con el legado. Estamos construyendo una
-        cultura, una disciplina y un ejemplo imborrable de integridad deportiva a través del trabajo
-        duro y la superación constante, listos para representar con orgullo a Colombia ante el mundo.
-      </p>
+
+    <div class="carrusel__controles">
+      <button type="button" class="carrusel__boton" aria-label="Foto anterior" data-anterior>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M15 5l-7 7 7 7"></path>
+        </svg>
+      </button>
+      <button type="button" class="carrusel__boton" aria-label="Foto siguiente" data-siguiente>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
     </div>
   </div>
 
   <ol class="timeline" data-reveal style="--reveal-y:24px;--reveal-dur:1s">
     {
-      milestones.map((m) => (
+      hitos.map((m) => (
         <li>
-          <span class:list={['timeline__dot', { 'timeline__dot--on': m.active }]} />
-          <span class:list={['display', 'timeline__year', { 'timeline__year--hl': m.highlight }]}>
+          <span class:list={['timeline__punto', { 'timeline__punto--on': m.activo }]} />
+          <span class:list={['display', 'timeline__anio', { 'timeline__anio--hl': m.destacado }]}>
             {m.year}
           </span>
-          <span class="timeline__text">{m.text}</span>
+          <span class="timeline__texto">{m.text}</span>
         </li>
       ))
     }
   </ol>
+
+  <div class="cierre">
+    <div class="cierre__texto">
+      <p class="display cierre__frase" data-reveal style="--reveal-y:26px">
+        REPRESENTAR A COLOMBIA <span class="vision__acento">ANTE EL MUNDO</span>
+      </p>
+      <p data-reveal style="--reveal-y:26px;--reveal-delay:.08s">
+        El alto rendimiento es un compromiso absoluto con el legado. Estamos construyendo una
+        cultura, una disciplina y un ejemplo imborrable de integridad deportiva a través del trabajo
+        duro y la superación constante, listos para representar con orgullo a Colombia ante el mundo.
+      </p>
+    </div>
+
+    <figure class="cierre__medallas" data-reveal style="--reveal-y:26px;--reveal-delay:.14s">
+      <img
+        src="/assets/vision2029/medallas.jpg"
+        alt="Medallas de oro, plata y bronce de The World Games"
+        width="1400"
+        height="788"
+        loading="lazy"
+      />
+      <figcaption>El metal que persigue cada madrugada de entrenamiento.</figcaption>
+    </figure>
+  </div>
 </section>
 
 <style>
   .vision {
-    padding-block: clamp(60px, 10vh, 130px);
-  }
-
-  .vision__grid {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
+    padding: clamp(60px, 10vh, 130px) var(--gutter);
   }
 
-  .vision__eyebrow {
-    margin-bottom: 18px;
-  }
-
-  .vision__title {
-    font-size: clamp(40px, 5.2vw, 92px);
+  .vision__titulo {
+    font-size: clamp(28px, 6.6vw, 88px);
     line-height: 0.9;
-    margin: 0 0 26px;
+    margin: 0 0 clamp(22px, 3.4vh, 38px);
     text-wrap: balance;
   }
 
-  .vision__accent {
+  .vision__acento {
     color: var(--color-blue);
   }
 
-  .vision__p {
-    margin-bottom: 18px;
+  .vision__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    /* Al ancho del titular: escala con el vw igual que él y se detiene
+       cuando su cuerpo topa en 88px. */
+    max-width: min(81vw, 1082px);
   }
 
+  .vision__copy p {
+    font-size: clamp(22px, 1.9vw, 27px);
+    line-height: 1.55;
+    font-weight: 300;
+    color: var(--color-body);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  /* --- carrusel ------------------------------------------------------ */
+  .carrusel {
+    width: 100%;
+    margin-top: clamp(40px, 7vh, 80px);
+  }
+
+  .carrusel__pista {
+    display: flex;
+    gap: clamp(10px, 1.6vw, 24px);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+
+  .carrusel__pista::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carrusel__item {
+    flex: 0 0 auto;
+    width: clamp(240px, 32vw, 450px);
+    margin: 0;
+    scroll-snap-align: center;
+  }
+
+  .carrusel__item img {
+    width: 100%;
+    /* Sin height:auto, el atributo height del <img> gana a la proporción
+       y la foto se estira a 1200px de alto. */
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--radius-image);
+  }
+
+  .carrusel__controles {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: clamp(18px, 3vh, 28px);
+  }
+
+  .carrusel__boton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid var(--hairline);
+    background: var(--color-white);
+    color: var(--color-ink);
+    cursor: pointer;
+    transition:
+      background 0.25s var(--ease-out),
+      color 0.25s var(--ease-out),
+      border-color 0.25s var(--ease-out);
+  }
+
+  .carrusel__boton:hover:not(:disabled) {
+    background: var(--color-blue);
+    border-color: var(--color-blue);
+    color: var(--color-white);
+  }
+
+  .carrusel__boton:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  /* --- línea de tiempo ----------------------------------------------- */
   .timeline {
     list-style: none;
+    width: 100%;
     margin: clamp(46px, 8vh, 96px) 0 0;
     padding: 30px 0 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
     gap: clamp(18px, 2.4vw, 34px);
     border-top: 1px solid var(--hairline-strong);
+    text-align: left;
   }
 
-  .timeline__dot {
+  .timeline__punto {
     display: block;
     width: 9px;
     height: 9px;
@@ -115,27 +239,118 @@ const milestones = [
     margin: -34px 0 20px;
   }
 
-  .timeline__dot--on {
+  .timeline__punto--on {
     background: var(--color-blue);
   }
 
-  .timeline__year {
+  .timeline__anio {
     display: block;
     font-size: 34px;
     letter-spacing: 0.04em;
     line-height: 1;
   }
 
-  .timeline__year--hl {
+  .timeline__anio--hl {
     color: var(--color-blue);
   }
 
-  .timeline__text {
+  .timeline__texto {
     display: block;
-    font-size: 13px;
-    line-height: 1.6;
+    font-size: clamp(22px, 1.9vw, 27px);
+    line-height: 1.55;
     font-weight: 300;
     color: var(--color-body);
     margin-top: 8px;
   }
+
+  /* --- cierre con las medallas ---------------------------------------- */
+  .cierre {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: clamp(24px, 4vw, 64px);
+    align-items: center;
+    width: 100%;
+    margin-top: clamp(46px, 8vh, 96px);
+    text-align: left;
+  }
+
+  .cierre__texto p:not(.cierre__frase) {
+    font-size: clamp(22px, 1.9vw, 27px);
+    line-height: 1.55;
+    font-weight: 300;
+    color: var(--color-body);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  /* Un remate en Bebas le da peso a la columna de texto frente a la foto. */
+  .cierre__frase {
+    font-size: clamp(30px, 3.3vw, 56px);
+    line-height: 1;
+    letter-spacing: 0.015em;
+    margin: 0 0 20px;
+    text-wrap: balance;
+  }
+
+  .cierre__medallas {
+    margin: 0;
+  }
+
+  .cierre__medallas img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .cierre__medallas figcaption {
+    margin-top: 14px;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-muted);
+  }
 </style>
+
+<script>
+  const carrusel = document.querySelector<HTMLElement>('[data-carrusel]');
+  const pista = carrusel?.querySelector<HTMLElement>('[data-pista]');
+
+  if (carrusel && pista) {
+    const items = Array.from(pista.querySelectorAll<HTMLElement>('.carrusel__item'));
+    const anterior = carrusel.querySelector<HTMLButtonElement>('[data-anterior]');
+    const siguiente = carrusel.querySelector<HTMLButtonElement>('[data-siguiente]');
+
+    /** Índice de la foto cuyo borde izquierdo está más cerca del scroll actual. */
+    const indiceActual = () => {
+      let cerca = 0;
+      let min = Infinity;
+      items.forEach((item, i) => {
+        const d = Math.abs(item.offsetLeft - pista.scrollLeft);
+        if (d < min) {
+          min = d;
+          cerca = i;
+        }
+      });
+      return cerca;
+    };
+
+    const irA = (i: number) => {
+      const destino = items[Math.max(0, Math.min(items.length - 1, i))];
+      if (destino) pista.scrollTo({ left: destino.offsetLeft, behavior: 'smooth' });
+    };
+
+    /** Al final del recorrido no hay más que mostrar: se apaga la flecha. */
+    const actualizarBotones = () => {
+      const max = pista.scrollWidth - pista.clientWidth - 1;
+      if (anterior) anterior.disabled = pista.scrollLeft <= 1;
+      if (siguiente) siguiente.disabled = pista.scrollLeft >= max;
+    };
+
+    anterior?.addEventListener('click', () => irA(indiceActual() - 1));
+    siguiente?.addEventListener('click', () => irA(indiceActual() + 1));
+    pista.addEventListener('scroll', actualizarBotones, { passive: true });
+    window.addEventListener('resize', actualizarBotones, { passive: true });
+    actualizarBotones();
+  }
+</script>

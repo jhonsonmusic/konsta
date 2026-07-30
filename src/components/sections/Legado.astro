@@ -1,96 +1,123 @@
 ---
-import Media from '../Media.astro';
+import Reel from '../Reel.astro';
 import { links } from '../../data/site';
+
+/** Titular centrado y dos bloques con los reels cruzados. */
 ---
 
-<section id="legado" class="legado two-col section--rule">
-  <div>
-    <span class="eyebrow legado__eyebrow" data-reveal style="--reveal-y:20px;--reveal-dur:.8s">
-      07 — Colección Legado
-    </span>
-    <h2 class="display legado__title" data-reveal style="--reveal-delay:.06s">
-      COLECCIÓN LEGADO: EL VALOR DE IMPULSAR A OTROS
-    </h2>
-    <p class="body-copy legado__p" data-reveal style="--reveal-delay:.12s">
-      En el alto rendimiento, ningún campeón llega solo a la cima. Creemos firmemente que el
-      verdadero liderazgo se mide por cuántos talentos logramos elevar junto a nosotros.
-    </p>
-    <p class="body-copy legado__p legado__p--last" data-reveal style="--reveal-delay:.18s">
-      La Colección Legado no es solo una serie de piezas exclusivas de edición limitada; es un puente
-      financiero hacia el sueño de atletas con un potencial inmenso y recursos limitados. Cada
-      artículo de esta serie de autor está diseñado con los estándares estéticos y técnicos del “Modo
-      Tiburón”.
-    </p>
-    <div data-parallax="0.04">
-      <Media
-        id="konsta-legado"
-        caption="Piezas de la Colección Legado"
-        aspect="4 / 3"
-        radius="26px 26px 26px 150px"
-        clipFrom="inset(0 100% 0 0)"
-      />
+<section id="legado" class="legado section--rule">
+  <h1 class="display legado__titulo" data-reveal style="--reveal-y:28px;--reveal-dur:1s">
+    COLECCIÓN LEGADO: EL VALOR DE <span class="legado__acento">IMPULSAR A OTROS</span>
+  </h1>
+
+  <div class="bloque">
+    <div class="bloque__texto">
+      <p class="legado__copy" data-reveal style="--reveal-y:24px;--reveal-delay:.08s">
+        En el alto rendimiento, ningún campeón llega solo a la cima. Creemos firmemente que el
+        verdadero liderazgo se mide por cuántos talentos logramos elevar junto a nosotros.
+      </p>
+      <p class="legado__copy" data-reveal style="--reveal-y:24px;--reveal-delay:.14s">
+        La Colección Legado no es solo una serie de piezas exclusivas de edición limitada; es un
+        puente financiero hacia el sueño de atletas con un potencial inmenso y recursos limitados.
+        Cada artículo de esta serie de autor está diseñado con los estándares estéticos y técnicos
+        del «Modo Tiburón».
+      </p>
+    </div>
+
+    <div class="bloque__reel" data-parallax="0.03">
+      <Reel src="/assets/coleccionlegado/reel-1.mp4" label="Piezas de la Colección Legado" />
     </div>
   </div>
 
-  <div class="legado__col">
-    <h3 class="display legado__sub" data-reveal style="--reveal-y:22px;--reveal-dur:.8s">
-      ¿CÓMO TRANSFORMAMOS TU COMPRA EN IMPACTO?
-    </h3>
-    <div class="card" data-reveal style="--reveal-y:24px;--reveal-delay:.08s">
-      <span class="card__label">100% con propósito</span>
-      <p class="card__body">
-        Los fondos recaudados a través de estas ediciones limitadas se destinan directamente a
-        financiar inscripciones, traslados e implementos de competencia para compañeros de la
-        disciplina que necesitan un impulso en su carrera deportiva.
-      </p>
+  <div class="bloque bloque--invertido">
+    <div class="bloque__reel" data-parallax="-0.03">
+      <Reel src="/assets/coleccionlegado/reel-2.mp4" label="Colección Legado en movimiento" />
     </div>
-    <div class="card" data-reveal style="--reveal-y:24px;--reveal-delay:.16s">
-      <span class="card__label">Diseño de autor</span>
-      <p class="card__body">
-        Piezas numeradas y de tiraje exclusivo, creadas para coleccionistas, simpatizantes y marcas
-        que entienden que el deporte es una herramienta de transformación social.
+
+    <div class="bloque__texto">
+      <h2 class="display legado__sub" data-reveal style="--reveal-y:22px;--reveal-dur:.8s">
+        ¿CÓMO TRANSFORMAMOS TU COMPRA EN IMPACTO?
+      </h2>
+
+      <div class="card" data-reveal style="--reveal-y:24px;--reveal-delay:.08s">
+        <span class="card__label">100% con propósito</span>
+        <p class="card__body">
+          Los fondos recaudados a través de estas ediciones limitadas se destinan directamente a
+          financiar inscripciones, traslados e implementos de competencia para compañeros de la
+          disciplina que necesitan un impulso en su carrera deportiva.
+        </p>
+      </div>
+
+      <div class="card" data-reveal style="--reveal-y:24px;--reveal-delay:.16s">
+        <span class="card__label">Diseño de autor</span>
+        <p class="card__body">
+          Piezas numeradas y de tiraje exclusivo, creadas para coleccionistas, simpatizantes y marcas
+          que entienden que el deporte es una herramienta de transformación social.
+        </p>
+      </div>
+
+      <p class="card__body" data-reveal style="--reveal-y:24px;--reveal-delay:.22s">
+        Adquiere una pieza de esta colección exclusiva y sé parte activa del movimiento que está
+        reescribiendo el futuro de la monoaleta en el país.
       </p>
+
+      <a
+        href={links.coleccion}
+        class="pill pill--lg legado__cta"
+        data-reveal
+        style="--reveal-y:24px;--reveal-delay:.28s"
+      >
+        Ver colección exclusiva y apoyar
+      </a>
     </div>
-    <p class="card__body legado__closer" data-reveal style="--reveal-y:24px;--reveal-delay:.22s">
-      Adquiere una pieza de esta colección exclusiva y sé parte activa del movimiento que está
-      reescribiendo el futuro de la monoaleta en el país.
-    </p>
-    <a href={links.coleccion} class="pill pill--lg legado__cta" data-reveal style="--reveal-y:24px;--reveal-delay:.28s">
-      Ver colección exclusiva y apoyar
-    </a>
   </div>
 </section>
 
 <style>
   .legado {
-    align-items: start;
     padding: clamp(60px, 10vh, 130px) var(--gutter);
   }
 
-  .legado__eyebrow {
-    margin-bottom: 18px;
-  }
-
-  .legado__title {
-    font-size: clamp(38px, 4.6vw, 78px);
-    line-height: 0.93;
-    margin: 0 0 26px;
+  .legado__titulo {
+    font-size: clamp(28px, 6.6vw, 88px);
+    line-height: 0.9;
+    margin: 0 auto clamp(34px, 6vh, 64px);
+    max-width: 22ch;
+    text-align: center;
     text-wrap: balance;
   }
 
-  .legado__p {
-    margin-bottom: 18px;
+  .legado__acento {
+    color: var(--color-blue);
   }
 
-  .legado__p--last {
-    margin-bottom: clamp(26px, 4vh, 40px);
+  /* Texto ancho, reel angosto; en el segundo bloque se invierten. */
+  .bloque {
+    display: grid;
+    grid-template-columns: minmax(min(100%, 320px), 1.6fr) minmax(min(100%, 240px), 0.9fr);
+    gap: clamp(28px, 5vw, 80px);
+    align-items: center;
   }
 
-  .legado__col {
+  .bloque--invertido {
+    margin-top: clamp(60px, 10vh, 130px);
+    grid-template-columns: minmax(min(100%, 240px), 0.9fr) minmax(min(100%, 320px), 1.6fr);
+    align-items: start;
+  }
+
+  .bloque__texto {
     display: flex;
     flex-direction: column;
     gap: clamp(18px, 3vh, 28px);
-    padding-top: clamp(0px, 3vw, 54px);
+  }
+
+  .legado__copy {
+    font-size: clamp(22px, 1.9vw, 27px);
+    line-height: 1.55;
+    font-weight: 300;
+    color: var(--color-body);
+    margin: 0;
+    text-wrap: pretty;
   }
 
   .legado__sub {
@@ -98,13 +125,22 @@ import { links } from '../../data/site';
     line-height: 1;
     letter-spacing: 0.02em;
     color: var(--color-blue);
-  }
-
-  .legado__closer {
-    max-width: 44ch;
+    margin: 0;
   }
 
   .legado__cta {
     align-self: flex-start;
+  }
+
+  /* En móvil el reel siempre queda debajo del texto. */
+  @media (max-width: 760px) {
+    .bloque,
+    .bloque--invertido {
+      grid-template-columns: 1fr;
+    }
+
+    .bloque--invertido .bloque__reel {
+      order: 2;
+    }
   }
 </style>

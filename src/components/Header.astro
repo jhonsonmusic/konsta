@@ -1,24 +1,27 @@
 ---
 import SocialLinks from './SocialLinks.astro';
+import { nav, links } from '../data/site';
 
-const navLinks = [
-  { href: '#tiburon', label: 'Modo Tiburón' },
-  { href: '#origen', label: 'Historia' },
-  { href: '#legado', label: 'Colección Legado' },
-  { href: '#vision', label: 'Visión 2029' },
-];
+/** Ruta actual sin barra final, para marcar el enlace activo. */
+const actual = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
 <header class="header">
-  <a href="#hero" class="header__logo" aria-label="Konsta — inicio">
+  <a href="/" class="header__logo" aria-label="Konsta — inicio">
     <!-- 1004×472 en origen: la proporción debe respetarse o el wordmark se deforma. -->
-    <img src="/assets/konsta-logo.png" alt="Konsta" width="64" height="30" />
+    <img src="/assets/konsta-logo.png" alt="Konsta" width="85" height="40" />
   </a>
 
   <nav class="header__nav" aria-label="Principal">
-    {navLinks.map((l) => <a href={l.href}>{l.label}</a>)}
-    <SocialLinks size={17} />
-    <a href="#aliados" class="header__cta">Ser aliado</a>
+    {
+      nav.map((l) => (
+        <a href={l.href} aria-current={actual === l.href ? 'page' : undefined}>
+          {l.label}
+        </a>
+      ))
+    }
+    <SocialLinks size={19} />
+    <a href={links.aliados} class="header__cta">Ser aliado</a>
   </nav>
 
   <button
@@ -36,8 +39,8 @@ const navLinks = [
 
 <div class="menu" id="menu-movil" hidden data-menu>
   <div class="menu__bar">
-    <a href="#hero" class="menu__logo" aria-label="Konsta — inicio" data-menu-link>
-      <img src="/assets/konsta-logo.png" alt="Konsta" width="64" height="30" />
+    <a href="/" class="menu__logo" aria-label="Konsta — inicio" data-menu-link>
+      <img src="/assets/konsta-logo.png" alt="Konsta" width="85" height="40" />
     </a>
     <button class="menu__close" type="button" aria-label="Cerrar menú" data-menu-close>
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
@@ -47,11 +50,22 @@ const navLinks = [
   </div>
 
   <nav class="menu__nav" aria-label="Principal (móvil)">
-    {navLinks.map((l) => <a href={l.href} class="display menu__link" data-menu-link>{l.label}</a>)}
+    {
+      nav.map((l) => (
+        <a
+          href={l.href}
+          class="display menu__link"
+          aria-current={actual === l.href ? 'page' : undefined}
+          data-menu-link
+        >
+          {l.label}
+        </a>
+      ))
+    }
   </nav>
 
   <div class="menu__foot">
-    <a href="#aliados" class="pill menu__cta" data-menu-link>Ser aliado</a>
+    <a href={links.aliados} class="pill menu__cta" data-menu-link>Ser aliado</a>
     <SocialLinks size={20} gap={20} />
   </div>
 </div>
@@ -80,7 +94,7 @@ const navLinks = [
 
   .header__logo img,
   .menu__logo img {
-    height: 30px;
+    height: 40px;
     width: auto;
     display: block;
   }
@@ -90,15 +104,22 @@ const navLinks = [
     flex-wrap: wrap;
     justify-content: flex-end;
     align-items: center;
-    gap: clamp(12px, 2vw, 28px);
-    font-size: 11px;
-    letter-spacing: 0.16em;
+    gap: clamp(12px, 1.5vw, 22px);
+    font-size: clamp(13px, 1.05vw, 15px);
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     font-weight: 500;
   }
 
+  /* La página actual se marca con un subrayado, sin cambiar el color. */
+  .header__nav a[aria-current='page'] {
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 3px;
+  }
+
   .header__cta {
-    padding: 10px 18px;
+    padding: 12px 22px;
+    white-space: nowrap;
     border-radius: var(--radius-pill);
     background: var(--color-blue);
     color: var(--color-white);
@@ -217,6 +238,9 @@ const navLinks = [
   .menu__link:nth-child(4) {
     --stagger: 0.21s;
   }
+  .menu__link:nth-child(5) {
+    --stagger: 0.26s;
+  }
 
   .menu__foot {
     display: flex;
@@ -233,8 +257,9 @@ const navLinks = [
     justify-content: center;
   }
 
-  /* El menú completo solo cabe en pantallas anchas. */
-  @media (max-width: 900px) {
+  /* Con seis enlaces + redes + CTA, la barra necesita ~1230px: por debajo de
+     ese ancho pasamos al menú desplegable. */
+  @media (max-width: 1240px) {
     .header__nav {
       display: none;
     }
@@ -253,6 +278,16 @@ const navLinks = [
 </style>
 
 <script>
+  // El hero se mete debajo del header (foto a pantalla completa), así que
+  // publicamos su alto real en una variable CSS.
+  const header = document.querySelector<HTMLElement>('.header');
+  if (header) {
+    const publish = () =>
+      document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`);
+    publish();
+    new ResizeObserver(publish).observe(header);
+  }
+
   const menu = document.querySelector<HTMLElement>('[data-menu]');
   const openBtn = document.querySelector<HTMLButtonElement>('[data-menu-open]');
   const closeBtn = document.querySelector<HTMLButtonElement>('[data-menu-close]');
@@ -291,7 +326,7 @@ const navLinks = [
     });
 
     // Si se pasa a escritorio con el menú abierto, la nav normal vuelve a estar disponible.
-    matchMedia('(min-width: 901px)').addEventListener('change', (e) => {
+    matchMedia('(min-width: 1241px)').addEventListener('change', (e) => {
       if (e.matches && !menu.hidden) close();
     });
   }

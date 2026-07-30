@@ -1,52 +1,67 @@
 ---
 import Media from '../Media.astro';
 import PlayBadge from '../PlayBadge.astro';
-import Footer from '../Footer.astro';
 import { links } from '../../data/site';
+
+/**
+ * Dos bloques con los reels cruzados: en el primero el video va a la derecha
+ * y en el segundo a la izquierda.
+ * TODO cliente: faltan los dos archivos de los reels (formato vertical 9:16).
+ */
 ---
 
 <section id="aliados" class="aliados section section--rule">
-  <span class="eyebrow aliados__eyebrow" data-reveal style="--reveal-y:20px;--reveal-dur:.8s">
-    09 — Aliados estratégicos
-  </span>
-
-  <div class="aliados__grid">
-    <div>
-      <h2 class="display aliados__title" data-reveal style="--reveal-y:28px;--reveal-dur:1s">
-        SER PARTE DE KONSTA ES REDEFINIR LOS LÍMITES
-      </h2>
-      <div data-parallax="0.03">
-        <Media
-          id="konsta-brochure-video"
-          caption="Video de presentación — poster"
-          aspect="16 / 10"
-          radius="26px"
-        >
-          <PlayBadge size={66} padding={22} />
-        </Media>
-      </div>
-      <span class="display aliados__signoff" data-reveal style="--reveal-y:20px;--reveal-dur:.9s;--reveal-delay:.1s">
-        DETERMINACIÓN IMPARABLE.
-      </span>
-    </div>
-
-    <div class="aliados__col">
-      <p class="body-copy aliados__lead" data-reveal style="--reveal-y:24px;--reveal-delay:.06s">
+  <div class="bloque">
+    <div class="bloque__texto">
+      <h1 class="display aliados__titulo" data-reveal style="--reveal-y:28px;--reveal-dur:1s">
+        SER PARTE DE KONSTA ES <span class="aliados__acento">REDEFINIR LOS LÍMITES</span>
+      </h1>
+      <p class="aliados__copy" data-reveal style="--reveal-y:24px;--reveal-delay:.08s">
         Al asociarte con este proyecto, tu marca no aparece únicamente en un uniforme de alta
         competición; entra a formar parte de un ecosistema donde el liderazgo, la gestión y el
         impacto social se unen. Konsta es el embajador de una disciplina en pleno crecimiento, un
         gestor que moviliza, inspira y lidera a la próxima generación de campeones mundiales
         colombianos.
       </p>
-      <p class="display aliados__question" data-reveal style="--reveal-y:24px;--reveal-delay:.12s">
+      <span class="display aliados__firma" data-reveal style="--reveal-y:20px;--reveal-delay:.14s">
+        DETERMINACIÓN IMPARABLE.
+      </span>
+    </div>
+
+    <div class="bloque__reel" data-parallax="0.03">
+      <Media
+        id="konsta-reel-1"
+        caption="Reel 1 — pendiente de entrega"
+        aspect="9 / 16"
+        radius="26px"
+      >
+        <PlayBadge size={66} padding={22} />
+      </Media>
+    </div>
+  </div>
+
+  <div class="bloque bloque--invertido">
+    <div class="bloque__reel" data-parallax="-0.03">
+      <Media
+        id="konsta-reel-2"
+        caption="Reel 2 — pendiente de entrega"
+        aspect="9 / 16"
+        radius="26px"
+      >
+        <PlayBadge size={66} padding={22} />
+      </Media>
+    </div>
+
+    <div class="bloque__texto">
+      <h2 class="display aliados__pregunta" data-reveal style="--reveal-y:24px">
         ¿TIENES LA VISIÓN CORPORATIVA PARA CONSTRUIR UN LEGADO QUE TRASCIENDA EL PODIO?
-      </p>
+      </h2>
 
       <a
         href={links.brochure}
         class="action action--ink"
         data-reveal
-        style="--reveal-y:24px;--reveal-delay:.18s"
+        style="--reveal-y:24px;--reveal-delay:.1s"
       >
         <span class="action__text">
           <span class="label">Descargar brochure técnico de patrocinio</span>
@@ -61,7 +76,7 @@ import { links } from '../../data/site';
         href={links.contacto}
         class="action action--blue"
         data-reveal
-        style="--reveal-y:24px;--reveal-delay:.24s"
+        style="--reveal-y:24px;--reveal-delay:.16s"
       >
         <span class="action__text">
           <span class="label">Contactar al equipo de gestión</span>
@@ -73,58 +88,82 @@ import { links } from '../../data/site';
       </a>
     </div>
   </div>
-
-  <Footer />
 </section>
 
 <style>
   .aliados {
-    padding: clamp(50px, 8vh, 110px) var(--gutter) clamp(30px, 5vh, 60px);
+    padding: clamp(50px, 8vh, 110px) var(--gutter) clamp(84px, 10vh, 110px);
   }
 
-  .aliados__eyebrow {
-    margin-bottom: 20px;
-  }
-
-  .aliados__grid {
+  /* Texto ancho y reel angosto: el vertical no debe comerse la columna. */
+  .bloque {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+    grid-template-columns: minmax(min(100%, 320px), 1.6fr) minmax(min(100%, 240px), 0.9fr);
     gap: clamp(28px, 5vw, 80px);
-    align-items: start;
+    align-items: center;
   }
 
-  .aliados__title {
-    font-size: clamp(44px, 6vw, 108px);
-    line-height: 0.88;
-    margin: 0 0 26px;
-    text-wrap: balance;
+  .bloque--invertido {
+    margin-top: clamp(60px, 10vh, 130px);
+    grid-template-columns: minmax(min(100%, 240px), 0.9fr) minmax(min(100%, 320px), 1.6fr);
   }
 
-  .aliados__signoff {
-    display: block;
-    font-size: clamp(22px, 2vw, 32px);
-    letter-spacing: 0.04em;
-    margin-top: 18px;
-  }
-
-  .aliados__col {
+  .bloque__texto {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding-top: clamp(0px, 2vw, 30px);
   }
 
-  .aliados__lead {
-    max-width: 46ch;
+  .bloque__reel {
+    width: min(100%, 400px);
+    margin-inline: auto;
   }
 
-  .aliados__question {
-    font-size: clamp(26px, 2.6vw, 44px);
+  .aliados__titulo {
+    font-size: clamp(40px, 4.8vw, 78px);
+    line-height: 0.9;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .aliados__acento {
+    color: var(--color-blue);
+  }
+
+  .aliados__copy {
+    font-size: clamp(22px, 1.9vw, 27px);
+    line-height: 1.55;
+    font-weight: 300;
+    color: var(--color-body);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  .aliados__firma {
+    display: block;
+    font-size: clamp(24px, 2.4vw, 40px);
+    letter-spacing: 0.04em;
+  }
+
+  .aliados__pregunta {
+    font-size: clamp(30px, 3.3vw, 56px);
     line-height: 1.04;
     letter-spacing: 0.015em;
-    margin: clamp(4px, 1vh, 12px) 0;
+    margin: 0 0 8px;
     color: var(--color-blue);
-    max-width: 26ch;
+    text-wrap: balance;
+  }
+
+  /* En móvil el reel siempre va debajo del texto, en los dos bloques. */
+  @media (max-width: 760px) {
+    .bloque,
+    .bloque--invertido {
+      grid-template-columns: 1fr;
+    }
+
+    .bloque--invertido .bloque__reel {
+      order: 2;
+    }
   }
 
   .action {
@@ -161,7 +200,7 @@ import { links } from '../../data/site';
   }
 
   .action__sub {
-    font-size: 12.5px;
+    font-size: var(--size-copy);
     font-weight: 300;
     color: var(--on-blue-62);
   }

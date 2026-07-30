@@ -1,0 +1,83 @@
+---
+import Media from '../Media.astro';
+import PlayBadge from '../PlayBadge.astro';
+---
+
+<section id="manifiesto-compromiso" class="compromiso">
+  <h2 class="display compromiso__titulo" data-reveal style="--reveal-y:28px;--reveal-dur:1s">
+    MANIFIESTO DE <span class="compromiso__acento">COMPROMISO</span>
+  </h2>
+
+  <blockquote class="compromiso__cita" data-reveal style="--reveal-y:26px;--reveal-delay:.1s">
+    «He visto a grandes talentos dejar el agua porque los costos de los equipos los superaron. Eso no
+    es falta de capacidad, <strong>es falta de oportunidades</strong>. Mi visión es demostrar que el
+    alto rendimiento es posible cuando unimos fuerzas. <strong>Como equipo, somos imbatibles</strong>.»
+  </blockquote>
+
+  <span class="compromiso__firma" data-reveal style="--reveal-y:20px;--reveal-delay:.16s">
+    — Konsta
+  </span>
+
+  <div class="compromiso__video" data-reveal style="--reveal-y:24px;--reveal-delay:.2s">
+    <!-- TODO cliente: falta el archivo del video del manifiesto. -->
+    <Media
+      id="konsta-manifiesto-video"
+      caption="Video del manifiesto — pendiente de entrega"
+      aspect="16 / 9"
+      radius="28px"
+    >
+      <PlayBadge size={74} padding={24} />
+    </Media>
+  </div>
+</section>
+
+<style>
+  .compromiso {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: var(--color-white);
+    padding: clamp(70px, 12vh, 130px) var(--gutter) clamp(70px, 11vh, 140px);
+  }
+
+  .compromiso__titulo {
+    font-size: clamp(40px, 4.8vw, 78px);
+    line-height: 0.93;
+    margin: 0 0 clamp(24px, 4vh, 40px);
+    text-wrap: balance;
+  }
+
+  .compromiso__acento {
+    color: var(--color-blue);
+  }
+
+  .compromiso__cita {
+    /* Mismo cuerpo y ancho que la descripción de la apertura. */
+    max-width: min(86vw, 980px);
+    margin: 0 0 18px;
+    font-size: clamp(17px, 1.35vw, 21px);
+    line-height: 1.55;
+    font-weight: 300;
+    color: var(--color-body);
+    text-wrap: pretty;
+  }
+
+  .compromiso__cita strong {
+    font-weight: 500;
+    color: var(--color-blue);
+  }
+
+  .compromiso__firma {
+    font-size: var(--size-copy);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-muted);
+  }
+
+  .compromiso__video {
+    width: min(100%, 900px);
+    margin-top: clamp(34px, 6vh, 64px);
+  }
+</style>

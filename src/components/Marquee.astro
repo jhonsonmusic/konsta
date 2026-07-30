@@ -12,7 +12,8 @@ const text = 'MODO TIBURÓN · DISCIPLINA IMPLACABLE · MODO TIBURÓN · SIN ATA
 <style>
   .marquee {
     overflow: hidden;
-    padding: clamp(6px, 1vh, 14px) 0 clamp(26px, 4vh, 46px);
+    /* Mismo aire arriba que abajo. */
+    padding-block: clamp(26px, 4vh, 46px);
     white-space: nowrap;
   }
 
@@ -21,7 +22,7 @@ const text = 'MODO TIBURÓN · DISCIPLINA IMPLACABLE · MODO TIBURÓN · SIN ATA
     gap: 40px;
     animation: km-marquee 26s linear infinite;
     font-family: var(--font-display);
-    font-size: clamp(28px, 3.4vw, 54px);
+    font-size: clamp(40px, 5.2vw, 88px);
     letter-spacing: 0.06em;
     color: transparent;
     -webkit-text-stroke: 1px var(--marquee-stroke);

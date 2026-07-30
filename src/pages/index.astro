@@ -1,31 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
 import Marquee from '../components/Marquee.astro';
 import Hero from '../components/sections/Hero.astro';
 import ModoTiburon from '../components/sections/ModoTiburon.astro';
-import Origen from '../components/sections/Origen.astro';
-import Familia from '../components/sections/Familia.astro';
-import Proposito from '../components/sections/Proposito.astro';
-import Manifiesto from '../components/sections/Manifiesto.astro';
-import Legado from '../components/sections/Legado.astro';
-import Vision from '../components/sections/Vision.astro';
-import Aliados from '../components/sections/Aliados.astro';
 import { site } from '../data/site';
 ---
 
 <Layout title={site.title} description={site.description}>
-  <Header />
-  <main>
-    <Hero />
-    <Marquee />
-    <ModoTiburon />
-    <Origen />
-    <Familia />
-    <Proposito />
-    <Manifiesto />
-    <Legado />
-    <Vision />
-    <Aliados />
-  </main>
+  <Hero />
+  <Marquee />
+  <ModoTiburon />
 </Layout>

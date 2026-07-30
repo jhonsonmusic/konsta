@@ -17,6 +17,10 @@ interface Props {
   aspect: string;
   /** `border-radius` CSS — las formas esculpidas son firma del diseño. */
   radius?: string;
+  /** Blanco y negro de marca. Desactívalo si la foto ya trae color selectivo. */
+  mono?: boolean;
+  /** 'contain' encaja la pieza completa sin recortarla (logos, isotipos). */
+  fit?: 'cover' | 'contain';
   video?: boolean;
   /** Poster del video cuando `video` es true. */
   poster?: string;
@@ -33,6 +37,8 @@ const {
   caption,
   aspect,
   radius = 'var(--radius-image)',
+  mono = true,
+  fit = 'cover',
   video = false,
   poster,
   clipFrom = 'inset(0 0 100% 0)',
@@ -45,7 +51,7 @@ const {
 <div
   class:list={['media', className]}
   data-reveal-clip
-  style={`--aspect:${aspect};--radius:${radius};--clip-from:${clipFrom};--clip-delay:${clipDelay};--clip-dur:${clipDuration};`}
+  style={`--aspect:${aspect};--radius:${radius};--clip-from:${clipFrom};--clip-delay:${clipDelay};--clip-dur:${clipDuration};--photo-filter:${mono ? 'var(--filter-photo)' : 'none'};--photo-fit:${fit};`}
 >
   {
     src ? (
@@ -82,9 +88,9 @@ const {
   .media__el {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: var(--photo-fit, cover);
     display: block;
-    filter: var(--filter-photo);
+    filter: var(--photo-filter, var(--filter-photo));
   }
 
   .media__placeholder {

@@ -1,36 +1,88 @@
 ---
 import SocialLinks from './SocialLinks.astro';
-import { site } from '../data/site';
+import { site, nav, links } from '../data/site';
+
+const actual = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
 <footer class="footer">
-  <img src="/assets/konsta-logo.png" alt="Konsta" width="51" height="24" />
-  <span>{site.domain} · Monoaleta</span>
-  <SocialLinks size={17} gap={16} class="footer__social" />
-  <span>© 2026</span>
+  <div class="footer__top">
+    <a href="/" class="footer__logo" aria-label="Konsta — inicio">
+      <img src="/assets/konsta-logo.png" alt="Konsta" width="68" height="32" />
+    </a>
+
+    <nav class="footer__nav" aria-label="Secundaria">
+      {
+        nav.map((l) => (
+          <a href={l.href} aria-current={actual === l.href ? 'page' : undefined}>
+            {l.label}
+          </a>
+        ))
+      }
+      <a href={links.aliados} aria-current={actual === links.aliados ? 'page' : undefined}>
+        Ser aliado
+      </a>
+    </nav>
+  </div>
+
+  <div class="footer__meta">
+    <span>{site.domain} · Monoaleta</span>
+    <SocialLinks size={19} gap={18} class="footer__social" />
+    <span>© 2026</span>
+  </div>
 </footer>
 
 <style>
   .footer {
+    margin-top: clamp(48px, 8vh, 96px);
+    padding-top: 28px;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .footer__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: clamp(20px, 3vw, 40px);
+  }
+
+  .footer__logo img {
+    height: 32px;
+    width: auto;
+    display: block;
+  }
+
+  .footer__nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: clamp(12px, 1.5vw, 22px);
+    font-size: clamp(13px, 1.05vw, 15px);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .footer__nav a[aria-current='page'] {
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 3px;
+  }
+
+  .footer__meta {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 16px;
-    margin-top: clamp(48px, 8vh, 96px);
-    padding-top: 22px;
+    margin-top: clamp(26px, 4vh, 44px);
+    padding-top: 20px;
     border-top: 1px solid var(--hairline);
     font-size: 10.5px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--color-muted);
     font-weight: 500;
-  }
-
-  .footer img {
-    height: 24px;
-    width: auto;
-    display: block;
   }
 
   .footer :global(.footer__social) {

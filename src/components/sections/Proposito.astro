@@ -1,43 +1,30 @@
 ---
-import Media from '../Media.astro';
+/** Apertura de Ecosistema: titular y palabras de Konsta, centrados como el hero. */
 ---
 
-<section id="proyecto" class="proposito two-col">
-  <div>
-    <span class="eyebrow proposito__eyebrow" data-reveal style="--reveal-y:20px;--reveal-dur:.8s">
-      05 — Propósito
-    </span>
-    <h2 class="display proposito__title" data-reveal style="--reveal-delay:.06s">
-      MÁS ALLÁ DE MI ONDULACIÓN: IMPULSANDO EL FUTURO DE LA MONOALETA EN COLOMBIA
-    </h2>
-    <div data-parallax="0.04">
-      <Media
-        id="konsta-proyecto"
-        caption="Entrenamiento / comunidad"
-        aspect="4 / 3"
-        clipDelay=".1s"
-        clipDuration="1.2s"
-      />
-    </div>
-  </div>
+<section id="proyecto" class="proposito">
+  <h1 class="display proposito__titulo" data-reveal style="--reveal-y:28px;--reveal-dur:1s">
+    MÁS ALLÁ DE MI ONDULACIÓN: IMPULSANDO EL <span class="proposito__acento">FUTURO</span> DE LA
+    MONOALETA EN <span class="proposito__acento">COLOMBIA</span>
+  </h1>
 
-  <div class="proposito__col">
-    <p class="body-copy" data-reveal style="--reveal-delay:.04s">
+  <div class="proposito__copy">
+    <p data-reveal style="--reveal-y:26px;--reveal-delay:.1s">
       El talento en Colombia es inmenso, pero el deporte de élite es una carrera de resistencia
       financiera tanto como física. Al crecer en esta modalidad, he entendido que la excelencia no
       puede ser un camino solitario.
     </p>
-    <p class="body-copy" data-reveal style="--reveal-delay:.1s">
+    <p data-reveal style="--reveal-y:26px;--reveal-delay:.16s">
       Mi propósito no es solo llegar al podio; es abrir la puerta para que otros también lo hagan.
       Estamos creando un movimiento para apoyar a compañeros con alto potencial, porque la monoaleta
       es un deporte donde el éxito de uno eleva el nivel de todos.
     </p>
-    <p class="body-copy" data-reveal style="--reveal-delay:.16s">
+    <p data-reveal style="--reveal-y:26px;--reveal-delay:.22s">
       Las grandes marcas tienen el poder de transformar el deporte. Buscamos aliados visionarios que
       elijan apostar por el talento, respaldar el esfuerzo y convertirse en parte activa del
       desarrollo de la próxima generación de campeones mundiales colombianos.
     </p>
-    <p class="display proposito__closer" data-reveal style="--reveal-delay:.22s">
+    <p class="display proposito__cierre" data-reveal style="--reveal-y:26px;--reveal-delay:.28s">
       NO ES SOLO PATROCINIO;<br />ES CONSTRUIR LEGADOS JUNTOS.
     </p>
   </div>
@@ -45,32 +32,65 @@ import Media from '../Media.astro';
 
 <style>
   .proposito {
-    align-items: start;
-    padding: clamp(70px, 12vh, 150px) var(--gutter) clamp(60px, 10vh, 130px);
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--color-white);
+    padding: clamp(40px, 7vh, 90px) var(--gutter) clamp(40px, 7vh, 90px);
+    box-sizing: border-box;
   }
 
-  .proposito__eyebrow {
-    margin-bottom: 18px;
+  /* En móvil el bloque debe caber en una pantalla: la capa que lo contiene
+     queda fija y recorta lo que sobresalga. */
+  @media (max-width: 700px) {
+    .proposito {
+      padding-block: clamp(24px, 4vh, 48px);
+    }
+
+    .proposito__copy {
+      gap: 12px;
+    }
   }
 
-  .proposito__title {
-    font-size: clamp(38px, 4.7vw, 82px);
-    line-height: 0.92;
-    margin: 0 0 28px;
+  /* Misma escala del titular del hero. */
+  .proposito__titulo {
+    font-size: clamp(28px, 6.6vw, 88px);
+    line-height: 0.9;
+    letter-spacing: 0.005em;
+    margin: 0 0 clamp(22px, 3.4vh, 38px);
     text-wrap: balance;
   }
 
-  .proposito__col {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding-top: clamp(0px, 4vw, 68px);
+  .proposito__acento {
+    color: var(--color-blue);
   }
 
-  .proposito__closer {
-    font-size: clamp(30px, 3.3vw, 56px);
-    line-height: 1;
+  .proposito__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: min(86vw, 980px);
+  }
+
+  .proposito__copy p {
+    font-size: clamp(17px, 1.35vw, 21px);
+    line-height: 1.55;
+    font-weight: 300;
+    color: var(--color-body);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  .proposito__cierre {
+    font-size: clamp(24px, 2.4vw, 40px);
+    line-height: 1.05;
     letter-spacing: 0.015em;
-    margin: clamp(8px, 2vh, 20px) 0 0;
+    color: var(--color-ink);
+    font-weight: 400;
+    margin-top: clamp(8px, 2vh, 20px);
   }
 </style>

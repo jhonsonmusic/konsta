@@ -1,15 +1,38 @@
 ---
-import Media from '../Media.astro';
+import ScrollCue from '../ScrollCue.astro';
+
+/**
+ * Apertura en dos tiempos:
+ * 1. La foto ocupa la pantalla completa al entrar.
+ * 2. Al scrollear, la foto queda fija (sticky) y el panel de copy sube por
+ *    encima hasta taparla; el texto entra centrado y da paso al resto.
+ */
 ---
 
-<section id="hero" class="hero">
-  <div>
+<div class="hero">
+  <div class="hero__visual">
+    <img
+      src="/assets/konsta-hero.jpg"
+      alt="Konsta nadando estilo mariposa en la piscina"
+      width="1920"
+      height="1080"
+      fetchpriority="high"
+    />
+    <div class="hero__badge">
+      <span class="hero__badge-dot"></span>Modo tiburón activo
+    </div>
+    <ScrollCue />
+  </div>
+
+  <section id="hero" class="hero__copy">
     <div class="hero__eyebrow" data-reveal style="--reveal-y:24px;--reveal-dur:.9s">
       <span class="hero__rule"></span>
       <span>Monoaleta · Colombia</span>
+      <span class="hero__rule"></span>
     </div>
     <h1 class="display hero__title" data-reveal style="--reveal-y:30px;--reveal-dur:1s;--reveal-delay:.08s">
-      KONSTA: LA EXCELENCIA<br />NO ES UN DON,<br />ES UN <span class="hero__ritual">ritual</span>.
+      KONSTA: LA <span class="hero__accent">EXCELENCIA</span><br />
+      NO ES UN DON, ES UN <span class="hero__accent">RITUAL.</span>
     </h1>
     <p class="hero__lead" data-reveal style="--reveal-y:30px;--reveal-dur:1s;--reveal-delay:.16s">
       Más allá de la velocidad. Más allá de la medalla. Un proyecto de vida construido con
@@ -17,24 +40,9 @@ import Media from '../Media.astro';
     </p>
     <div class="hero__ctas" data-reveal style="--reveal-y:30px;--reveal-dur:1s;--reveal-delay:.24s">
       <a href="#tiburon" class="pill">Conoce la historia</a>
-      <a href="#aliados" class="link-underline">Alianzas de marca</a>
     </div>
-  </div>
-
-  <div class="hero__figure" data-parallax="-0.05">
-    <Media
-      id="konsta-hero"
-      caption="Atleta en piscina — vertical, B&N"
-      aspect="3 / 4.15"
-      radius="200px 200px 28px 28px"
-      clipDelay=".1s"
-      clipDuration="1.3s"
-    />
-    <div class="hero__badge">
-      <span class="hero__badge-dot"></span>Modo tiburón activo
-    </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <div class="tagline">
   <span class="tagline__rule"></span>
@@ -45,72 +53,30 @@ import Media from '../Media.astro';
 <style>
   .hero {
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
-    gap: clamp(24px, 5vw, 80px);
-    align-items: center;
-    padding: clamp(56px, 9vh, 120px) var(--gutter) clamp(60px, 10vh, 130px);
+    /* El header sticky vive encima; la foto arranca detrás de él. */
+    margin-top: calc(-1 * var(--header-h, 71px));
   }
 
-  .hero__eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: clamp(20px, 4vh, 40px);
-    font-size: 10.5px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    font-weight: 600;
+  .hero__visual {
+    position: sticky;
+    top: 0;
+    z-index: 0;
+    height: 100vh;
+    height: 100svh;
+    overflow: hidden;
   }
 
-  .hero__rule {
-    width: 46px;
-    height: 1px;
-    background: var(--color-blue);
-    opacity: 0.8;
-  }
-
-  .hero__title {
-    font-size: clamp(52px, 7.4vw, 128px);
-    line-height: 0.87;
-    letter-spacing: 0.005em;
-    margin: 0 0 clamp(22px, 3.4vh, 38px);
-    text-wrap: balance;
-  }
-
-  .hero__ritual {
-    font-family: var(--font-text);
-    font-style: italic;
-    font-weight: 300;
-    font-size: 0.58em;
-    letter-spacing: -0.01em;
-  }
-
-  .hero__lead {
-    max-width: 46ch;
-    font-size: clamp(14.5px, 1.15vw, 17px);
-    line-height: 1.72;
-    font-weight: 300;
-    color: var(--color-body);
-    margin: 0 0 clamp(28px, 4vh, 44px);
-    text-wrap: pretty;
-  }
-
-  .hero__ctas {
-    display: flex;
-    align-items: center;
-    gap: 26px;
-    flex-wrap: wrap;
-  }
-
-  .hero__figure {
-    position: relative;
+  .hero__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   .hero__badge {
     position: absolute;
-    left: -18px;
-    bottom: 34px;
+    left: var(--gutter);
+    bottom: clamp(28px, 6vh, 56px);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -124,6 +90,14 @@ import Media from '../Media.astro';
     font-weight: 600;
   }
 
+  /* Abajo no cabe junto al indicador "continúa bajando": sube al arranque. */
+  @media (max-width: 700px) {
+    .hero__badge {
+      bottom: auto;
+      top: calc(var(--header-h, 71px) + 16px);
+    }
+  }
+
   .hero__badge-dot {
     width: 6px;
     height: 6px;
@@ -132,21 +106,110 @@ import Media from '../Media.astro';
     animation: km-drip 2.4s ease-in-out infinite;
   }
 
+
+
+  /* El panel de copy sube por encima de la foto: fondo sólido + z-index. */
+  .hero__copy {
+    position: relative;
+    z-index: 1;
+    background: var(--color-white);
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(70px, 12vh, 130px) var(--gutter) clamp(60px, 10vh, 120px);
+    box-sizing: border-box;
+  }
+
+  .hero__eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: clamp(20px, 4vh, 40px);
+    font-size: var(--size-copy);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .hero__rule {
+    width: clamp(28px, 5vw, 46px);
+    height: 1px;
+    background: var(--color-blue);
+    opacity: 0.8;
+  }
+
+  /* Con el eyebrow al tamaño del cuerpo, las rayitas lo parten en móvil. */
+  @media (max-width: 520px) {
+    .hero__rule {
+      display: none;
+    }
+  }
+
+  .hero__title {
+    /* Escala calibrada para que el titular entre en dos renglones a todo ancho. */
+    font-size: clamp(30px, 9.8vw, 120px);
+    line-height: 0.87;
+    letter-spacing: 0.005em;
+    margin: 0 0 clamp(22px, 3.4vh, 38px);
+    text-wrap: balance;
+  }
+
+  /* Titular uniforme en Bebas; el único acento es el azul de marca. */
+  .hero__accent {
+    color: var(--color-blue);
+  }
+
+  .hero__lead {
+    /* Tope: el ancho del renglón más largo del titular, ni un píxel más.
+       Escala con el vw igual que él y se detiene cuando topa en 120px. */
+    max-width: min(86vw, 1050px);
+    /* Un tercio del titular, que es clamp(30px, 9.8vw, 120px). */
+    font-size: clamp(16px, 3.27vw, 40px);
+    line-height: 1.4;
+    font-weight: 300;
+    color: var(--color-body);
+    margin: 0 0 clamp(28px, 4vh, 44px);
+    text-wrap: pretty;
+  }
+
+  .hero__ctas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    flex-wrap: wrap;
+  }
+
   .tagline {
     display: flex;
     align-items: center;
-    gap: clamp(16px, 3vw, 40px);
-    padding: 0 var(--gutter) clamp(60px, 9vh, 110px);
-    font-size: 10.5px;
-    letter-spacing: 0.24em;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(8px, 3vw, 40px);
+    padding: 0 var(--gutter) clamp(20px, 3vh, 36px);
+    /* Mismo cuerpo que la descripción del hero, en azul de marca. */
+    font-size: clamp(16px, 3.27vw, 40px);
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     font-weight: 500;
-    color: var(--color-muted);
+    color: var(--color-blue);
   }
 
   .tagline__rule {
-    flex: 1;
+    flex: 1 1 24px;
+    min-width: 0;
     height: 1px;
     background: var(--hairline-strong);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__badge-dot {
+      animation: none;
+    }
   }
 </style>

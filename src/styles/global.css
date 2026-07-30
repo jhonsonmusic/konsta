@@ -26,7 +26,7 @@
   --blue-hover: #003a69;
 
   --font-display: 'Bebas Neue', Impact, sans-serif;
-  --font-text: 'Montserrat', system-ui, sans-serif;
+  --font-text: 'Inter', system-ui, sans-serif;
 
   --gutter: clamp(20px, 4vw, 56px);
   --section: clamp(60px, 10vh, 130px);
@@ -83,10 +83,27 @@ video {
 }
 
 /* --- shared type roles --------------------------------------------- */
+
+/* Etiquetas y botones al mismo tamaño que el cuerpo de texto. El tracking
+   baja de .3em a .14em: a este cuerpo, el original partía las líneas. */
+:root {
+  --size-copy: clamp(17px, 1.5vw, 22px);
+}
+
+/* De La familia hacia abajo el sitio usa una escala de cuerpo mayor. */
+#familia,
+#proyecto,
+#manifiesto,
+#legado,
+#vision,
+#aliados {
+  --size-copy: clamp(22px, 1.9vw, 27px);
+}
+
 .eyebrow {
   display: block;
-  font-size: 10.5px;
-  letter-spacing: 0.3em;
+  font-size: var(--size-copy);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 600;
   color: var(--color-muted);
@@ -99,9 +116,10 @@ video {
   margin: 0;
 }
 
+/* Mismo tamaño que la descripción del hero (.hero__lead). */
 .body-copy {
-  font-size: clamp(14.5px, 1.1vw, 16.5px);
-  line-height: 1.78;
+  font-size: var(--size-copy);
+  line-height: 1.65;
   font-weight: 300;
   color: var(--color-body);
   margin: 0;
@@ -110,8 +128,8 @@ video {
 }
 
 .label {
-  font-size: 11px;
-  letter-spacing: 0.2em;
+  font-size: var(--size-copy);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 600;
 }
@@ -140,8 +158,8 @@ video {
   border-radius: var(--radius-pill);
   background: var(--color-blue);
   color: var(--color-white);
-  font-size: 11px;
-  letter-spacing: 0.2em;
+  font-size: var(--size-copy);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 600;
   transition:
@@ -170,8 +188,8 @@ video {
 }
 
 .link-underline {
-  font-size: 11px;
-  letter-spacing: 0.2em;
+  font-size: var(--size-copy);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 600;
   border-bottom: 1px solid var(--rule);
@@ -194,8 +212,8 @@ video {
 
 .card__label {
   display: block;
-  font-size: 10.5px;
-  letter-spacing: 0.24em;
+  font-size: var(--size-copy);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 600;
   color: var(--color-blue);
@@ -204,8 +222,8 @@ video {
 
 .card__body {
   margin: 0;
-  font-size: 15px;
-  line-height: 1.75;
+  font-size: clamp(17px, 1.5vw, 22px);
+  line-height: 1.65;
   font-weight: 300;
   color: var(--color-body);
   text-wrap: pretty;

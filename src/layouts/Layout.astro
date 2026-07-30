@@ -1,5 +1,8 @@
 ---
 import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ScrollTop from '../components/ScrollTop.astro';
 
 interface Props {
   title: string;
@@ -27,19 +30,31 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:locale" content="es_CO" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- TODO producción: auto-hospedar Bebas Neue y Montserrat. -->
+    <!-- TODO producción: auto-hospedar Bebas Neue e Inter. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
     <meta name="generator" content={Astro.generator} />
   </head>
   <body>
-    <slot />
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <div class="pie">
+      <Footer />
+    </div>
+    <ScrollTop />
     <script>
       import '../scripts/motion.ts';
     </script>
+    <style>
+      .pie {
+        padding: 0 var(--gutter) clamp(40px, 6vh, 72px);
+      }
+    </style>
   </body>
 </html>

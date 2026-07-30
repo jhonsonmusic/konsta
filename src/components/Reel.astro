@@ -1,0 +1,42 @@
+---
+/** Video vertical 9:16 en bucle, sin sonido: el formato de reel. */
+interface Props {
+  src: string;
+  /** Descripción de lo que se ve, para lectores de pantalla. */
+  label: string;
+  poster?: string;
+  class?: string;
+}
+
+const { src, label, poster, class: className } = Astro.props;
+---
+
+<div class:list={['reel', className]}>
+  <video
+    src={src}
+    poster={poster}
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    aria-label={label}></video>
+</div>
+
+<style>
+  .reel {
+    width: min(100%, 380px);
+    margin-inline: auto;
+    aspect-ratio: 9 / 16;
+    border-radius: var(--radius-image);
+    overflow: hidden;
+    background: rgba(17, 17, 17, 0.06);
+  }
+
+  .reel video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+</style>

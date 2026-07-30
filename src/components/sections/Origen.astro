@@ -1,87 +1,228 @@
 ---
 import Media from '../Media.astro';
+import ScrollCue from '../ScrollCue.astro';
+
+/**
+ * La foto queda fija y el contenido pasa por encima en los dos sentidos:
+ * el bloque azul de Modo Tiburón la descubre al subir (por eso el
+ * margin-top negativo) y el copy + la galería vuelven a taparla.
+ */
+/** Orden según el nombre de archivo entregado por el cliente (primera…sexta). */
+const galeria = [
+  {
+    id: 'konsta-isotipo',
+    src: '/assets/konsta-isotipo.jpg',
+    alt: 'Isotipo de Konsta: aleta de tiburón en azul océano',
+    isotipo: true,
+  },
+  {
+    id: 'konsta-origen-2',
+    src: '/assets/konsta-origen-2.jpg',
+    alt: 'Dos niños con medallas sobre el podio de una competencia',
+  },
+  {
+    id: 'konsta-origen-3',
+    src: '/assets/konsta-origen-3.jpg',
+    alt: 'Dos nadadores entrenando con monoaleta y tabla en la piscina',
+  },
+  {
+    id: 'konsta-origen-4',
+    src: '/assets/konsta-origen-4.jpg',
+    alt: 'Konsta con cuatro medallas de competencia junto a la piscina de noche',
+  },
+  {
+    id: 'konsta-origen-5',
+    src: '/assets/konsta-origen-5.jpg',
+    alt: 'Konsta apoyado en el borde de la piscina junto a la tabla y la monoaleta',
+  },
+  {
+    id: 'konsta-origen-6',
+    src: '/assets/konsta-origen-6.jpg',
+    alt: 'Konsta ajustando la monoaleta sentado en el borde de la piscina',
+  },
+];
 ---
 
-<section id="origen" class="origen two-col">
-  <div>
-    <span class="eyebrow origen__eyebrow" data-reveal style="--reveal-y:20px;--reveal-dur:.8s">
-      03 — El origen
-    </span>
+<div id="origen" class="origen">
+  <div class="origen__visual">
+    <img
+      src="/assets/konsta-origen.jpg"
+      alt="Konsta sonriendo junto a la piscina"
+      width="1920"
+      height="1080"
+      fetchpriority="high"
+    />
+    <ScrollCue />
+  </div>
+
+  <section class="origen__copy">
     <h2 class="display origen__title" data-reveal style="--reveal-delay:.06s">
-      UN CAMINO FORJADO EN LA UNIÓN Y LA RESILIENCIA
+      UN CAMINO FORJADO EN LA <span class="origen__accent">UNIÓN</span> Y LA
+      <span class="origen__accent">RESILIENCIA</span>
     </h2>
-    <p class="body-copy" data-reveal style="--reveal-delay:.14s">
+    <p class="body-copy origen__lead" data-reveal style="--reveal-delay:.14s">
       Detrás de cada marca en el cronómetro, de cada salto y de cada medalla, hay una historia que no
       se ve en las piscinas. El camino de Konsta no ha sido una línea recta; se ha construido
       adaptándose a nuevos entornos, viviendo el deporte con una mentalidad global y entendiendo que
       el éxito real es el resultado de un esfuerzo compartido.
     </p>
-  </div>
+  </section>
 
-  <div class="origen__collage">
-    <div class="origen__tall" data-parallax="-0.07">
-      <Media id="konsta-origen-1" caption="Foto actual del atleta" aspect="4 / 5.4" clipDuration="1.2s" />
-    </div>
-    <div class="origen__circle" data-parallax="0.06">
-      <Media
-        id="konsta-origen-2"
-        caption="Infancia"
-        aspect="1 / 1"
-        radius="999px"
-        clipDelay=".12s"
-        clipDuration="1.2s"
-      />
-    </div>
-    <div class="origen__wide" data-parallax="0.1">
-      <Media
-        id="konsta-origen-3"
-        caption="Entrenamiento"
-        aspect="4 / 3.2"
-        radius="22px"
-        clipDelay=".22s"
-        clipDuration="1.2s"
-      />
-    </div>
+  <div class="origen__grid">
+    {
+      galeria.map((foto, i) => (
+        <Media
+          class={foto.isotipo ? 'origen__isotipo' : undefined}
+          id={foto.id}
+          src={foto.src}
+          alt={foto.alt}
+          caption={foto.alt}
+          aspect="3 / 4"
+          mono={false}
+          fit={foto.isotipo ? 'contain' : 'cover'}
+          clipDelay={`${(i % 3) * 0.1}s`}
+          clipDuration="1.1s"
+        />
+      ))
+    }
   </div>
-</section>
+</div>
 
 <style>
   .origen {
+    position: relative;
+    /* La foto abre la página a pantalla completa, por detrás del header. */
+    margin-top: calc(-1 * var(--header-h, 71px));
+  }
+
+  /* Queda fija mientras el copy y la galería pasan por encima. */
+  .origen__visual {
+    position: sticky;
+    top: 0;
+    z-index: 0;
+    height: 100vh;
+    height: 100svh;
+    overflow: hidden;
+  }
+
+  .origen__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* El atleta está a la derecha del encuadre: en vertical hay que
+       desplazar el recorte o queda fuera de cuadro. */
+    object-position: 72% center;
+    display: block;
+  }
+
+  /* En horizontal cabe el encuadre completo: piscina a la izquierda, atleta a la derecha. */
+  @media (min-width: 900px) {
+    .origen__visual img {
+      object-position: center;
+    }
+  }
+
+  /* Copy y galería viajan juntos por encima de la foto. */
+  .origen__copy,
+  .origen__grid {
+    position: relative;
+    z-index: 1;
+    background: var(--color-white);
+  }
+
+  .origen__copy {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: clamp(40px, 7vh, 90px) var(--gutter) clamp(70px, 11vh, 140px);
+    text-align: center;
+    padding: clamp(52px, 9vh, 104px) var(--gutter) clamp(28px, 4vh, 46px);
   }
 
-  .origen__eyebrow {
-    margin-bottom: 18px;
-  }
-
+  /* Misma escala que el titular del hero. */
   .origen__title {
-    font-size: clamp(38px, 4.6vw, 78px);
-    line-height: 0.93;
+    font-size: clamp(30px, 9.8vw, 120px);
+    line-height: 0.87;
     margin: 0 0 26px;
+    text-wrap: balance;
   }
 
-  .origen__collage {
+  .origen__accent {
+    color: var(--color-blue);
+  }
+
+  /* Mismos valores que la descripción del hero: cuerpo y ancho. */
+  .origen__lead {
+    font-size: clamp(16px, 3.27vw, 40px);
+    line-height: 1.4;
+    /* Tope: la línea más larga del titular, medida en vivo por el script.
+       El valor de reserva cubre el caso sin JS. */
+    max-width: var(--ancho-titulo, min(80vw, 983px));
+  }
+
+  /* Seis verticales 3:4 en tres columnas por dos filas, a todo ancho.
+     En móvil el gap se cierra para que las fotos no queden diminutas. */
+  .origen__grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto auto;
-    gap: clamp(14px, 1.8vw, 26px);
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(6px, 1.4vw, 24px);
+    padding: 0 var(--gutter) clamp(70px, 11vh, 140px);
   }
 
-  .origen__tall {
-    grid-column: 1 / 2;
-    grid-row: 1 / 3;
-    align-self: center;
-  }
-
-  .origen__circle {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-    margin-top: clamp(0px, 4vw, 54px);
-  }
-
-  .origen__wide {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
+  /* El isotipo es cuadrado y trae márgenes blancos propios: al ajustarlo por
+     alto, la marca queda centrada y grande y solo se recorta ese blanco. */
+  .origen__grid :global(.origen__isotipo img) {
+    object-fit: cover;
+    object-position: center;
   }
 </style>
+
+<script>
+  /**
+   * El titular pasa de dos renglones a uno según el ancho de pantalla, así que
+   * ninguna fórmula fija sirve: medimos su línea más larga y con eso topamos
+   * el ancho del párrafo.
+   */
+  const titulo = document.querySelector<HTMLElement>('.origen__title');
+  const copy = document.querySelector<HTMLElement>('.origen__copy');
+
+  if (titulo && copy) {
+    const medir = () => {
+      const rango = document.createRange();
+      rango.selectNodeContents(titulo);
+
+      // getClientRects() devuelve un rectángulo por fragmento (las palabras en
+      // azul son <span>), no por renglón: hay que agruparlos por su posición
+      // vertical para reconstruir el ancho real de cada línea.
+      const lineas = new Map<number, { izq: number; der: number }>();
+      for (const r of rango.getClientRects()) {
+        if (r.width < 1) continue;
+        const clave = Math.round(r.top);
+        const linea = lineas.get(clave);
+        if (linea) {
+          linea.izq = Math.min(linea.izq, r.left);
+          linea.der = Math.max(linea.der, r.right);
+        } else {
+          lineas.set(clave, { izq: r.left, der: r.right });
+        }
+      }
+
+      const anchos = Array.from(lineas.values(), (l) => l.der - l.izq);
+      if (!anchos.length) return;
+      copy.style.setProperty('--ancho-titulo', `${Math.round(Math.max(...anchos))}px`);
+    };
+
+    let raf: number | null = null;
+    const alRedimensionar = () => {
+      if (raf !== null) return;
+      raf = requestAnimationFrame(() => {
+        raf = null;
+        medir();
+      });
+    };
+
+    medir();
+    // Las webfonts cambian el ancho del titular al cargar.
+    document.fonts?.ready.then(medir);
+    window.addEventListener('resize', alRedimensionar, { passive: true });
+  }
+</script>
