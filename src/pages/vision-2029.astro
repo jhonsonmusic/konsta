@@ -1,11 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Vision from '../components/sections/Vision.astro';
+import { textos } from '../i18n/ui';
+
+const meta = textos['es'].meta.vision;
 ---
 
-<Layout
-  title="Visión 2029 — Konsta"
-  description="El horizonte: The World Games 2029 en Karlsruhe, Alemania. La ruta de Konsta hasta el escenario mundial de la monoaleta."
->
+<Layout title={meta.title} description={meta.description}>
   <Vision />
 </Layout>

@@ -1,5 +1,8 @@
 ---
 import Media from '../Media.astro';
+import { idiomaDeUrl, t as tr } from '../../i18n/ui';
+
+const txt = tr(idiomaDeUrl(Astro.url));
 ---
 
 <section id="familia" class="familia two-col">
@@ -7,8 +10,8 @@ import Media from '../Media.astro';
     <Media
       id="konsta-familia"
       src="/assets/konsta-familia.jpg"
-      alt="Konsta de niño junto a sus padres, sonriendo al aire libre"
-      caption="Imagen familiar — protagonista emocional"
+      alt={txt.familia.fotoAlt}
+      caption={txt.familia.fotoAlt}
       aspect="5 / 4"
       radius="28px 28px 28px 160px"
       mono={false}
@@ -18,19 +21,14 @@ import Media from '../Media.astro';
 
   <div>
     <h2 class="display familia__title" data-reveal style="--reveal-delay:.06s">
-      LA <span class="familia__accent">FAMILIA</span> COMO EL
-      <span class="familia__accent">MOTOR</span><br />DEL ALTO RENDIMIENTO
+      {txt.familia.titulo1} <span class="familia__accent">{txt.familia.acento1}</span> {txt.familia.titulo2}
+      <span class="familia__accent">{txt.familia.acento2}</span><br />{txt.familia.titulo3}
     </h2>
     <p class="body-copy familia__p" data-reveal style="--reveal-delay:.14s">
-      En este proyecto no compite una sola persona. El verdadero núcleo de esta historia es un equipo
-      incondicional: una familia que ha sabido estructurar los sueños de su hijo con disciplina,
-      honestidad y un propósito humano inquebrantable.
+      {txt.familia.parrafo1}
     </p>
     <p class="body-copy familia__p" data-reveal style="--reveal-delay:.2s">
-      Para las marcas y aliados estratégicos que buscan asociarse con valores reales, el Proyecto
-      Konsta representa transparencia, confianza institucional y un compromiso genuino con la
-      excelencia. Aquí no solo apoyas a un deportista; respaldas un proyecto de vida íntegro que
-      transforma el talento en un legado.
+      {txt.familia.parrafo2}
     </p>
   </div>
 </section>

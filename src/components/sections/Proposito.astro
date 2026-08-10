@@ -1,33 +1,32 @@
 ---
+import { idiomaDeUrl, t as tr } from '../../i18n/ui';
+
 /** Apertura de Ecosistema: titular y palabras de Konsta, centrados como el hero. */
+const txt = tr(idiomaDeUrl(Astro.url));
 ---
 
 <section id="proyecto" class="proposito">
   <h1 class="display proposito__titulo" data-reveal style="--reveal-y:28px;--reveal-dur:1s">
-    MÁS ALLÁ DE MI ONDULACIÓN: IMPULSANDO EL <span class="proposito__acento">FUTURO</span> DE LA
-    MONOALETA EN <span class="proposito__acento">COLOMBIA</span>
+    {txt.ecosistema.titulo1} <span class="proposito__acento">{txt.ecosistema.acento1}</span>
+    {txt.ecosistema.titulo2} <span class="proposito__acento">{txt.ecosistema.acento2}</span>
   </h1>
 
   <div class="proposito__copy">
     <p data-reveal style="--reveal-y:26px;--reveal-delay:.1s">
-      El talento en Colombia es inmenso, pero el deporte de élite es una carrera de resistencia
-      financiera tanto como física. Al crecer en esta modalidad, he entendido que la excelencia no
-      puede ser un camino solitario.
+      {txt.ecosistema.parrafo1}
     </p>
     <p data-reveal style="--reveal-y:26px;--reveal-delay:.16s">
-      Mi propósito no es solo llegar al podio; es abrir la puerta para que otros también lo hagan.
-      Estamos creando un movimiento para apoyar a compañeros con alto potencial, porque la monoaleta
-      es un deporte donde el éxito de uno eleva el nivel de todos.
+      {txt.ecosistema.parrafo2}
     </p>
     <p data-reveal style="--reveal-y:26px;--reveal-delay:.22s">
-      Las grandes marcas tienen el poder de transformar el deporte. Buscamos aliados visionarios que
-      elijan apostar por el talento, respaldar el esfuerzo y convertirse en parte activa del
-      desarrollo de la próxima generación de campeones mundiales colombianos.
-    </p>
-    <p class="display proposito__cierre" data-reveal style="--reveal-y:26px;--reveal-delay:.28s">
-      NO ES SOLO PATROCINIO;<br />ES CONSTRUIR LEGADOS JUNTOS.
+      {txt.ecosistema.parrafo3}
     </p>
   </div>
+
+  <p class="display proposito__cierre" data-reveal style="--reveal-y:26px;--reveal-delay:.28s">
+    {txt.ecosistema.cierre1} <span class="proposito__acento">{txt.ecosistema.cierreAcento1}</span
+    >{txt.ecosistema.cierre2} <span class="proposito__acento">{txt.ecosistema.cierreAcento2}</span>.
+  </p>
 </section>
 
 <style>
@@ -85,12 +84,24 @@
     text-wrap: pretty;
   }
 
+  /* Misma escala que el titular de Modo Tiburón. Fuera del bloque de copy
+     para que ese ancho no lo parta en dos renglones. */
   .proposito__cierre {
-    font-size: clamp(24px, 2.4vw, 40px);
-    line-height: 1.05;
+    font-size: clamp(40px, 4.8vw, 78px);
+    line-height: 0.93;
     letter-spacing: 0.015em;
     color: var(--color-ink);
     font-weight: 400;
-    margin-top: clamp(8px, 2vh, 20px);
+    margin: clamp(20px, 3.5vh, 34px) 0 0;
+    text-wrap: balance;
+  }
+
+  /* A 40px la frase ocupa tres renglones y el bloque deja de caber en una
+     pantalla, que es lo que necesita la capa anclada. */
+  @media (max-width: 700px) {
+    .proposito__cierre {
+      font-size: clamp(22px, 6.4vw, 32px);
+      margin-top: 18px;
+    }
   }
 </style>

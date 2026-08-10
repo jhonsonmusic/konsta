@@ -1,6 +1,9 @@
 ---
 import Media from '../Media.astro';
 import ScrollCue from '../ScrollCue.astro';
+import { idiomaDeUrl, t as tr } from '../../i18n/ui';
+
+const txt = tr(idiomaDeUrl(Astro.url));
 
 /**
  * La foto queda fija y el contenido pasa por encima en los dos sentidos:
@@ -9,37 +12,12 @@ import ScrollCue from '../ScrollCue.astro';
  */
 /** Orden según el nombre de archivo entregado por el cliente (primera…sexta). */
 const galeria = [
-  {
-    id: 'konsta-isotipo',
-    src: '/assets/konsta-isotipo.jpg',
-    alt: 'Isotipo de Konsta: aleta de tiburón en azul océano',
-    isotipo: true,
-  },
-  {
-    id: 'konsta-origen-2',
-    src: '/assets/konsta-origen-2.jpg',
-    alt: 'Dos niños con medallas sobre el podio de una competencia',
-  },
-  {
-    id: 'konsta-origen-3',
-    src: '/assets/konsta-origen-3.jpg',
-    alt: 'Dos nadadores entrenando con monoaleta y tabla en la piscina',
-  },
-  {
-    id: 'konsta-origen-4',
-    src: '/assets/konsta-origen-4.jpg',
-    alt: 'Konsta con cuatro medallas de competencia junto a la piscina de noche',
-  },
-  {
-    id: 'konsta-origen-5',
-    src: '/assets/konsta-origen-5.jpg',
-    alt: 'Konsta apoyado en el borde de la piscina junto a la tabla y la monoaleta',
-  },
-  {
-    id: 'konsta-origen-6',
-    src: '/assets/konsta-origen-6.jpg',
-    alt: 'Konsta ajustando la monoaleta sentado en el borde de la piscina',
-  },
+  { id: 'konsta-isotipo', src: '/assets/konsta-isotipo.jpg', isotipo: true },
+  { id: 'konsta-origen-2', src: '/assets/konsta-origen-2.jpg' },
+  { id: 'konsta-origen-3', src: '/assets/konsta-origen-3.jpg' },
+  { id: 'konsta-origen-4', src: '/assets/konsta-origen-4.jpg' },
+  { id: 'konsta-origen-5', src: '/assets/konsta-origen-5.jpg' },
+  { id: 'konsta-origen-6', src: '/assets/konsta-origen-6.jpg' },
 ];
 ---
 
@@ -47,7 +25,7 @@ const galeria = [
   <div class="origen__visual">
     <img
       src="/assets/konsta-origen.jpg"
-      alt="Konsta sonriendo junto a la piscina"
+      alt={txt.origen.fotoAlt}
       width="1920"
       height="1080"
       fetchpriority="high"
@@ -57,14 +35,11 @@ const galeria = [
 
   <section class="origen__copy">
     <h2 class="display origen__title" data-reveal style="--reveal-delay:.06s">
-      UN CAMINO FORJADO EN LA <span class="origen__accent">UNIÓN</span> Y LA
-      <span class="origen__accent">RESILIENCIA</span>
+      {txt.origen.titulo1} <span class="origen__accent">{txt.origen.acento1}</span> {txt.origen.titulo2}
+      <span class="origen__accent">{txt.origen.acento2}</span>
     </h2>
     <p class="body-copy origen__lead" data-reveal style="--reveal-delay:.14s">
-      Detrás de cada marca en el cronómetro, de cada salto y de cada medalla, hay una historia que no
-      se ve en las piscinas. El camino de Konsta no ha sido una línea recta; se ha construido
-      adaptándose a nuevos entornos, viviendo el deporte con una mentalidad global y entendiendo que
-      el éxito real es el resultado de un esfuerzo compartido.
+      {txt.origen.lead}
     </p>
   </section>
 
@@ -75,8 +50,8 @@ const galeria = [
           class={foto.isotipo ? 'origen__isotipo' : undefined}
           id={foto.id}
           src={foto.src}
-          alt={foto.alt}
-          caption={foto.alt}
+          alt={txt.origen.galeria[i]}
+          caption={txt.origen.galeria[i]}
           aspect="3 / 4"
           mono={false}
           fit={foto.isotipo ? 'contain' : 'cover'}
@@ -138,10 +113,10 @@ const galeria = [
     padding: clamp(52px, 9vh, 104px) var(--gutter) clamp(28px, 4vh, 46px);
   }
 
-  /* Misma escala que el titular del hero. */
+  /* Misma escala que el titular de Modo Tiburón. */
   .origen__title {
-    font-size: clamp(30px, 9.8vw, 120px);
-    line-height: 0.87;
+    font-size: clamp(40px, 4.8vw, 78px);
+    line-height: 0.93;
     margin: 0 0 26px;
     text-wrap: balance;
   }
@@ -150,9 +125,10 @@ const galeria = [
     color: var(--color-blue);
   }
 
-  /* Mismos valores que la descripción del hero: cuerpo y ancho. */
   .origen__lead {
-    font-size: clamp(16px, 3.27vw, 40px);
+    /* Mismo cuerpo que la descripción de Modo Tiburón, con el interlineado
+       un punto más cerrado. */
+    font-size: clamp(22px, 1.9vw, 27px);
     line-height: 1.4;
     /* Tope: la línea más larga del titular, medida en vivo por el script.
        El valor de reserva cubre el caso sin JS. */

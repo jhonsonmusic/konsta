@@ -1,11 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Aliados from '../components/sections/Aliados.astro';
+import Contacto from '../components/sections/Contacto.astro';
+import { textos } from '../i18n/ui';
+
+const meta = textos['es'].meta.aliado;
 ---
 
-<Layout
-  title="Ser aliado — Konsta"
-  description="Alianzas de marca con el Proyecto Konsta: brochure técnico de patrocinio y canal directo con el equipo de gestión."
->
+<Layout title={meta.title} description={meta.description}>
   <Aliados />
+  <Contacto />
 </Layout>

@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Proposito from '../../components/sections/Proposito.astro';
+import Manifiesto from '../../components/sections/Manifiesto.astro';
+import ManifiestoCompromiso from '../../components/sections/ManifiestoCompromiso.astro';
+import { textos } from '../../i18n/ui';
+
+const meta = textos['en'].meta.ecosistema;
+---
+
+<Layout title={meta.title} description={meta.description}>
+  {/* Cada capa queda fija y la siguiente sube por encima, como las fotos del inicio. */}
+  <div class="capas">
+    <div class="capa capa--1"><Proposito /></div>
+    <div class="respiro"></div>
+    <div class="capa capa--2"><Manifiesto /></div>
+    <div class="respiro"></div>
+    <div class="capa capa--3"><ManifiestoCompromiso /></div>
+  </div>
+</Layout>
+
+<style>
+  .capas {
+    position: relative;
+  }
+
+  /* Quedan fijas arriba mientras la capa siguiente sube por encima. */
+  .capa--1,
+  .capa--2 {
+    position: sticky;
+    top: 0;
+    max-height: 100vh;
+    max-height: 100svh;
+    overflow: hidden;
+  }
+
+  .capa--1 {
+    z-index: 0;
+  }
+
+  .capa--2 {
+    z-index: 1;
+  }
+
+  .capa--3 {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Tramo transparente: deja la capa anclada a la vista un rato antes de
+     que la siguiente empiece a taparla. */
+  .respiro {
+    height: 55vh;
+    height: 55svh;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .capa--1,
+    .capa--2 {
+      position: relative;
+    }
+
+    .respiro {
+      display: none;
+    }
+  }
+</style>

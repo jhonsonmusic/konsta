@@ -1,5 +1,7 @@
 ---
-const text = 'MODO TIBURÓN · DISCIPLINA IMPLACABLE · MODO TIBURÓN · SIN ATAJOS ·';
+import { idiomaDeUrl, t } from '../i18n/ui';
+
+const text = t(idiomaDeUrl(Astro.url)).hero.marquee;
 ---
 
 <div class="marquee" aria-hidden="true">

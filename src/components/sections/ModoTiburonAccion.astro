@@ -1,6 +1,9 @@
 ---
 import ScrollCue from '../ScrollCue.astro';
 import { social } from '../../data/site';
+import { idiomaDeUrl, t as tr } from '../../i18n/ui';
+
+const txt = tr(idiomaDeUrl(Astro.url));
 
 /**
  * Mismo mecanismo que el slider del inicio, pero con video: queda fijo a
@@ -10,14 +13,10 @@ import { social } from '../../data/site';
 
 <section class="accion">
   <h1 class="display accion__titulo" data-reveal style="--reveal-y:28px;--reveal-dur:1s">
-    MODO TIBURÓN <span class="accion__acento">EN ACCIÓN</span>
+    {txt.accion.titulo} <span class="accion__acento">{txt.accion.acento}</span>
   </h1>
   <p class="accion__copy" data-reveal style="--reveal-y:26px;--reveal-delay:.12s">
-    Cuando el despertador suena a las 4:00 a.m., la mente intenta negociar. Pero la disciplina es
-    inquebrantable. El agua fría no es un obstáculo, es el campo de entrenamiento donde se forja la
-    resistencia. No compito contra otros nadadores; <strong>COMPITO</strong> contra mi mejor versión
-    de ayer. Cuando el cuerpo dice basta, mi mente responde: «Si lo hice antes, puedo hacerlo ahora».
-    La medalla es solo el resultado inevitable de la constancia.
+    {txt.accion.copy1} <strong>{txt.accion.copyFuerte}</strong> {txt.accion.copy2}
   </p>
 </section>
 
@@ -30,21 +29,19 @@ import { social } from '../../data/site';
       loop
       playsinline
       preload="metadata"
-      aria-label="Konsta entrenando la ondulación bajo el agua"></video>
+      aria-label={txt.accion.videoAlt}></video>
     <ScrollCue />
   </div>
 
   <section class="manada">
     <h2 class="display manada__titulo" data-reveal style="--reveal-y:28px;--reveal-dur:1s">
-      ÚNETE A LA MANADA: VIVE EL <span class="accion__acento">#MODOTIBURÓN</span>
+      {txt.accion.manadaTitulo} <span class="accion__acento">{txt.accion.manadaAcento}</span>
     </h2>
     <p class="manada__copy" data-reveal style="--reveal-y:26px;--reveal-delay:.12s">
-      El rendimiento de élite no se detiene cuando salimos de la piscina. Cada entrenamiento, cada
-      análisis estratégico y cada paso hacia el objetivo mundial se comparte en tiempo real.
+      {txt.accion.manada1}
     </p>
     <p class="manada__copy" data-reveal style="--reveal-y:26px;--reveal-delay:.18s">
-      No te pierdas el detrás de escena de este viaje. Sígueme en Instagram y sé parte de mi día a
-      día como un atleta que no conoce los límites.
+      {txt.accion.manada2}
     </p>
     <a
       href={social.instagram}
@@ -59,7 +56,7 @@ import { social } from '../../data/site';
         <circle cx="12" cy="12" r="4"></circle>
         <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"></circle>
       </svg>
-      Seguir en Instagram: @konstadeportista
+      {txt.accion.manadaCta}
     </a>
   </section>
 </div>

@@ -1,34 +1,48 @@
 ---
 import SocialLinks from './SocialLinks.astro';
-import { site, nav, links } from '../data/site';
+import { idiomaDeUrl, ruta, t } from '../i18n/ui';
 
+const idioma = idiomaDeUrl(Astro.url);
+const txt = t(idioma);
 const actual = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const enlaces = [
+  { href: ruta(idioma, '/'), label: txt.nav.inicio },
+  { href: ruta(idioma, '/origen'), label: txt.nav.origen },
+  { href: ruta(idioma, '/modo-tiburon'), label: txt.nav.tiburon },
+  { href: ruta(idioma, '/ecosistema'), label: txt.nav.ecosistema },
+  { href: ruta(idioma, '/coleccion-legado'), label: txt.nav.legado },
+  { href: ruta(idioma, '/vision-2029'), label: txt.nav.vision },
+  { href: ruta(idioma, '/ser-aliado'), label: txt.nav.aliado },
+];
+
+const esActual = (href: string) => actual === href.replace(/\/$/, '');
 ---
 
 <footer class="footer">
   <div class="footer__top">
-    <a href="/" class="footer__logo" aria-label="Konsta — inicio">
+    <a href={ruta(idioma, '/')} class="footer__logo" aria-label={txt.nav.inicioAria}>
       <img src="/assets/konsta-logo.png" alt="Konsta" width="68" height="32" />
     </a>
 
-    <nav class="footer__nav" aria-label="Secundaria">
+    <nav class="footer__nav" aria-label={txt.nav.secundaria}>
       {
-        nav.map((l) => (
-          <a href={l.href} aria-current={actual === l.href ? 'page' : undefined}>
+        enlaces.map((l) => (
+          <a href={l.href} aria-current={esActual(l.href) ? 'page' : undefined}>
             {l.label}
           </a>
         ))
       }
-      <a href={links.aliados} aria-current={actual === links.aliados ? 'page' : undefined}>
-        Ser aliado
-      </a>
     </nav>
   </div>
 
   <div class="footer__meta">
-    <span>{site.domain} · Monoaleta</span>
+    <span>{txt.comun.dominio}</span>
     <SocialLinks size={19} gap={18} class="footer__social" />
-    <span>© 2026</span>
+    <span class="footer__credito">
+      © 2026 · {txt.comun.credito}
+      <a href="https://conex1onpsh.com" target="_blank" rel="noopener">Conex1on PSH</a>
+    </span>
   </div>
 </footer>
 
@@ -47,6 +61,16 @@ const actual = Astro.url.pathname.replace(/\/$/, '') || '/';
     gap: clamp(20px, 3vw, 40px);
   }
 
+  .footer__credito a {
+    color: inherit;
+    border-bottom: 1px solid var(--hairline);
+    transition: color 0.25s var(--ease-out);
+  }
+
+  .footer__credito a:hover {
+    color: var(--color-blue);
+  }
+
   .footer__logo img {
     height: 32px;
     width: auto;
@@ -56,7 +80,6 @@ const actual = Astro.url.pathname.replace(/\/$/, '') || '/';
   .footer__nav {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     gap: clamp(12px, 1.5vw, 22px);
     font-size: clamp(13px, 1.05vw, 15px);
     letter-spacing: 0.08em;
@@ -75,8 +98,8 @@ const actual = Astro.url.pathname.replace(/\/$/, '') || '/';
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 16px;
-    margin-top: clamp(26px, 4vh, 44px);
-    padding-top: 20px;
+    margin-top: 26px;
+    padding-top: 22px;
     border-top: 1px solid var(--hairline);
     font-size: 10.5px;
     letter-spacing: 0.18em;

@@ -1,11 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Legado from '../components/sections/Legado.astro';
+import { textos } from '../i18n/ui';
+
+const meta = textos['es'].meta.legado;
 ---
 
-<Layout
-  title="Colección Legado — Konsta"
-  description="Colección Legado: piezas de edición limitada que financian a atletas de monoaleta con alto potencial y recursos limitados."
->
+<Layout title={meta.title} description={meta.description}>
   <Legado />
 </Layout>

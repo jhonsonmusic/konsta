@@ -1,0 +1,114 @@
+---
+/**
+ * Formulario de contacto para marcas, incrustado desde Tally.
+ * El script de Tally ajusta el alto del iframe al del formulario.
+ */
+import { idiomaDeUrl, t as tr } from '../../i18n/ui';
+
+const txt = tr(idiomaDeUrl(Astro.url));
+const tally =
+  'https://tally.so/embed/Zjk8xv?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1';
+---
+
+<section id="contacto" class="contacto section--rule">
+  <figure class="contacto__foto" data-parallax="0.03">
+    <img
+      src="/assets/seraliado/3.jpg"
+      alt={txt.aliados.foto3Alt}
+      width="900"
+      height="1200"
+      loading="lazy"
+    />
+  </figure>
+
+  <div class="contacto__form">
+    <h2 class="display contacto__titulo" data-reveal style="--reveal-y:24px;--reveal-dur:.9s">
+      {txt.aliados.formTitulo} <span class="contacto__acento">{txt.aliados.formAcento}</span>
+    </h2>
+    <p class="contacto__copy" data-reveal style="--reveal-y:24px;--reveal-delay:.08s">
+      {txt.aliados.formCopy}
+    </p>
+
+    <div class="contacto__embed">
+      <iframe
+        data-tally-src={tally}
+        src={tally}
+        loading="lazy"
+        width="100%"
+        height="600"
+        title={txt.aliados.formAria}></iframe>
+    </div>
+  </div>
+</section>
+
+<script is:inline async src="https://tally.so/widgets/embed.js"></script>
+
+<style>
+  .contacto {
+    display: grid;
+    grid-template-columns: minmax(min(100%, 240px), 0.9fr) minmax(min(100%, 320px), 1.6fr);
+    gap: clamp(28px, 5vw, 80px);
+    align-items: start;
+    padding: clamp(60px, 10vh, 130px) var(--gutter);
+  }
+
+  .contacto__foto {
+    width: min(100%, 400px);
+    margin: 0 auto;
+  }
+
+  .contacto__foto img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--radius-image);
+  }
+
+  .contacto__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* En pantallas muy anchas el formulario se estiraba y los campos quedaban
+       perdidos en una fila enorme. */
+    max-width: 680px;
+  }
+
+  .contacto__titulo {
+    font-size: clamp(40px, 4.8vw, 78px);
+    line-height: 0.93;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .contacto__acento {
+    color: var(--color-blue);
+  }
+
+  .contacto__copy {
+    font-size: clamp(22px, 1.9vw, 27px);
+    line-height: 1.55;
+    font-weight: 300;
+    color: var(--color-body);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  .contacto__embed iframe {
+    width: 100%;
+    border: 0;
+    display: block;
+  }
+
+  @media (max-width: 760px) {
+    .contacto {
+      grid-template-columns: 1fr;
+    }
+
+    /* La foto baja: primero el formulario, que es lo que se viene a hacer. */
+    .contacto__foto {
+      order: 2;
+    }
+  }
+</style>

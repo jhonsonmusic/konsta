@@ -1,8 +1,11 @@
 ---
+import { idiomaDeUrl, t } from '../i18n/ui';
+
 /** Botón flotante para volver al inicio. Aparece tras pasar la primera pantalla. */
+const txt = t(idiomaDeUrl(Astro.url));
 ---
 
-<a href="#hero" class="to-top" aria-label="Volver arriba" data-to-top>
+<a href="#hero" class="to-top" aria-label={txt.comun.volverArriba} data-to-top>
   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
     <path d="M12 19V5m0 0l-6 6m6-6l6 6"></path>
   </svg>
@@ -12,7 +15,8 @@
   .to-top {
     position: fixed;
     right: clamp(16px, 3vw, 32px);
-    bottom: clamp(16px, 3vw, 32px);
+    /* Encima del botón de WhatsApp, que ocupa la esquina. */
+    bottom: calc(clamp(16px, 3vw, 32px) + 66px);
     /* Por debajo del overlay del menú móvil (z-index 60). */
     z-index: 40;
     display: flex;

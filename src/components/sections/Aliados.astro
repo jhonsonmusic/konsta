@@ -1,60 +1,51 @@
 ---
-import Media from '../Media.astro';
-import PlayBadge from '../PlayBadge.astro';
-import { links } from '../../data/site';
+import { enlaceWhatsapp, links } from '../../data/site';
+import { idiomaDeUrl, t as tr } from '../../i18n/ui';
 
-/**
- * Dos bloques con los reels cruzados: en el primero el video va a la derecha
- * y en el segundo a la izquierda.
- * TODO cliente: faltan los dos archivos de los reels (formato vertical 9:16).
- */
+const txt = tr(idiomaDeUrl(Astro.url));
+
+/** Dos bloques con las fotos cruzadas y, al final, el formulario de contacto. */
 ---
 
 <section id="aliados" class="aliados section section--rule">
   <div class="bloque">
     <div class="bloque__texto">
       <h1 class="display aliados__titulo" data-reveal style="--reveal-y:28px;--reveal-dur:1s">
-        SER PARTE DE KONSTA ES <span class="aliados__acento">REDEFINIR LOS LÍMITES</span>
+        {txt.aliados.titulo} <span class="aliados__acento">{txt.aliados.acento}</span>
       </h1>
       <p class="aliados__copy" data-reveal style="--reveal-y:24px;--reveal-delay:.08s">
-        Al asociarte con este proyecto, tu marca no aparece únicamente en un uniforme de alta
-        competición; entra a formar parte de un ecosistema donde el liderazgo, la gestión y el
-        impacto social se unen. Konsta es el embajador de una disciplina en pleno crecimiento, un
-        gestor que moviliza, inspira y lidera a la próxima generación de campeones mundiales
-        colombianos.
+        {txt.aliados.copy}
       </p>
       <span class="display aliados__firma" data-reveal style="--reveal-y:20px;--reveal-delay:.14s">
-        DETERMINACIÓN IMPARABLE.
+        {txt.aliados.firma}
       </span>
     </div>
 
-    <div class="bloque__reel" data-parallax="0.03">
-      <Media
-        id="konsta-reel-1"
-        caption="Reel 1 — pendiente de entrega"
-        aspect="9 / 16"
-        radius="26px"
-      >
-        <PlayBadge size={66} padding={22} />
-      </Media>
-    </div>
+    <figure class="bloque__foto" data-parallax="0.03">
+      <img
+        src="/assets/seraliado/1.jpg"
+        alt={txt.aliados.foto1Alt}
+        width="900"
+        height="1200"
+        loading="lazy"
+      />
+    </figure>
   </div>
 
   <div class="bloque bloque--invertido">
-    <div class="bloque__reel" data-parallax="-0.03">
-      <Media
-        id="konsta-reel-2"
-        caption="Reel 2 — pendiente de entrega"
-        aspect="9 / 16"
-        radius="26px"
-      >
-        <PlayBadge size={66} padding={22} />
-      </Media>
-    </div>
+    <figure class="bloque__foto" data-parallax="-0.03">
+      <img
+        src="/assets/seraliado/2.jpg"
+        alt={txt.aliados.foto2Alt}
+        width="900"
+        height="1200"
+        loading="lazy"
+      />
+    </figure>
 
     <div class="bloque__texto">
       <h2 class="display aliados__pregunta" data-reveal style="--reveal-y:24px">
-        ¿TIENES LA VISIÓN CORPORATIVA PARA CONSTRUIR UN LEGADO QUE TRASCIENDA EL PODIO?
+        {txt.aliados.pregunta}
       </h2>
 
       <a
@@ -64,8 +55,8 @@ import { links } from '../../data/site';
         style="--reveal-y:24px;--reveal-delay:.1s"
       >
         <span class="action__text">
-          <span class="label">Descargar brochure técnico de patrocinio</span>
-          <span class="action__sub">Dossier corporativo y ROI para marcas</span>
+          <span class="label">{txt.aliados.brochureLabel}</span>
+          <span class="action__sub">{txt.aliados.brochureSub}</span>
         </span>
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
           <path d="M12 4v12m0 0l-5-5m5 5l5-5M4 20h16"></path>
@@ -73,14 +64,16 @@ import { links } from '../../data/site';
       </a>
 
       <a
-        href={links.contacto}
+        href={enlaceWhatsapp(txt.comun.whatsappMensaje)}
+        target="_blank"
+        rel="noopener"
         class="action action--blue"
         data-reveal
         style="--reveal-y:24px;--reveal-delay:.16s"
       >
         <span class="action__text">
-          <span class="label">Contactar al equipo de gestión</span>
-          <span class="action__sub action__sub--blue">Canal directo gestionado por CONEX1ON PSH</span>
+          <span class="label">{txt.aliados.contactoLabel}</span>
+          <span class="action__sub action__sub--blue">{txt.aliados.contactoSub}</span>
         </span>
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
           <path d="M5 12h13m0 0l-5-5m5 5l-5 5"></path>
@@ -114,9 +107,18 @@ import { links } from '../../data/site';
     gap: 20px;
   }
 
-  .bloque__reel {
+  .bloque__foto {
     width: min(100%, 400px);
-    margin-inline: auto;
+    margin: 0 auto;
+  }
+
+  .bloque__foto img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--radius-image);
   }
 
   .aliados__titulo {
@@ -161,7 +163,7 @@ import { links } from '../../data/site';
       grid-template-columns: 1fr;
     }
 
-    .bloque--invertido .bloque__reel {
+    .bloque--invertido .bloque__foto {
       order: 2;
     }
   }

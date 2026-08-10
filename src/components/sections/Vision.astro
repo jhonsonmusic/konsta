@@ -1,65 +1,55 @@
 ---
+import { idiomaDeUrl, ruta, t as tr } from '../../i18n/ui';
+
+const idioma = idiomaDeUrl(Astro.url);
+const txt = tr(idioma);
+
 /** TODO cliente: confirmar los hitos 2026–2028 (borrador según el brief). */
 const hitos = [
-  { year: '2026', text: 'Defensa del Ranking #1 departamental.', activo: true },
-  { year: '2027', text: 'Consolidación nacional y récords de la modalidad.', activo: false },
-  { year: '2028', text: 'Circuito internacional y clasificación.', activo: false },
-  {
-    year: '2029',
-    text: 'The World Games · Karlsruhe, Alemania · 19–29 de julio.',
-    activo: true,
-    destacado: true,
-  },
+  { year: '2026', activo: true },
+  { year: '2027', activo: false },
+  { year: '2028', activo: false },
+  { year: '2029', activo: true, destacado: true },
 ];
 
-const carrusel = [
-  { src: '/assets/vision2029/1.jpg', alt: 'Konsta con el traje de competencia y la monoaleta al borde de la piscina' },
-  { src: '/assets/vision2029/2.jpg', alt: 'Konsta en competencia de monoaleta' },
-  { src: '/assets/vision2029/3.jpg', alt: 'Konsta durante una jornada de entrenamiento' },
-  { src: '/assets/vision2029/4.jpg', alt: 'Konsta preparándose antes de una prueba' },
-  { src: '/assets/vision2029/5.jpg', alt: 'Konsta en el agua con la monoaleta' },
-];
+const carrusel = ['1', '2', '3', '4', '5'];
 ---
 
 <section id="vision" class="vision">
   <h1 class="display vision__titulo" data-reveal style="--reveal-y:28px;--reveal-dur:1s">
-    EL HORIZONTE: <span class="vision__acento">THE WORLD GAMES 2029</span>
+    {txt.vision.titulo} <span class="vision__acento">{txt.vision.acento}</span>
   </h1>
 
   <div class="vision__copy">
     <p data-reveal style="--reveal-y:26px;--reveal-delay:.1s">
-      El gran objetivo está marcado en el calendario: The World Games 2029, del 19 al 29 de julio de
-      2029 en Karlsruhe, Alemania. Pero mi visión va mucho más allá de competir; lo que más anhelo es
-      llevar la tricolor a lo más alto, regalarle una alegría inmensa a mi Colombia y demostrarle al
-      planeta entero el nivel y el talento extraordinario que hay en nuestro país.
-    </p>
-    <p data-reveal style="--reveal-y:26px;--reveal-delay:.16s">
-      Para llegar con absoluta solidez a este escenario mundial, cada jornada se enfoca en superar
-      mis propios límites, perfeccionar la técnica y ejecutar una estrategia milimétrica que parte
-      desde la defensa del Ranking #1 departamental hasta la consolidación internacional. No espero
-      que los resultados lleguen por casualidad; los construyo sesión tras sesión, elevando el
-      estándar y rompiendo marcas.
+      {txt.vision.entradilla}
     </p>
   </div>
 
   <div class="carrusel" data-carrusel>
     <div class="carrusel__pista" data-pista>
       {
-        carrusel.map((foto) => (
+        carrusel.map((n, i) => (
           <figure class="carrusel__item">
-            <img src={foto.src} alt={foto.alt} width="900" height="1200" loading="lazy" />
+            <img
+              src={`/assets/vision2029/${n}.jpg`}
+              alt={txt.vision.galeria[i]}
+              width="900"
+              height="1200"
+              loading="lazy"
+            />
           </figure>
         ))
       }
     </div>
 
     <div class="carrusel__controles">
-      <button type="button" class="carrusel__boton" aria-label="Foto anterior" data-anterior>
+      <button type="button" class="carrusel__boton" aria-label={txt.vision.fotoAnterior} data-anterior>
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
           <path d="M15 5l-7 7 7 7"></path>
         </svg>
       </button>
-      <button type="button" class="carrusel__boton" aria-label="Foto siguiente" data-siguiente>
+      <button type="button" class="carrusel__boton" aria-label={txt.vision.fotoSiguiente} data-siguiente>
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
           <path d="M9 5l7 7-7 7"></path>
         </svg>
@@ -67,42 +57,72 @@ const carrusel = [
     </div>
   </div>
 
+  <div class="vision__copy vision__copy--tras-galeria">
+    <p data-reveal style="--reveal-y:26px">
+      {txt.vision.parrafo1}
+    </p>
+    <p data-reveal style="--reveal-y:26px;--reveal-delay:.08s">
+      {txt.vision.parrafo2}
+    </p>
+  </div>
+
   <ol class="timeline" data-reveal style="--reveal-y:24px;--reveal-dur:1s">
     {
-      hitos.map((m) => (
+      hitos.map((m, i) => (
         <li>
           <span class:list={['timeline__punto', { 'timeline__punto--on': m.activo }]} />
           <span class:list={['display', 'timeline__anio', { 'timeline__anio--hl': m.destacado }]}>
             {m.year}
           </span>
-          <span class="timeline__texto">{m.text}</span>
+          <span class="timeline__texto">{txt.vision.hitos[i]}</span>
         </li>
       ))
     }
   </ol>
 
+  <a
+    href={ruta(idioma, '/ser-aliado')}
+    class="pill pill--lg vision__cta"
+    data-reveal
+    style="--reveal-y:24px;--reveal-delay:.1s"
+  >
+    {txt.vision.cta}
+  </a>
+
   <div class="cierre">
     <div class="cierre__texto">
       <p class="display cierre__frase" data-reveal style="--reveal-y:26px">
-        REPRESENTAR A COLOMBIA <span class="vision__acento">ANTE EL MUNDO</span>
+        {txt.vision.cierreFrase} <span class="vision__acento">{txt.vision.cierreAcento}</span>
       </p>
       <p data-reveal style="--reveal-y:26px;--reveal-delay:.08s">
-        El alto rendimiento es un compromiso absoluto con el legado. Estamos construyendo una
-        cultura, una disciplina y un ejemplo imborrable de integridad deportiva a través del trabajo
-        duro y la superación constante, listos para representar con orgullo a Colombia ante el mundo.
+        {txt.vision.cierreParrafo}
       </p>
     </div>
 
     <figure class="cierre__medallas" data-reveal style="--reveal-y:26px;--reveal-delay:.14s">
       <img
         src="/assets/vision2029/medallas.jpg"
-        alt="Medallas de oro, plata y bronce de The World Games"
+        alt={txt.vision.medallasAlt}
         width="1400"
         height="788"
         loading="lazy"
       />
-      <figcaption>El metal que persigue cada madrugada de entrenamiento.</figcaption>
+      <figcaption>{txt.vision.medallasPie}</figcaption>
     </figure>
+  </div>
+
+  <div class="invitacion">
+    <p data-reveal style="--reveal-y:26px">
+      {txt.vision.invitacion}
+    </p>
+    <a
+      href={ruta(idioma, '/ser-aliado')}
+      class="pill pill--lg"
+      data-reveal
+      style="--reveal-y:24px;--reveal-delay:.08s"
+    >
+      {txt.vision.invitacionCta}
+    </a>
   </div>
 </section>
 
@@ -115,9 +135,10 @@ const carrusel = [
     padding: clamp(60px, 10vh, 130px) var(--gutter);
   }
 
+  /* Misma escala que los titulares de Modo Tiburón. */
   .vision__titulo {
-    font-size: clamp(28px, 6.6vw, 88px);
-    line-height: 0.9;
+    font-size: clamp(40px, 4.8vw, 78px);
+    line-height: 0.93;
     margin: 0 0 clamp(22px, 3.4vh, 38px);
     text-wrap: balance;
   }
@@ -131,8 +152,12 @@ const carrusel = [
     flex-direction: column;
     gap: 14px;
     /* Al ancho del titular: escala con el vw igual que él y se detiene
-       cuando su cuerpo topa en 88px. */
-    max-width: min(81vw, 1082px);
+       cuando su cuerpo topa en 78px. */
+    max-width: min(59vw, 958px);
+  }
+
+  .vision__copy--tras-galeria {
+    margin-top: clamp(40px, 7vh, 80px);
   }
 
   .vision__copy p {
@@ -261,6 +286,32 @@ const carrusel = [
     font-weight: 300;
     color: var(--color-body);
     margin-top: 8px;
+  }
+
+  .vision__cta {
+    margin-top: clamp(34px, 6vh, 64px);
+  }
+
+  /* --- invitación final ----------------------------------------------- */
+  .invitacion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(22px, 4vh, 38px);
+    margin-top: clamp(56px, 9vh, 110px);
+    padding-top: clamp(46px, 8vh, 90px);
+    border-top: 1px solid var(--hairline);
+    width: 100%;
+  }
+
+  .invitacion p {
+    max-width: min(86vw, 900px);
+    font-size: clamp(22px, 1.9vw, 27px);
+    line-height: 1.55;
+    font-weight: 300;
+    color: var(--color-body);
+    margin: 0;
+    text-wrap: pretty;
   }
 
   /* --- cierre con las medallas ---------------------------------------- */

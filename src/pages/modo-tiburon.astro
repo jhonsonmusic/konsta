@@ -1,11 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ModoTiburonAccion from '../components/sections/ModoTiburonAccion.astro';
+import { textos } from '../i18n/ui';
+
+const meta = textos['es'].meta.tiburon;
 ---
 
-<Layout
-  title="Modo Tiburón — Konsta"
-  description="Modo Tiburón en acción: 4:00 a.m., agua fría y disciplina inquebrantable. El detrás de escena del entrenamiento de Konsta."
->
+<Layout title={meta.title} description={meta.description}>
   <ModoTiburonAccion />
 </Layout>

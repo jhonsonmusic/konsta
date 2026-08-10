@@ -1,10 +1,12 @@
 ---
+import { idiomaDeUrl, t } from '../i18n/ui';
+
 /** Indicador de scroll para las fotos a pantalla completa. */
 interface Props {
   label?: string;
 }
 
-const { label = 'Continúa bajando' } = Astro.props;
+const { label = t(idiomaDeUrl(Astro.url)).comun.continuaBajando } = Astro.props;
 ---
 
 <div class="cue" aria-hidden="true">

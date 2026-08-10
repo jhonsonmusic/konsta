@@ -24,9 +24,18 @@ export const nav = [
 export const social = {
   instagram: 'https://www.instagram.com/konstadeportista',
   tiktok: 'https://www.tiktok.com/@konstadeportista',
-  /** TODO cliente: falta el canal real de YouTube. */
-  youtube: 'https://youtube.com',
 } as const;
+
+/** WhatsApp del equipo de gestión (Colombia, +57). */
+export const whatsapp = {
+  numero: '573148739193',
+  visible: '+57 314 873 9193',
+} as const;
+
+/** Enlace con mensaje inicial según el idioma. */
+export function enlaceWhatsapp(mensaje: string): string {
+  return `https://wa.me/${whatsapp.numero}?text=${encodeURIComponent(mensaje)}`;
+}
 
 export const links = {
   /** TODO: apuntar al PDF del brochure de patrocinio. */

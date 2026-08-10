@@ -1,22 +1,25 @@
 ---
 import Media from '../Media.astro';
 import SocialLinks from '../SocialLinks.astro';
-import { links } from '../../data/site';
+import { idiomaDeUrl, ruta, t } from '../../i18n/ui';
+
+const idioma = idiomaDeUrl(Astro.url);
+const txt = t(idioma);
 ---
 
 <section id="tiburon" class="tiburon">
   <div>
     <p class="display tiburon__lead" data-reveal style="--reveal-y:28px;--reveal-dur:1s;--reveal-delay:.08s">
-      MUCHOS VEN EL SALTO. POCOS VEN LAS HORAS DE MADRUGONES, EL FRÍO, LA TÉCNICA Y LA CONVICCIÓN.
-      <span class="tiburon__strong">ESTO NO ES SUERTE.</span>
+      {txt.tiburonInicio.lead}
+      <span class="tiburon__strong">{txt.tiburonInicio.leadFuerte}</span>
     </p>
     <p class="display tiburon__climax" data-reveal style="--reveal-y:34px;--reveal-dur:1.1s;--reveal-delay:.18s">
-      ESTO ES<br />MODO TIBURÓN.
+      {txt.tiburonInicio.climax1}<br />{txt.tiburonInicio.climax2}
     </p>
     <div class="tiburon__ctas" data-reveal style="--reveal-y:26px;--reveal-dur:1s;--reveal-delay:.26s">
-      <a href={links.aliados} class="pill pill--lg pill--invert">Únete al equipo (Patrocinios)</a>
+      <a href={ruta(idioma, '/ser-aliado')} class="pill pill--lg pill--invert">{txt.tiburonInicio.cta}</a>
       <div class="tiburon__social">
-        <span class="tiburon__social-label">Síguenos en nuestras redes</span>
+        <span class="tiburon__social-label">{txt.tiburonInicio.redes}</span>
         <SocialLinks size={18} gap={16} />
       </div>
     </div>
@@ -26,8 +29,8 @@ import { links } from '../../data/site';
     <Media
       id="konsta-tiburon"
       src="/assets/konsta-tiburon.jpg"
-      alt="Konsta sentado en el poyete, con monoaleta, antes de entrar al agua"
-      caption="Entrenamiento — cruda, B&N"
+      alt={txt.tiburonInicio.fotoAlt}
+      caption={txt.tiburonInicio.fotoAlt}
       aspect="3 / 4"
       radius="22px 22px 180px 22px"
       mono={false}

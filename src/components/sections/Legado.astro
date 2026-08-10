@@ -1,73 +1,68 @@
 ---
 import Reel from '../Reel.astro';
-import { links } from '../../data/site';
+import { idiomaDeUrl, ruta, t as tr } from '../../i18n/ui';
+
+const idioma = idiomaDeUrl(Astro.url);
+const txt = tr(idioma);
 
 /** Titular centrado y dos bloques con los reels cruzados. */
 ---
 
 <section id="legado" class="legado section--rule">
   <h1 class="display legado__titulo" data-reveal style="--reveal-y:28px;--reveal-dur:1s">
-    COLECCIÓN LEGADO: EL VALOR DE <span class="legado__acento">IMPULSAR A OTROS</span>
+    {txt.legado.titulo} <span class="legado__acento">{txt.legado.acento}</span>
   </h1>
 
   <div class="bloque">
     <div class="bloque__texto">
       <p class="legado__copy" data-reveal style="--reveal-y:24px;--reveal-delay:.08s">
-        En el alto rendimiento, ningún campeón llega solo a la cima. Creemos firmemente que el
-        verdadero liderazgo se mide por cuántos talentos logramos elevar junto a nosotros.
+        {txt.legado.parrafo1}
       </p>
       <p class="legado__copy" data-reveal style="--reveal-y:24px;--reveal-delay:.14s">
-        La Colección Legado no es solo una serie de piezas exclusivas de edición limitada; es un
-        puente financiero hacia el sueño de atletas con un potencial inmenso y recursos limitados.
-        Cada artículo de esta serie de autor está diseñado con los estándares estéticos y técnicos
-        del «Modo Tiburón».
+        {txt.legado.parrafo2}
       </p>
     </div>
 
     <div class="bloque__reel" data-parallax="0.03">
-      <Reel src="/assets/coleccionlegado/reel-1.mp4" label="Piezas de la Colección Legado" />
+      <Reel src="/assets/coleccionlegado/reel-1.mp4" label={txt.legado.reel1Alt} />
     </div>
   </div>
 
   <div class="bloque bloque--invertido">
     <div class="bloque__reel" data-parallax="-0.03">
-      <Reel src="/assets/coleccionlegado/reel-2.mp4" label="Colección Legado en movimiento" />
+      <Reel src="/assets/coleccionlegado/reel-2.mp4" label={txt.legado.reel2Alt} />
     </div>
 
     <div class="bloque__texto">
       <h2 class="display legado__sub" data-reveal style="--reveal-y:22px;--reveal-dur:.8s">
-        ¿CÓMO TRANSFORMAMOS TU COMPRA EN IMPACTO?
+        {txt.legado.sub}
       </h2>
 
       <div class="card" data-reveal style="--reveal-y:24px;--reveal-delay:.08s">
-        <span class="card__label">100% con propósito</span>
+        <span class="card__label">{txt.legado.card1Label}</span>
         <p class="card__body">
-          Los fondos recaudados a través de estas ediciones limitadas se destinan directamente a
-          financiar inscripciones, traslados e implementos de competencia para compañeros de la
-          disciplina que necesitan un impulso en su carrera deportiva.
+          {txt.legado.card1Body}
         </p>
       </div>
 
       <div class="card" data-reveal style="--reveal-y:24px;--reveal-delay:.16s">
-        <span class="card__label">Diseño de autor</span>
+        <span class="card__label">{txt.legado.card2Label}</span>
         <p class="card__body">
-          Piezas numeradas y de tiraje exclusivo, creadas para coleccionistas, simpatizantes y marcas
-          que entienden que el deporte es una herramienta de transformación social.
+          {txt.legado.card2Body}
         </p>
       </div>
 
       <p class="card__body" data-reveal style="--reveal-y:24px;--reveal-delay:.22s">
-        Adquiere una pieza de esta colección exclusiva y sé parte activa del movimiento que está
-        reescribiendo el futuro de la monoaleta en el país.
+        {txt.legado.cierre}
       </p>
 
       <a
-        href={links.coleccion}
+        href={ruta(idioma, '/ser-aliado')}
         class="pill pill--lg legado__cta"
         data-reveal
         style="--reveal-y:24px;--reveal-delay:.28s"
       >
-        Ver colección exclusiva y apoyar
+        {txt.legado.cta}
       </a>
     </div>
   </div>
@@ -78,11 +73,12 @@ import { links } from '../../data/site';
     padding: clamp(60px, 10vh, 130px) var(--gutter);
   }
 
+  /* Misma escala que los titulares de Modo Tiburón, sin tope de ancho para
+     que la frase entre en un solo renglón. */
   .legado__titulo {
-    font-size: clamp(28px, 6.6vw, 88px);
-    line-height: 0.9;
+    font-size: clamp(40px, 4.8vw, 78px);
+    line-height: 0.93;
     margin: 0 auto clamp(34px, 6vh, 64px);
-    max-width: 22ch;
     text-align: center;
     text-wrap: balance;
   }
@@ -121,8 +117,8 @@ import { links } from '../../data/site';
   }
 
   .legado__sub {
-    font-size: clamp(26px, 2.4vw, 40px);
-    line-height: 1;
+    font-size: clamp(40px, 4.8vw, 78px);
+    line-height: 0.93;
     letter-spacing: 0.02em;
     color: var(--color-blue);
     margin: 0;

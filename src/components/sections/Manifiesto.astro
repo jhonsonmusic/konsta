@@ -1,32 +1,22 @@
 ---
 import Media from '../Media.astro';
+import { idiomaDeUrl, t as tr } from '../../i18n/ui';
+
+const txt = tr(idiomaDeUrl(Astro.url));
 
 /** Antes: cita del manifiesto + bloque de video. Ahora: tres fotos en una fila. */
-const fotos = [
-  {
-    id: 'konsta-manifiesto-1',
-    alt: 'Grupo de deportistas de monoaleta reunido en el borde de la piscina antes de entrenar',
-  },
-  {
-    id: 'konsta-manifiesto-2',
-    alt: 'Dos deportistas ajustando la monoaleta al borde de la piscina',
-  },
-  {
-    id: 'konsta-manifiesto-3',
-    alt: 'Dos deportistas guardando las monoaletas y el equipo después del entrenamiento',
-  },
-];
+const fotos = ['konsta-manifiesto-1', 'konsta-manifiesto-2', 'konsta-manifiesto-3'];
 ---
 
 <section id="manifiesto" class="manifiesto section section--rule">
   <div class="manifiesto__fila">
     {
-      fotos.map((foto, i) => (
+      fotos.map((id, i) => (
         <Media
-          id={foto.id}
-          src={`/assets/${foto.id}.jpg`}
-          alt={foto.alt}
-          caption={foto.alt}
+          id={id}
+          src={`/assets/${id}.jpg`}
+          alt={txt.ecosistema.fotos[i]}
+          caption={txt.ecosistema.fotos[i]}
           aspect="3 / 4"
           mono={false}
           clipDelay={`${i * 0.1}s`}

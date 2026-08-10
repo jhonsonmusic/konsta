@@ -3,12 +3,12 @@ import Layout from '../layouts/Layout.astro';
 import Proposito from '../components/sections/Proposito.astro';
 import Manifiesto from '../components/sections/Manifiesto.astro';
 import ManifiestoCompromiso from '../components/sections/ManifiestoCompromiso.astro';
+import { textos } from '../i18n/ui';
+
+const meta = textos['es'].meta.ecosistema;
 ---
 
-<Layout
-  title="Ecosistema — Konsta"
-  description="Más allá de mi ondulación: impulsando el futuro de la monoaleta en Colombia. Manifiesto de compromiso del Proyecto Konsta."
->
+<Layout title={meta.title} description={meta.description}>
   {/* Cada capa queda fija y la siguiente sube por encima, como las fotos del inicio. */}
   <div class="capas">
     <div class="capa capa--1"><Proposito /></div>
