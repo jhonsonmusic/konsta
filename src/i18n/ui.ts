@@ -243,7 +243,7 @@ export const textos = {
       acento: 'REDEFINIR LOS LÍMITES',
       copy: 'Al asociarte con este proyecto, tu marca no aparece únicamente en un uniforme de alta competición; entra a formar parte de un ecosistema donde el liderazgo, la gestión y el impacto social se unen. Konsta es el embajador de una disciplina en pleno crecimiento, un gestor que moviliza, inspira y lidera a la próxima generación de campeones mundiales colombianos.',
       firma: 'DETERMINACIÓN IMPARABLE.',
-      pregunta: '¿TIENES LA VISIÓN CORPORATIVA PARA CONSTRUIR UN LEGADO QUE TRASCIENDA EL PODIO?',
+      pregunta: '¿TIENE TU EMPRESA LA VISIÓN DE CONSTRUIR UN LEGADO QUE TRASCIENDA EL PODIO?',
       brochureLabel: 'Descargar brochure técnico de patrocinio',
       brochureSub: 'Dossier corporativo y ROI para marcas',
       contactoLabel: 'Contactar al equipo de gestión',
@@ -252,7 +252,7 @@ export const textos = {
       foto2Alt: 'Konsta en una jornada de entrenamiento',
       foto3Alt: 'Konsta lanzándose al agua desde el borde de la piscina',
       formTitulo: 'HABLEMOS DE TU',
-      formAcento: 'ALIANZA',
+      formAcento: 'ASOCIACIÓN',
       formCopy:
         'Cuéntanos sobre tu marca y el equipo de gestión te contacta para armar juntos la propuesta.',
       formAria: 'Formulario de contacto para aliados',

@@ -73,8 +73,12 @@ const tally =
     display: flex;
     flex-direction: column;
     gap: 20px;
-    /* En pantallas muy anchas el formulario se estiraba y los campos quedaban
-       perdidos en una fila enorme. */
+  }
+
+  /* El tope va en el texto y el formulario, no en la columna: así el título
+     dispone de todo el ancho y cabe en un solo renglón. */
+  .contacto__copy,
+  .contacto__embed {
     max-width: 680px;
   }
 
@@ -82,7 +86,7 @@ const tally =
     font-size: clamp(40px, 4.8vw, 78px);
     line-height: 0.93;
     margin: 0;
-    text-wrap: balance;
+    white-space: nowrap;
   }
 
   .contacto__acento {
@@ -112,6 +116,12 @@ const tally =
     /* La foto baja: primero el formulario, que es lo que se viene a hacer. */
     .contacto__foto {
       order: 2;
+    }
+
+    /* En móvil no cabe en un renglón: se deja partir. */
+    .contacto__titulo {
+      white-space: normal;
+      text-wrap: balance;
     }
   }
 </style>
