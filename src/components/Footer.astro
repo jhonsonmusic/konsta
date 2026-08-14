@@ -22,7 +22,7 @@ const esActual = (href: string) => actual === href.replace(/\/$/, '');
 <footer class="footer">
   <div class="footer__top">
     <a href={ruta(idioma, '/')} class="footer__logo" aria-label={txt.nav.inicioAria}>
-      <img src="/assets/konsta-logo.png" alt="Konsta" width="68" height="32" />
+      <img src="/assets/konsta-logo.png" alt="Konsta" width="85" height="40" />
     </a>
 
     <nav class="footer__nav" aria-label={txt.nav.secundaria}>
@@ -36,9 +36,12 @@ const esActual = (href: string) => actual === href.replace(/\/$/, '');
     </nav>
   </div>
 
-  <div class="footer__meta">
-    <span>{txt.comun.dominio}</span>
-    <SocialLinks size={19} gap={18} class="footer__social" />
+  <div class="footer__legal">
+    <div class="footer__redes">
+      <span>{txt.comun.siguenos}</span>
+      <SocialLinks size={20} gap={18} />
+    </div>
+
     <span class="footer__credito">
       © 2026 · {txt.comun.credito}
       <a href="https://conex1onpsh.com" target="_blank" rel="noopener">Conex1on PSH</a>
@@ -59,20 +62,22 @@ const esActual = (href: string) => actual === href.replace(/\/$/, '');
     justify-content: space-between;
     flex-wrap: wrap;
     gap: clamp(20px, 3vw, 40px);
+    padding-inline: var(--gutter);
   }
 
   .footer__credito a {
     color: inherit;
-    border-bottom: 1px solid var(--hairline);
-    transition: color 0.25s var(--ease-out);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    transition: opacity 0.25s var(--ease-out);
   }
 
   .footer__credito a:hover {
-    color: var(--color-blue);
+    color: inherit;
+    opacity: 0.75;
   }
 
   .footer__logo img {
-    height: 32px;
+    height: 40px;
     width: auto;
     display: block;
   }
@@ -92,23 +97,37 @@ const esActual = (href: string) => actual === href.replace(/\/$/, '');
     padding-bottom: 3px;
   }
 
-  .footer__meta {
+  /* Banda azul de cierre, a todo el ancho y con el contenido centrado. */
+  .footer__legal {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
-    margin-top: 26px;
-    padding-top: 22px;
-    border-top: 1px solid var(--hairline);
+    gap: 18px;
+    margin-top: clamp(28px, 4vh, 44px);
+    padding: clamp(30px, 5vh, 46px) var(--gutter) clamp(38px, 6vh, 56px);
+    background: var(--color-blue);
+    color: var(--color-white);
+    text-align: center;
     font-size: 10.5px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--color-muted);
     font-weight: 500;
   }
 
-  .footer :global(.footer__social) {
-    color: var(--color-ink);
+  .footer__redes {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: var(--color-white);
+  }
+
+  /* En móvil los botones flotantes ocupan la esquina inferior derecha:
+     el crédito necesita altura extra para no quedar debajo. */
+  @media (max-width: 760px) {
+    .footer__legal {
+      padding-bottom: 150px;
+    }
   }
 </style>

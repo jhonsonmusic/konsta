@@ -24,7 +24,7 @@ const esActual = (href: string) => actual === href.replace(/\/$/, '');
 <header class="header">
   <a href={inicio} class="header__logo" aria-label={txt.nav.inicioAria}>
     <!-- 1004×472 en origen: la proporción debe respetarse o el wordmark se deforma. -->
-    <img src="/assets/konsta-logo.png" alt="Konsta" width="85" height="40" />
+    <img src="/assets/konsta-logo.png" alt="Konsta" width="102" height="48" />
   </a>
 
   <nav class="header__nav" aria-label={txt.nav.principal}>
@@ -58,7 +58,7 @@ const esActual = (href: string) => actual === href.replace(/\/$/, '');
 <div class="menu" id="menu-movil" hidden data-menu>
   <div class="menu__bar">
     <a href={inicio} class="menu__logo" aria-label={txt.nav.inicioAria} data-menu-link>
-      <img src="/assets/konsta-logo.png" alt="Konsta" width="85" height="40" />
+      <img src="/assets/konsta-logo.png" alt="Konsta" width="102" height="48" />
     </a>
     <button class="menu__close" type="button" aria-label={txt.nav.cerrarMenu} data-menu-close>
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
@@ -110,7 +110,7 @@ const esActual = (href: string) => actual === href.replace(/\/$/, '');
 
   .header__logo img,
   .menu__logo img {
-    height: 40px;
+    height: 48px;
     width: auto;
     display: block;
   }

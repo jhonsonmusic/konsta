@@ -83,7 +83,7 @@ export const textos = {
       whatsapp: 'Escribir por WhatsApp',
       whatsappMensaje:
         'Hola, escribo desde konstadeportista.com. Quiero saber más sobre las alianzas con el Proyecto Konsta.',
-      dominio: 'www.konstadeportista.com · Monoaleta',
+      siguenos: 'Síguenos en:',
       credito: 'Desarrollado por',
     },
     hero: {
@@ -187,7 +187,8 @@ export const textos = {
       parrafo1:
         'En el alto rendimiento, ningún campeón llega solo a la cima. Creemos firmemente que el verdadero liderazgo se mide por cuántos talentos logramos elevar junto a nosotros.',
       parrafo2:
-        'La Colección Legado no es solo una serie de piezas exclusivas de edición limitada; es un puente financiero hacia el sueño de atletas con un potencial inmenso y recursos limitados. Cada artículo de esta serie de autor está diseñado con los estándares estéticos y técnicos del «Modo Tiburón».',
+        'La Colección Legado no es solo una serie de piezas exclusivas de edición limitada; es un puente financiero hacia el sueño de atletas con un potencial inmenso y recursos limitados. Cada artículo de esta serie de autor está diseñado con los estándares estéticos y técnicos del',
+      parrafo2Acento: 'MODO TIBURÓN',
       sub: '¿CÓMO TRANSFORMAMOS TU COMPRA EN IMPACTO?',
       card1Label: '100% con propósito',
       card1Body:
@@ -217,6 +218,7 @@ export const textos = {
         'The World Games · Karlsruhe, Alemania · 19–29 de julio.',
       ],
       cta: 'Sé parte del camino a Karlsruhe',
+      reelAlt: 'Cartel de Konsta en el metro',
       cierreFrase: 'REPRESENTAR A COLOMBIA',
       cierreAcento: 'ANTE EL MUNDO',
       cierreParrafo:
@@ -316,7 +318,7 @@ export const textos = {
       whatsapp: 'Message us on WhatsApp',
       whatsappMensaje:
         'Hi, I am writing from konstadeportista.com. I would like to know more about partnering with Project Konsta.',
-      dominio: 'www.konstadeportista.com · Finswimming',
+      siguenos: 'Follow us:',
       credito: 'Built by',
     },
     hero: {
@@ -420,7 +422,8 @@ export const textos = {
       parrafo1:
         'In elite sport, no champion reaches the top alone. We firmly believe that real leadership is measured by how many talents we lift alongside us.',
       parrafo2:
-        'The Legacy Collection is not just a series of exclusive limited-edition pieces; it is a financial bridge towards the dream of athletes with immense potential and limited resources. Every item in this signature series is designed to the aesthetic and technical standards of “Shark Mode”.',
+        'The Legacy Collection is not just a series of exclusive limited-edition pieces; it is a financial bridge towards the dream of athletes with immense potential and limited resources. Every item in this signature series is designed to the aesthetic and technical standards of',
+      parrafo2Acento: 'SHARK MODE',
       sub: 'HOW DOES YOUR PURCHASE TURN INTO IMPACT?',
       card1Label: '100% with purpose',
       card1Body:
@@ -450,6 +453,7 @@ export const textos = {
         'The World Games · Karlsruhe, Germany · 19–29 July.',
       ],
       cta: 'Be part of the road to Karlsruhe',
+      reelAlt: 'Konsta’s poster on the metro',
       cierreFrase: 'REPRESENTING COLOMBIA',
       cierreAcento: 'BEFORE THE WORLD',
       cierreParrafo:

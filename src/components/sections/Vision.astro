@@ -1,4 +1,5 @@
 ---
+import Reel from '../Reel.astro';
 import { idiomaDeUrl, ruta, t as tr } from '../../i18n/ui';
 
 const idioma = idiomaDeUrl(Astro.url);
@@ -57,13 +58,19 @@ const carrusel = ['1', '2', '3', '4', '5'];
     </div>
   </div>
 
-  <div class="vision__copy vision__copy--tras-galeria">
-    <p data-reveal style="--reveal-y:26px">
-      {txt.vision.parrafo1}
-    </p>
-    <p data-reveal style="--reveal-y:26px;--reveal-delay:.08s">
-      {txt.vision.parrafo2}
-    </p>
+  <div class="camino">
+    <div class="camino__texto">
+      <p data-reveal style="--reveal-y:26px">
+        {txt.vision.parrafo1}
+      </p>
+      <p data-reveal style="--reveal-y:26px;--reveal-delay:.08s">
+        {txt.vision.parrafo2}
+      </p>
+    </div>
+
+    <div class="camino__reel" data-parallax="0.03">
+      <Reel src="/assets/cartel-del-metro.mp4" label={txt.vision.reelAlt} />
+    </div>
   </div>
 
   <ol class="timeline" data-reveal style="--reveal-y:24px;--reveal-dur:1s">
@@ -103,7 +110,7 @@ const carrusel = ['1', '2', '3', '4', '5'];
       <img
         src="/assets/vision2029/medallas.jpg"
         alt={txt.vision.medallasAlt}
-        width="1400"
+        width="1170"
         height="788"
         loading="lazy"
       />
@@ -156,8 +163,54 @@ const carrusel = ['1', '2', '3', '4', '5'];
     max-width: min(59vw, 958px);
   }
 
-  .vision__copy--tras-galeria {
+  /* Texto a la izquierda y video a la derecha, centrados entre sí. */
+  .camino {
+    display: grid;
+    grid-template-columns: minmax(min(100%, 320px), 1.6fr) minmax(min(100%, 240px), 0.9fr);
+    gap: clamp(28px, 5vw, 80px);
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
     margin-top: clamp(40px, 7vh, 80px);
+    text-align: left;
+  }
+
+  .camino__texto {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .camino__texto p {
+    font-size: clamp(22px, 1.9vw, 27px);
+    line-height: 1.55;
+    font-weight: 300;
+    color: var(--color-body);
+    margin: 0;
+    /* El tope va en el párrafo: en el contenedor, ch se calcula con 16px
+       y el bloque quedaba mucho más angosto de lo previsto. */
+    max-width: 52ch;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .camino__reel {
+    width: min(100%, 380px);
+    margin-inline: auto;
+  }
+
+  /* En columna estrecha el justificado parte demasiadas palabras. */
+  @media (max-width: 760px) {
+    .camino,
+    .cierre {
+      grid-template-columns: 1fr;
+    }
+
+    .camino__texto p,
+    .cierre__texto p:not(.cierre__frase) {
+      text-align: left;
+      hyphens: manual;
+    }
   }
 
   .vision__copy p {
@@ -170,9 +223,12 @@ const carrusel = ['1', '2', '3', '4', '5'];
   }
 
   /* --- carrusel ------------------------------------------------------ */
+  /* Mismo ancho máximo que el resto de bloques: en pantallas anchas las
+     fotos llegaban de borde a borde y el conjunto se descentraba. */
   .carrusel {
     width: 100%;
-    margin-top: clamp(40px, 7vh, 80px);
+    max-width: 1400px;
+    margin: clamp(40px, 7vh, 80px) auto 0;
   }
 
   .carrusel__pista {
@@ -246,7 +302,8 @@ const carrusel = ['1', '2', '3', '4', '5'];
   .timeline {
     list-style: none;
     width: 100%;
-    margin: clamp(46px, 8vh, 96px) 0 0;
+    max-width: 1400px;
+    margin: clamp(46px, 8vh, 96px) auto 0;
     padding: 30px 0 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
@@ -302,6 +359,7 @@ const carrusel = ['1', '2', '3', '4', '5'];
     padding-top: clamp(46px, 8vh, 90px);
     border-top: 1px solid var(--hairline);
     width: 100%;
+    max-width: 1400px;
   }
 
   .invitacion p {
@@ -315,12 +373,15 @@ const carrusel = ['1', '2', '3', '4', '5'];
   }
 
   /* --- cierre con las medallas ---------------------------------------- */
+  /* Misma retícula que el bloque del video: sin esto, en pantallas anchas
+     las dos columnas se abrían y la imagen crecía sin tope. */
   .cierre {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-    gap: clamp(24px, 4vw, 64px);
+    grid-template-columns: minmax(min(100%, 320px), 1.6fr) minmax(min(100%, 240px), 0.9fr);
+    gap: clamp(28px, 5vw, 80px);
     align-items: center;
     width: 100%;
+    max-width: 1400px;
     margin-top: clamp(46px, 8vh, 96px);
     text-align: left;
   }
@@ -331,7 +392,10 @@ const carrusel = ['1', '2', '3', '4', '5'];
     font-weight: 300;
     color: var(--color-body);
     margin: 0;
-    text-wrap: pretty;
+    /* Mismo tratamiento que el párrafo que acompaña al video. */
+    max-width: 52ch;
+    text-align: justify;
+    hyphens: auto;
   }
 
   /* Un remate en Bebas le da peso a la columna de texto frente a la foto. */
@@ -344,7 +408,8 @@ const carrusel = ['1', '2', '3', '4', '5'];
   }
 
   .cierre__medallas {
-    margin: 0;
+    width: min(100%, 460px);
+    margin: 0 auto;
   }
 
   .cierre__medallas img {
@@ -354,12 +419,14 @@ const carrusel = ['1', '2', '3', '4', '5'];
   }
 
   .cierre__medallas figcaption {
-    margin-top: 14px;
-    font-size: 10.5px;
-    letter-spacing: 0.18em;
+    margin-top: 18px;
+    font-family: var(--font-display);
+    font-size: clamp(22px, 2vw, 32px);
+    line-height: 1.1;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    font-weight: 600;
-    color: var(--color-muted);
+    text-align: center;
+    color: var(--color-ink);
   }
 </style>
 

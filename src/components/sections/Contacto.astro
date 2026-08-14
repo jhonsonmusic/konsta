@@ -48,7 +48,10 @@ const tally =
     display: grid;
     grid-template-columns: minmax(min(100%, 240px), 0.9fr) minmax(min(100%, 320px), 1.6fr);
     gap: clamp(28px, 5vw, 80px);
-    align-items: start;
+    /* La foto acompaña al formulario: centrada respecto a él. */
+    align-items: center;
+    max-width: 1400px;
+    margin-inline: auto;
     padding: clamp(60px, 10vh, 130px) var(--gutter);
   }
 

@@ -19,7 +19,7 @@ const txt = tr(idioma);
         {txt.legado.parrafo1}
       </p>
       <p class="legado__copy" data-reveal style="--reveal-y:24px;--reveal-delay:.14s">
-        {txt.legado.parrafo2}
+        {txt.legado.parrafo2} <strong class="legado__fuerte">{txt.legado.parrafo2Acento}</strong>.
       </p>
     </div>
 
@@ -70,6 +70,10 @@ const txt = tr(idioma);
 
 <style>
   .legado {
+    /* En pantallas muy anchas las dos columnas se separaban tanto que el
+       bloque de texto quedaba suelto: la sección se centra y se acota. */
+    max-width: 1400px;
+    margin-inline: auto;
     padding: clamp(60px, 10vh, 130px) var(--gutter);
   }
 
@@ -98,7 +102,6 @@ const txt = tr(idioma);
   .bloque--invertido {
     margin-top: clamp(60px, 10vh, 130px);
     grid-template-columns: minmax(min(100%, 240px), 0.9fr) minmax(min(100%, 320px), 1.6fr);
-    align-items: start;
   }
 
   .bloque__texto {
@@ -113,7 +116,24 @@ const txt = tr(idioma);
     font-weight: 300;
     color: var(--color-body);
     margin: 0;
-    text-wrap: pretty;
+    /* Justificado y con tope de ancho: en pantallas anchas el renglón se
+       estiraba tanto que costaba seguir la lectura. */
+    max-width: 46ch;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  /* En columna estrecha el justificado parte demasiadas palabras. */
+  @media (max-width: 760px) {
+    .legado__copy {
+      text-align: left;
+      hyphens: manual;
+    }
+  }
+
+  .legado__fuerte {
+    font-weight: 600;
+    color: var(--color-blue);
   }
 
   .legado__sub {

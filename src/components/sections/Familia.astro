@@ -51,7 +51,18 @@ const txt = tr(idiomaDeUrl(Astro.url));
   }
 
   .familia__p {
-    max-width: 46ch;
+    /* Mismo tratamiento que los párrafos de las demás secciones. */
+    max-width: 52ch;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  /* En columna estrecha el justificado parte demasiadas palabras. */
+  @media (max-width: 760px) {
+    .familia__p {
+      text-align: left;
+      hyphens: manual;
+    }
   }
 
   .familia__p + .familia__p {

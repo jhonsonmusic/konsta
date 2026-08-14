@@ -85,6 +85,10 @@ const txt = tr(idiomaDeUrl(Astro.url));
 
 <style>
   .aliados {
+    /* Sin tope, en pantallas anchas las columnas se abrían y los bloques
+       quedaban sueltos de lado a lado. */
+    max-width: 1400px;
+    margin-inline: auto;
     padding: clamp(50px, 8vh, 110px) var(--gutter) clamp(84px, 10vh, 110px);
   }
 
@@ -138,7 +142,10 @@ const txt = tr(idiomaDeUrl(Astro.url));
     font-weight: 300;
     color: var(--color-body);
     margin: 0;
-    text-wrap: pretty;
+    /* Mismo tratamiento que los párrafos de Visión y Colección Legado. */
+    max-width: 52ch;
+    text-align: justify;
+    hyphens: auto;
   }
 
   .aliados__firma {
@@ -165,6 +172,12 @@ const txt = tr(idiomaDeUrl(Astro.url));
 
     .bloque--invertido .bloque__foto {
       order: 2;
+    }
+
+    /* En columna estrecha el justificado parte demasiadas palabras. */
+    .aliados__copy {
+      text-align: left;
+      hyphens: manual;
     }
   }
 
